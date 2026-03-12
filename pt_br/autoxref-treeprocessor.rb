@@ -59,11 +59,11 @@ class AutoXrefTreeprocessor < Extensions::Treeprocessor
 
     # Captions should we use.
     captions = {
-      :section => (document.attr 'autoxref-sectcaption', "Section %d.%d"),
-      :image => (document.attr 'autoxref-imagecaption', "Figure %d.%d"),
-      :listing => (document.attr 'autoxref-listingcaption', "Program %d.%d"),
-      :table => (document.attr 'autoxref-tablecaption', "Table %d.%d"),
-	  :example => (document.attr 'autoxref-examplecaption', "Example %d.%d")
+      :section => (document.attr 'autoxref-sectcaption', "Seção %d.%d"),
+      :image => (document.attr 'autoxref-imagecaption', "Figura %d.%d"),
+      :listing => (document.attr 'autoxref-listingcaption', "Código %d.%d"),
+      :table => (document.attr 'autoxref-tablecaption', "Tabela %d.%d"),
+	  :example => (document.attr 'autoxref-examplecaption', "Examplo %d.%d")
     }
 
     # Reference number counter.  Reference numbers are reset by chapters.
