@@ -123,7 +123,7 @@ class AutoXrefTreeprocessor < Extensions::Treeprocessor
 		# Scan for exercises
 		chapter.find_by(context: :section).each do |section|
 			# Generate RNBCs for exercises and update reference table in the document.
-			if section.title == "Exercises" and section.level == 2 then
+			if section.title == "Exercícios" and section.level == 2 then
 				exercise = 1
         part = 'a'
 				section.find_by(context: :olist).each do |list|
@@ -191,7 +191,7 @@ class AutoXrefTreeprocessor < Extensions::Treeprocessor
     text.scan(pattern).each do |match|		
 		unless match.include? ","						
 			id = match[2, match.length - 4]				
-			document.references[:ids][id] = "Exercise " + number
+			document.references[:ids][id] = "Exercício " + number
 		end		
 	end
   end

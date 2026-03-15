@@ -42,7 +42,7 @@ a possibilidade de adicionar.
 * [ ] Adicionar seções de Resumo aos capítulos que não as possuem.
 * [ ] Explicar as diferentes versões do Java e seus recursos.
 
-‘’'
+'''
 
 * [x] Adicionar uma seção sobre declarações `var` (Seção 3.3.6).
 * [x] Descrever as melhorias nas instruções `switch`.
