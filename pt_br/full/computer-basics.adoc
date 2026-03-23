@@ -1,5 +1,5 @@
 [#computer-basics]
-== Computer Basics
+== Noções básicas de informática
 :imagesdir: chapters/computer-basics/images
 
 [quote, Pablo Picasso]
@@ -7,69 +7,69 @@ ____
 Computers are useless. They can only give you answers.
 ____
 
-=== Problem: Buying a computer
+=== Problema: Comprando um computador
 
-We begin almost every chapter of this book with a motivating problem.
-Why? Sometimes it helps to see how tools can be applied in order to see
-why they're useful. As we move through each chapter, we cover background
-concepts needed to solve the problem in the *Concepts* section, the
-specific technical details (usually in the form of Java syntax) required
-in the *Syntax* section, and eventually the solution to
-the problem in the *Solution* sections. If you're not interested in the
-problem, that's fine! Feel free to skip ahead to <<Concepts: Hardware and software>> on hardware and software
-or to <<Syntax: Data representation>> on data representation, especially if you
-already have some programming experience. Then, if you'd like to see
-another detailed example, the solution to this problem is available in <<Solution: Buying a computer>> as a reference.
+Começamos quase todos os capítulos deste livro com um problema motivador.
+Por quê? Às vezes, ajuda ver como as ferramentas podem ser aplicadas para entender
+por que são úteis. À medida que avançamos em cada capítulo, abordamos os conceitos básicos
+necessários para resolver o problema na seção *Conceitos*, os
+detalhes técnicos específicos (geralmente na forma de sintaxe Java) necessários
+na seção *Sintaxe* e, por fim, a solução para
+o problema nas seções *Solução*. Se você não estiver interessado no
+problema, tudo bem! Fique à vontade para pular para <<Conceitos: Hardware e software>> sobre hardware e software
+ou para <<Sintaxe: Representação de dados>> sobre representação de dados, especialmente se você
+já tiver alguma experiência em programação. Então, se quiser ver
+outro exemplo detalhado, a solução para este problema está disponível em <<Solução: Comprando um computador>> como referência.
 
-We'll start with a problem that's not about programming and may be
-familiar to you. Imagine you're just about to start college and need a
-computer. Should you buy a Mac or PC? What kind of computer is going to
-run programs faster? Do some kinds of computers crash more than others?
-Which features are worth paying more for? Why are there so many
-buzzwords and so much impenetrable jargon associated with buying a
-computer?
+Vamos começar com um problema que não tem a ver com programação e que talvez
+lhe seja familiar. Imagine que você está prestes a entrar na faculdade e precisa de um
+computador. Deveria comprar um Mac ou um PC? Que tipo de computador vai
+executar os programas mais rápido? Será que alguns tipos de computadores travam mais do que outros?
+Por quais recursos vale a pena pagar mais? Por que há tantos
+termos da moda e tanto jargão incompreensível associados à compra de um
+computador?
 
-When many people hear "`computer science,`" these are often the first
-questions that come to mind. Most of this book is about programming
-computers in a language called Java and *not* about the computers
-themselves. We try to present all material so that almost any kind
-of computer can be used when programming the problems and examples.
-Nevertheless, both the hardware that makes up your computer and the
-other software running on it affect the way the programs you write work.
+Quando muitas pessoas ouvem “ciência da computação”, essas costumam ser as primeiras
+perguntas que vêm à mente. A maior parte deste livro trata da programação
+de computadores em uma linguagem chamada Java e *não* dos computadores
+em si. Tentamos apresentar todo o material de forma que praticamente qualquer tipo
+de computador possa ser usado na programação dos problemas e exemplos.
+No entanto, tanto o hardware que compõe o seu computador quanto o
+outro software em execução nele afetam a maneira como os programas que você escreve funcionam.
 
-=== Concepts: Hardware and software
+=== Conceitos: Hardware e software
 
-Computers are ubiquitous. We see them nearly everywhere. They are found
-in most homes, shops, cars, aircraft, phones, and inside many other
-devices. Sometimes they are obvious, like a laptop sitting on a desk,
-but most computers are hidden inside other devices such as a watch or a
-flat-panel television. Computers can be complex or relatively simple
-machines. Despite their diversity, we can think of all computers in
-terms of their _hardware_ and the _software_ that runs on it.
+Os computadores estão por toda parte. Nós os vemos em quase todos os lugares. Eles estão presentes
+na maioria das casas, lojas, carros, aviões, telefones e dentro de muitos outros
+dispositivos. Às vezes, são visíveis, como um laptop sobre uma mesa,
+mas a maioria dos computadores fica oculta dentro de outros dispositivos, como um relógio ou uma
+televisão de tela plana. Os computadores podem ser máquinas complexas ou relativamente simples.
+Apesar de sua diversidade, podemos pensar em todos os computadores em
+termos de seu _hardware_ e do _software_ que nele é executado.
 
 ==== Hardware
 
-Hardware consists of the physical components that make up a computer but
-not the programs or data stored on it. Hardware components can be seen
-and touched, if you are willing to open the computer case. One way to
-organize hardware is to break it down into three categories: the
-processor, the memory, and input and output (I/O) devices.
+O hardware consiste nos componentes físicos que compõem um computador, mas
+não nos programas ou dados armazenados nele. Os componentes de hardware podem ser vistos
+e tocados, se você estiver disposto a abrir o gabinete do computador. Uma maneira de
+organizar o hardware é dividi-lo em três categorias: o
+processador, a memória e os dispositivos de entrada e saída (E/S).
 
-This view of a computer is a simplified version of what is called the
-von Neumann architecture or a stored-program computer. It's a good (but
-imperfect) model of most modern computers. In this model, a program (a
-list of instructions) is stored in memory. The processor loads the
-program and performs the instructions, some of which require the
-processor to do a lot of number crunching. Sometimes the processor reads
-data out of memory or writes new data into it. Periodically, the
-processor may send output to one of the output devices or receive input
-from one of the input devices.
+Essa visão de um computador é uma versão simplificada do que é chamado de
+arquitetura von Neumann ou computador de programa armazenado. É um bom (mas
+imperfeito) modelo da maioria dos computadores modernos. Nesse modelo, um programa (uma
+lista de instruções) é armazenado na memória. O processador carrega o
+programa e executa as instruções, algumas das quais exigem que o
+processador faça muitos cálculos. Às vezes, o processador lê
+dados da memória ou grava novos dados nela. Periodicamente, o
+processador pode enviar saída para um dos dispositivos de saída ou receber entrada
+de um dos dispositivos de entrada.
 
-In other words, the processor thinks, the memory stores, and the I/O
-devices talk to the outside world. The processor sits between the
-memory and the I/O devices. Let's examine these categories further.
+Em outras palavras, o processador pensa, a memória armazena e os dispositivos de E/S
+se comunicam com o mundo exterior. O processador fica entre a
+memória e os dispositivos de E/S. Vamos examinar essas categorias mais detalhadamente.
 
-.Hardware components in a typical desktop computer categorized into CPU, memory, and I/O devices.
+.Componentes de hardware em um computador desktop típico categorizados em CPU, memória e dispositivos de E/S.
 image::vonNeumann.svg[scaledwidth=100%,pdfwidth=100%,width=100%]
 
 ===== CPU
