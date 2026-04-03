@@ -1,165 +1,163 @@
 [#selection]
 :imagesdir: chapters/selection/images
 :programsdir: chapters/selection/programs
-== Selection
+== Seleção
 
 [quote, Albert Camus]
 ____
-Life is a sum of all your choices.
+A vida é a soma de todas as suas escolhas.
 ____
 
-=== Problem: Monty Hall simulation
+=== Problema: Simulação de Monty Hall
 
-There's a famous mathematical puzzle called the Monty Hall problem,
-based on the television show _Let's Make a Deal_ hosted by the eponymous
-Monty Hall. In this problem, you're presented with three doors. Two of
-the three doors have junk behind them. One randomly selected door
-conceals something like a pile of gold. If you can choose that door, you
-win the gold. After you make an initial choice, Monty, who knows which
-door the pile of gold is behind, will open one of the two other doors,
-always picking a door with junk behind it. If you chose the gold door,
-Monty will pick between the two junk doors randomly. After opening a
-door, Monty gives you a chance to switch to the other unopened door. You
-decide to switch or not, the appropriate door is opened, and you win
-either junk or a pile of gold, depending on your luck.
+Existe um famoso enigma matemático chamado problema de Monty Hall,
+baseado no programa de televisão _Let's Make a Deal_, apresentado pelo homônimo
+Monty Hall. Neste problema, são apresentadas três portas. Duas das
+três portas escondem lixo. Uma porta selecionada aleatoriamente
+esconde algo como uma pilha de ouro. Se você conseguir escolher essa porta, você
+ganha o ouro. Depois que você faz uma escolha inicial, Monty, que sabe atrás de qual
+porta está a pilha de ouro, abrirá uma das duas outras portas,
+sempre escolhendo uma porta com lixo atrás dela. Se você escolheu a porta do ouro,
+Monty escolherá aleatoriamente entre as duas portas com lixo. Depois de abrir uma
+porta, Monty lhe dá a chance de trocar para a outra porta fechada. Você
+decide trocar ou não, a porta apropriada é aberta e você ganha
+ou lixo ou uma pilha de ouro, dependendo da sua sorte.
 
-As it turns out, it's always a better strategy to switch doors. If you
-keep your initial choice, you have a 1 in 3 chance to win the gold.
-However, if you switch doors, you'll have a 2 in 3 chance. The problem is
-counterintuitive and leads many people, including mathematicians and
-people holding advanced degrees, to the incorrect answer.
+Acontece que é sempre uma estratégia melhor trocar de porta. Se você
+mantiver sua escolha inicial, tem 1 em 3 de chance de ganhar o ouro.
+No entanto, se você trocar de porta, terá 2 em 3 de chance. O problema é
+contraintuitivo e leva muitas pessoas, incluindo matemáticos e
+pessoas com pós-graduação, à resposta incorreta.
 
-Think about it this way: Suppose you could pick two doors to open, and
-if the gold was behind either one of them, you'd win. Clearly, you'd have a 2
-in 3 chance of winning. Monty allows you this option. Just pick the two
-doors you want and tell Monty the third. He reveals one of your two initial
-doors as junk, and you switch to the other one.
+Pense da seguinte maneira: suponha que você possa escolher duas portas para abrir e
+que, se o ouro estiver atrás de qualquer uma delas, você ganhe. Claramente, você teria 2
+em 3 de chance de ganhar. Monty permite essa opção. Basta escolher as duas
+portas que você quiser e dizer a Monty qual é a terceira. Ele revela que uma das suas duas portas iniciais
+é lixo, e você troca para a outra.
 
-If you still aren't convinced, that's fine. Your goal is to write a
-program that simulates the Monty Hall dilemma, allowing a user to guess
-a door and then potentially switch. Once you've written the
-simulation, you can choose to play repeatedly and see how well you do if
-you switch.
+Se você ainda não está convencido, tudo bem. Seu objetivo é escrever um
+programa que simule o dilema de Monty Hall, permitindo que o usuário adivinhe
+uma porta e, em seguida, possivelmente troque. Depois de escrever a
+simulação, você pode optar por jogar repetidamente e ver como se sai se
+mudar de porta.
 
-A Monty Hall scenario has two significant features that distinguish it
-from problems in previous chapters. First, randomness play a role.
-Generating random numbers has become an important part of computer
-science, and most languages provide programmers with tools for
-generating random or practically random numbers. Recall the `Random` class
-from <<strings-primitive-types#strings-primitive-types>>. With an object of
-type `Random` called `random`, you can generate a random `int` between
-`0` and `n - 1` by calling `random.nextInt(n)`.
+Um cenário de Monty Hall tem duas características significativas que o distinguem
+dos problemas dos capítulos anteriores. Primeiro, a aleatoriedade desempenha um papel.
+A geração de números aleatórios tornou-se uma parte importante da ciência da computação
+, e a maioria das linguagens fornece aos programadores ferramentas para
+gerar números aleatórios ou praticamente aleatórios. Lembre-se da classe `Random`
+de <<strings-primitive-types#strings-primitive-types>>. Com um objeto de
+tipo `Random` chamado `random`, você pode gerar um `int` aleatório entre
+`0` e `n - 1` chamando `random.nextInt(n)`.
 
-The second and much more important feature of Java in the solution to
-this problem is the element of choice. A random door is chosen to hide
-gold, and the program must react appropriately. The user chooses a door,
-and the program must carefully choose another door to open in response.
-Finally, the user must decide whether or not he or she wants to switch
-his or her choice. Inherent in this problem is the idea of _conditional
-execution_. Every program from the previous chapter runs sequentially,
-line by line. With conditional execution, only some of the code may be
-executed, depending on input from the user or the values that random
-numbers take. Previously, every program was deterministic, a series of
-inevitable consequences. Now, that linear, one-thing-follows-another
-paradigm has split into complex trees and webs of possible program
-executions.
+A segunda característica, e muito mais importante, do Java na solução para
+esse problema é o elemento de escolha. Uma porta aleatória é escolhida para esconder
+o ouro, e o programa deve reagir adequadamente. O usuário escolhe uma porta,
+e o programa deve escolher cuidadosamente outra porta para abrir em resposta.
+Por fim, o usuário deve decidir se deseja ou não mudar
+sua escolha. Inerente a esse problema está a ideia de _execução condicional_. 
+Todos os programas do capítulo anterior são executados sequencialmente,
+linha por linha. Com a execução condicional, apenas parte do código pode ser
+executada, dependendo da entrada do usuário ou dos valores que os números aleatórios
+assumem. Anteriormente, todos os programas eram determinísticos, uma série de
+consequências inevitáveis. Agora, esse paradigma linear, em que uma coisa segue a outra,
+se dividiu em árvores complexas e redes de possíveis execuções de programas.
 
-=== Concepts: Choosing between options
+=== Conceitos: Escolhendo entre opções
 
-Before we get to random numbers and the complex choices involved in the
-Monty Hall problem, let's talk about the simplified approach that most
-programming languages take to conditional execution. When we come to a
-point in a program where there is a choice to be made, we can think of
-it as the question, "`Do I want to perform this series of tasks?`" Like
-the classic game of 20 Questions, these questions in Java generally only
-have two answers: "`yes`" or "`no.`" If the answer is "`yes,`" the
-program completes Task A, otherwise it completes Task B. It's easier to
-design programming languages that can handle yes-or-no questions than
-any general question. If you've studied logic in the past, you have
-probably run across _Boolean logic_. Boolean logic gives a set of rules,
-similar to the rules of traditional algebra, that can be applied to a
-system with only two values: true and false.
+Antes de abordarmos os números aleatórios e as escolhas complexas envolvidas no
+problema de Monty Hall, vamos falar sobre a abordagem simplificada que a maioria das
+linguagens de programação adota para a execução condicional. Quando chegamos a um
+ponto em um programa onde há uma escolha a ser feita, podemos pensar
+nisso como a pergunta: "`Quero realizar esta série de tarefas?`" Assim como
+o clássico jogo das 20 Perguntas, essas perguntas em Java geralmente têm apenas
+duas respostas: "`sim`" ou "`não.`" Se a resposta for "`sim`", o
+programa conclui a Tarefa A; caso contrário, conclui a Tarefa B. É mais fácil
+projetar linguagens de programação que possam lidar com perguntas do tipo sim ou não do que
+qualquer pergunta geral. Se você já estudou lógica no passado, provavelmente se deparou com a 
+_lógica booleana_. A lógica booleana fornece um conjunto de regras,
+semelhantes às regras da álgebra tradicional, que podem ser aplicadas a um
+sistema com apenas dois valores: verdadeiro e falso.
 
-==== Simple choices
+==== Escolhas simples
 
-Because we want to build a system using only yes-or-no questions,
-Boolean logic is a perfect fit for computer science. To conform with
-other computer scientists, we try to think of conditions in terms of
-true and false, instead of yes and no. Thus, we can begin to formulate
-the kinds of choices we want to make:
-
-====
-_If it's raining outside,_
-=====
-_I'll take my umbrella._
-=====
-====
-
-
-This statement is a very simple program, even though it's not one
-executed by a computer. The person following this program asks herself,
-"`Is it raining today?`" If the answer is "`yes,`" then she'll take
-her umbrella. We can abstract this idea a bit further by saying that
-_raining outside_ is a condition _p_ and that _taking my
-umbrella_ is an action _a_. In other words, if
-_p_ is true, then do _a_. We haven't specified
-what is to be done if _p_ is not true, although we can 
-assume that the actor in this drama will *not* take an umbrella.
-
-If we want to view _p_ as a decision to make, we can specify
-what happens if it's not true. For example, we could formulate another
-choice:
+Como queremos construir um sistema usando apenas perguntas do tipo sim ou não,
+a lógica booleana é perfeita para a ciência da computação. Para nos alinharmos com
+outros cientistas da computação, tentamos pensar nas condições em termos de
+verdadeiro e falso, em vez de sim e não. Assim, podemos começar a formular
+os tipos de escolhas que queremos fazer:
 
 ====
-_If I have at least $50 in my pocket,_
+_Se estiver chovendo lá fora,_
 =====
-_I'll eat a lobster dinner;_
-=====
-_otherwise,_
-=====
-_I'll eat fast food._
+_vou levar meu guarda-chuva._
 =====
 ====
 
-In this case, we let _having at least $50_ be condition _q_,
-_eating a lobster dinner_ be action _b_, and _eating fast
-food_ be action _c_. Now we've created a decision. If
-_q_ is true, the person will do action _b_, but
-if it's false, she'll do action _c_.
 
-==== Boolean operations
+Essa afirmação é um programa muito simples, embora não seja um
+executado por um computador. A pessoa que segue esse programa se pergunta:
+"`Está chovendo hoje?`" Se a resposta for "`sim,`", então ela vai levar
+seu guarda-chuva. Podemos abstrair essa ideia um pouco mais dizendo que
+_está chovendo lá fora_ é uma condição _p_ e que _levar meu
+guarda-chuva_ é uma ação _a_. Em outras palavras, se
+_p_ for verdadeiro, então faça _a_. Não especificamos
+o que deve ser feito se _p_ não for verdadeiro, embora possamos 
+supor que o ator nesse drama *não* levará um guarda-chuva.
 
-Even by itself, the ability to pick between two options is powerful, but
-we can augment this ability in a couple of ways. First, we don't have to
-rely on simple conditions. Using Boolean logic, we can make arbitrarily
-complex conditions.
+Se quisermos ver _p_ como uma decisão a ser tomada, podemos especificar
+o que acontece se não for verdade. Por exemplo, poderíamos formular outra
+escolha:
 
 ====
-_If I'm bored, or it's late and I can't sleep,_
+_Se eu tiver pelo menos R$50 no bolso,_
 =====
-_I'll watch television._
+_vou jantar lagosta;_
+=====
+_caso contrário,_
+=====
+_vou comer fast food._
 =====
 ====
 
-Someone following this program will watch television if he's bored or
-if it's late and he also can't sleep. We can break the condition into
-three sub-conditions: _I'm bored_ is condition _x_, _it's
-late_ is condition _y_, and _I can't sleep_ is condition
-_z_. We have connected these three conditions together using
-the words "`and`" and "`or.`" These two simple words represent powerful
-concepts in Boolean logic, AND and OR. When two conditions are combined
-with AND, the result is true only if both conditions are true. When two
-conditions are combined with OR, the result is true if either of the
-conditions is true.
+Nesse caso, vamos considerar _ter pelo menos R$50_ como a condição _q_,
+_jantar lagosta_ como a ação _b_ e _comer fast
+food_ como a ação _c_. Agora criamos uma decisão. Se
+_q_ for verdadeiro, a pessoa realizará a ação _b_, mas
+se for falso, ela realizará a ação _c_.
 
-We can create a table called a _truth table_ to show all the possible
-values certain conditions can take. We're going to use the symbol
-∧ to represent the concept of AND and the symbol
-∨ to represent the concept of OR. We'll also
-abbreviate true to T and false to F.
+==== Operações booleanas
 
-Given a condition _x_, a condition _y_, and the condition made by _x_ ∧ _y_,
-this truth table shows all possible values. As stipulated, _x_ ∧ _y_ is true only when both _x_ and _y_ are true.
+Por si só, a capacidade de escolher entre duas opções já é poderosa, mas
+podemos ampliar essa capacidade de algumas maneiras. Primeiro, não precisamos
+depender de condições simples. Usando a lógica booleana, podemos criar condições arbitrariamente complexas.
+
+====
+_Se eu estiver entediado, ou se for tarde e eu não conseguir dormir,_
+=====
+_vou assistir televisão._
+=====
+====
+
+Alguém seguindo este programa assistirá televisão se estiver entediado ou
+se for tarde e também não conseguir dormir. Podemos dividir a condição em
+três subcondições: _estou entediado_ é a condição _x_, _é
+tarde_ é a condição _y_, e _não consigo dormir_ é a condição
+_z_. Conectamos essas três condições usando
+as palavras "`e`" e "`ou`". Essas duas palavras simples representam conceitos poderosos
+na lógica booleana: *AND* e *OR*. Quando duas condições são combinadas
+com AND, o resultado é verdadeiro apenas se ambas as condições forem verdadeiras. Quando duas
+condições são combinadas com OR, o resultado é verdadeiro se qualquer uma das
+condições for verdadeira.
+
+Podemos criar uma tabela chamada _tabela verdade_ para mostrar todos os valores possíveis
+que certas condições podem assumir. Vamos usar o símbolo
+∧ para representar o conceito de AND e o símbolo
+∨ para representar o conceito de OR. Também vamos
+abreviar verdadeiro como T e falso como F.
+
+Dadas uma condição _x_, uma condição _y_ e a condição formada por _x_ ∧ _y_,
+esta tabela verdade mostra todos os valores possíveis. Conforme estipulado, _x_ ∧ _y_ é verdadeiro apenas quando tanto _x_ quanto _y_ são verdadeiros.
 
 [.center%autowidth%unbreakable,cols="^,^,^",]
 |=========================================================
@@ -171,7 +169,7 @@ this truth table shows all possible values. As stipulated, _x_ ∧ _y_ is true o
 |F |F |F
 |=========================================================
 
-This truth table gives all the values for _x_ ∨ _y_. As you can see, _x_ ∨ _y_ is true if _x_ or _y_ are true.
+Esta tabela verdade apresenta todos os valores para _x_ ∨ _y_. Como você pode ver, _x_ ∨ _y_ é verdadeiro se _x_ ou _y_ forem verdadeiros.
 
 [.center%autowidth%unbreakable,cols="^,^,^",]
 |========================================================
@@ -183,36 +181,36 @@ This truth table gives all the values for _x_ ∨ _y_. As you can see, _x_ ∨ _
 |F |F |F
 |========================================================
 
-There's confusion surrounding the word "`or`" in English.
-Sometimes "`or`" is used in an exclusive sense to mean one or the other
-but not both, as in, "`Would you like lemonade or iced tea with your
-meal?`" In logic, this exclusive or exists as well and is called XOR.
-This difference gives another reason for a formally structured language
-like mathematics or Java to express ourselves precisely. When two
-conditions are connected with XOR, the result is true if one or the
-other but not both conditions are true. We use the symbol
-⊕ to represent the XOR operation in the truth table
-below.
+Há uma confusão em torno da palavra "`ou`" em inglês.
+Às vezes, "`ou`" é usada em um sentido exclusivo para significar um ou outro
+, mas não ambos, como em: "`Você gostaria de limonada ou chá gelado com sua
+refeição?`" Na lógica, esse "ou" exclusivo também existe e é chamado de XOR.
+Essa diferença fornece mais um motivo para que uma linguagem formalmente estruturada
+como a matemática ou Java nos permita expressar-nos com precisão. Quando duas
+condições são conectadas com XOR, o resultado é verdadeiro se uma ou a
+outra, mas não ambas as condições, forem verdadeiras. Usamos o símbolo
+⊕ para representar a operação XOR na tabela verdade
+abaixo.
 
-This truth table gives all the values for _x_ ⊕ _y_.
+Esta tabela verdade fornece todos os valores para _x_ ⊕ _y_.
 
 [.center%autowidth%unbreakable,cols="^,^,^",]
 |==========================================================
 |_x_ |_y_ |_x_ ⊕ _y_
 
-|T |T |F
-|T |F |T
-|F |T |T
+|V |V |F
+|V |F |V
+|F |V |V
 |F |F |F
 |==========================================================
 
-The operations AND, OR, and XOR are all binary operations like addition
-and multiplication. They connect two conditions together to get a
-result. There's also a single unary operation in Boolean logic, the NOT
-operator. A NOT simply reverses a condition. If a condition is true,
-then NOT applied to that condition will yield false, and vice versa.
+As operações AND, OR e XOR são todas operações binárias, como a adição
+e a multiplicação. Elas conectam duas condições para obter um
+resultado. Há também uma única operação unária na lógica booleana, o operador NOT
+. Um NOT simplesmente inverte uma condição. Se uma condição for verdadeira,
+então NOT aplicado a essa condição resultará em falso, e vice-versa.
 
-Here's a truth table for NOT, using the symbol ¬ to represent the NOT operation.
+Aqui está uma tabela verdade para NOT, usando o símbolo ¬ para representar a operação NOT.
 
 [.center%autowidth%unbreakable,cols="^,^",]
 |======================================
@@ -222,262 +220,274 @@ Here's a truth table for NOT, using the symbol ¬ to represent the NOT operation
 |F |T
 |======================================
 
-Now that we've nailed down some notation for Boolean logic, we can
-express the complicated expression that sent us down this path in the
-first place. Recall that _x_ is _I'm bored_,
-_y_ is _it's late_, and _z_ is _I can't sleep_.
-Let _d_ be the action _I'll watch television_. We can
-express the choice in this way: If _x_ ∨ (_y_ ∧ _z_),
-then do _d_. Using this notation, we've expressed
-precisely the conditions for watching television, using parentheses to
-clear up the ambiguity present in the original statement. If we can map
-individual conditions to Boolean variables, we can build conditions of
-arbitrary complexity.
+Agora que definimos algumas notações para a lógica booleana, podemos
+expressar a expressão complicada que nos levou a este caminho em
+primeiro lugar. Lembre-se de que _x_ é _estou entediado_,
+_y_ é _é tarde_ e _z_ é _não consigo dormir_.
+Seja _d_ a ação _vou assistir televisão_. Podemos
+expressar a escolha desta forma: Se _x_ ∨ (_y_ ∧ _z_),
+então faça _d_. Usando essa notação, expressamos
+precisamente as condições para assistir televisão, usando parênteses para
+esclarecer a ambiguidade presente na afirmação original. Se pudermos mapear
+condições individuais para variáveis booleanas, podemos construir condições de
+complexidade arbitrária.
 
-==== Nested choices
+==== Escolhas aninhadas
 
-Making one choice is all well and good, but in life and computer
-programs, we may have to make many interrelated choices. For example, if
-you choose to eat at a seafood restaurant, then you might choose between
-eating shrimp and lobster, but if you choose instead to eat at a
-steakhouse, the options of shrimp and lobster might not be available.
+Fazer uma escolha é muito bom, mas na vida e nos programas de computador
+, podemos ter que fazer muitas escolhas inter-relacionadas. Por exemplo, se
+você escolher comer em um restaurante de frutos do mar, então poderá escolher entre
+comer camarão e lagosta, mas se, em vez disso, escolher comer em uma
+churrascaria, as opções de camarão e lagosta podem não estar disponíveis.
 
-A _nested_ choice is one that sits inside of another choice you've
-already made. We could describe choices of restaurants and meals as
-follows.
+Uma escolha _aninhada_ é aquela que está dentro de outra escolha que você
+já fez. Poderíamos descrever as escolhas de restaurantes e refeições da
+seguinte forma.
 
 ====
-_If I want seafood,_
+_Se eu quiser frutos do mar,_
 =====
-_I'll eat at Sharky's, where_
+_vou comer no Bocas's, onde_
 ======
-_if I have at least $50,_
+_se eu tiver pelo menos US$ 50,_
 =======
-_I'll order the lobster;_
+_vou pedir a lagosta;_
 =======
-_otherwise,_ 
+_caso contrário,_ 
 =======
-_I'll order the shrimp._
+_vou pedir o camarão._
 =======
 ======
 =====
-_But if I don't want seafood,_
+_Mas se eu não quiser frutos do mar,_
 =====
-_I'll eat at the Golden Calf, where_
+_vou comer no Ataliba, onde_
 ======
-_if I have at least $30,_
+_se eu tiver pelo menos $30,_
 =======
-_I'll order the filet mignon;_
+_vou pedir o filé mignon;_
 =======
-_otherwise,_ 
+_caso contrário,_ 
 =======
-_I'll order the pork chops._
+_vou pedir as costeletas de porco._
 =======
 ======
 =====
 ====
 
 
-The previous description is long, but it precisely expresses the
-decisions our imaginary diner might make. This description in English
-has drawbacks: It's long and repetitive, and the grouping of specific
-meal choices with specific restaurants isn't clear.
+A descrição anterior é longa, mas expressa com precisão as
+decisões que nosso comensal imaginário poderia tomar. Essa descrição em português
+tem desvantagens: é longa e repetitiva, e o agrupamento de opções específicas
+de refeições com restaurantes específicos não fica claro.
 
-In the next section, we discuss Java syntax that allows us to
-express the same sorts of decision patterns. Unlike English, Java has
-been designed to make these sequences of decisions clear and easy to
-read.
+Na próxima seção, discutiremos a sintaxe Java que nos permite
+expressar os mesmos tipos de padrões de decisão. Ao contrário do português, Java foi
+projetado para tornar essas sequências de decisões claras e fáceis de
+ler.
 
-=== Syntax: Selection in Java
+=== Sintaxe: Seleção em Java
 
-With some theoretical background on the kinds of choices we're
-interested in making, we can now discuss the Java syntax used to
-describe these choices. It was no accident that we kept repeating the
-word "`if,`" because the main Java language feature for making choices
-is called an `if` statement.
+Com algumas noções teóricas sobre os tipos de escolhas que nos
+interessam, podemos agora discutir a sintaxe Java usada para
+descrever essas escolhas. Não foi por acaso que repetimos várias vezes a
+palavra "`if`", pois o principal recurso da linguagem Java para fazer escolhas
+é chamado de instrução `if`.
 
-==== `if` statements
+==== Instruções `if`
 
-The designers of Java studied Boolean logic and created a type called
-`boolean`. Every condition used by an `if` statement must evaluate to a
-`boolean` value, which can only be one of two things: `true` or `false`.
+Os criadores do Java estudaram a lógica booleana e criaram um tipo chamado
+`boolean`. Toda condição usada por uma instrução `if` deve ser avaliada como um
+valor `boolean`, que só pode ser uma de duas coisas: `true` ou `false`.
 
-For example, we could have a `boolean` variable called `raining`. Stored
-in this variable is the value `true` if it's raining and `false` if it
-isn't. Using Java syntax, we could encode our first example in which our
-actor takes her umbrella when it's raining.
+Por exemplo, poderíamos ter uma variável `boolean` chamada `raining`. Armazenado
+nessa variável está o valor `true` se estiver chovendo e `false` se
+não estiver. Usando a sintaxe Java, poderíamos codificar nosso primeiro exemplo, no qual nosso
+ator pega seu guarda-chuva quando está chovendo.
 
 [source,java]
 ----
-if (raining) {
-    umbrella.take();
+if (chovendo) {
+    guardaChuva.pegar();
 }
 ----
 
-The action taken if it is raining is done by calling a _method_ on an
-_object_. We'll discuss objects and methods further in
-<<methods#methods>> and <<classes#classes>>. What we're
-focusing on now is that the line `umbrella.take();` is executed *only* if
-`raining` has the value `true`. Nothing is done if it's `false`.
-<<figure-if>> shows this pattern of conditional execution
-followed by all `if` statements.
+A ação realizada se estiver chovendo é feita chamando um _método_ em um
+_objeto_. Discutiremos objetos e métodos mais adiante em
+<<methods#methods>> e <<classes#classes>>. O que estamos
+focando agora é que a linha `guardaChuva.pegar();` é executada *apenas* se
+`raining` tiver o valor `true`. Nada é feito se for `false`.
+<<figure-if>> mostra esse padrão de execução condicional
+seguido por todas as instruções `if`.
 
 [[figure-if]]
 [.text-center]
-.Execution goes inside the `if` statement when its condition is `true` and skips past it otherwise.
+.A execução ocorre dentro da instrução `if` quando sua condição é `true` e a ignora caso contrário.
 image::if.svg[scaledwidth=50%,pdfwidth=50%,width=50%]
 
 
-Our descriptions of logical scenarios from the previous section used the
-word "`then`" to mark the actions that would be done if a condition was
-true. Some languages use `then` as a keyword, but Java doesn't.
-Instead, note the left brace (`{`) and the right brace (`}`) that
-enclose the executable line `umbrella.take();`. These braces serve the
-same role as the word "`then,`" clearly marking the action to be
-performed if a condition is true. Braces are unambiguous because they
-mark a start and an end. If there are many actions to be done, they can
-all be put inside the braces, and there will be no question as to which
-actions are associated with a given `if` statement.
+Nossas descrições de cenários lógicos da seção anterior usaram a
+palavra "`then`" (que no português significa "`então`") para marcar as ações que seriam realizadas se uma condição fosse
+verdadeira. Algumas linguagens usam `then` como palavra-chave, mas o Java não.
+Em vez disso, observe a chave esquerda (`{`) e a chave direita (`}`) que
+delimitam a linha executável `guardaChuva.pegar();`. Essas chaves desempenham a
+mesma função que a palavra "`then,`", marcando claramente a ação a ser
+executada se uma condição for verdadeira. As chaves são inequívocas porque elas
+marcam um início e um fim. Se houver muitas ações a serem realizadas, todas elas podem
+ser colocadas dentro das chaves, e não haverá dúvida sobre quais
+ações estão associadas a uma determinada instrução `if`.
 
-For example, we may also need to close the window and put on a raincoat
-if it's raining. We might accomplish these tasks in Java as follows.
+Por exemplo, talvez também precisemos fechar a janela e vestir uma capa de chuva
+se estiver chovendo. Podemos realizar essas tarefas em Java da seguinte maneira.
 
 [source,java]
 ----
-if (raining) {
-    umbrella.take();
-    window.close();
-    raincoat.putOn();
+if (chovendo) {
+    guardaChuva.pegar();
+    janela.fechar();
+    capaDeChuva.vestir();
 }
 ----
 
-Within a matching pair of braces (`{ }`), called a _block_ of code,
-execution proceeds normally, line by line. First, the JVM will cause the
-umbrella to be taken, then the window to be closed, and finally the
-raincoat to be put on.
+Dentro de um par de chaves (`{ }`), chamado de _bloco_ de código,
+a execução prossegue normalmente, linha por linha. Primeiro, a JVM fará com que o
+guarda-chuva seja pegado, depois a janela seja fechada e, finalmente, a
+capa de chuva seja vestida.
 
-If only a single line of code is contained within a block of code, the
-braces can be left out. For example, some experienced Java programmers
-might have written our first example as follows.
+Se houver apenas uma única linha de código dentro de um bloco de código, as
+chaves podem ser omitidas. Por exemplo, alguns programadores Java experientes
+podem ter escrito nosso primeiro exemplo da seguinte forma.
 
-[source,java]
-----
-if (raining)
-    umbrella.take();
-----
-
-For beginning Java programmers, however, it's a good idea to use braces
-even when you don't need to. Without braces, code can appear to be doing
-one thing when it's really doing another.
-
-Since programmers must often choose between two alternatives, Java
-provides an `else` statement to specify code that should be run when the
-condition of the `if` statement is false.
-
-Let `fiftyDollars` be a `boolean` variable that's `true` if we have at
-least $50 and is `false` otherwise. Now, we can choose between two
-dining options based on how much money we have.
 
 [source,java]
 ----
-if (fiftyDollars) {
-    lobsterDinner.eat();
+if (chovendo)
+    guardaChuva.pegar();
+----
+
+Para programadores Java iniciantes, no entanto, é uma boa ideia usar chaves
+mesmo quando não for necessário. Sem chaves, o código pode parecer estar fazendo
+uma coisa quando, na verdade, está fazendo outra.
+
+Como os programadores muitas vezes precisam escolher entre duas alternativas, o Java
+fornece uma instrução `else` para especificar o código que deve ser executado quando a
+condição da instrução `if` for falsa.
+
+Seja `cinquentaReais` uma variável `boolean` que é `true` se tivermos pelo
+menos R$50 e `false` caso contrário. Agora, podemos escolher entre duas
+opções de jantar com base em quanto dinheiro temos.
+
+[source,java]
+----
+if (cinquentaReais) {
+    jantarLagosta.comer();
 } else {
-    fastFood.eat();
+    fastFood.comer();
 }
 ----
 
-This Java code matches the logical statements we wrote before. If we
-have enough money, we'll eat a lobster dinner; otherwise, we'll eat fast
-food. As with an `if` statement, we use braces to mark a block of code
-for an `else` statement, too. Since a single line of code will be
-executed in each case, the braces are optional here. We could have
-written code with the same functionality as follows.
+Este código Java corresponde às instruções lógicas que escrevemos anteriormente. Se
+tivermos dinheiro suficiente, comeremos um jantar de lagosta; caso contrário, comeremos fast
+food. 
+
+Assim como em uma instrução `if`, usamos chaves para marcar um bloco de código
+também para uma instrução `else`. Como uma única linha de código será
+executada em cada caso, as chaves são opcionais aqui. Poderíamos ter
+escrito o código com a mesma funcionalidade da seguinte forma.
 
 [source,java]
 ----
-if (fiftyDollars)
-    lobsterDinner.eat();
+if (cinquentaReais)
+    jantarLagosta.comer();
+
+
 else
-    fastFood.eat();
+    fastFood.comer();
 ----
 
-<<figure-else>> shows the pattern of conditional execution
-followed by all `if` statements that have a matching `else` statement.
+<<figure-else>> mostra o padrão de execução condicional
+seguido por todas as instruções `if` que possuem uma instrução `else` correspondente.
 
 [[figure-else]]
 [.text-center]
-.Execution goes inside the `if` statement when its condition is `true` and jumps into the `else` statement otherwise.
+.A execução ocorre dentro da instrução `if` quando sua condição é `true` e salta para a instrução `else` caso contrário.
+
+
 image::else.svg[scaledwidth=50%,pdfwidth=50%,width=50%]
 
 
-.Pitfall: Misleading indentation
-[WARNING]
+.Armadilha: Indentação enganosa
+[AVISO]
 ====
 
-Indentation is used to make code more readable, but Java ignores
-whitespace, meaning that the indentation has no effect on the execution
-of the code. To demonstrate, let's assume that our imaginary diner knows
-he'll get a stomachache after eating fast food. Thus, he'll take
-some Pepto-Bismol after eating it. If you added this action to the code above, which
-does not contain braces, you might get the following.
+A indentação é usada para tornar o código mais legível, mas o Java ignora
+espaços em branco, o que significa que a indentação não tem efeito sobre a execução
+do código. 
+
+Para demonstrar, vamos supor que nosso cliente imaginário saiba
+que terá dor de estômago depois de comer fast food. Assim, ele tomará
+um pouco de Pepto-Bismol depois de comer. Se você adicionasse essa ação ao código acima, que
+não contém chaves, poderia obter o seguinte.
 
 [source,java]
 ----
-if (fiftyDollars)
-    lobsterDinner.eat();
+if (cinquentaReais)
+    jantarLagosta.comer();
 else
-    fastFood.eat();
-    peptoBismol.take();
+    fastFood.comer();
+    peptoBismol.pegar();
 ----
 
-Although it looks like both `fastFood.eat();` and `peptoBismol.take();`
-are within the block of the `else` statement, only `fastFood.eat();` is.
-The line `peptoBismol.take();` is not part of the `if`-`else` structure
-at all and will be executed no matter what. Thus, braces are required as shown
-below.
+Embora pareça que tanto `fastFood.comer();` quanto `peptoBismol.pegar();`
+estejam dentro do bloco da instrução `else`, apenas `fastFood.comer();` está.
+
+
+A linha `peptoBismol.pegar();` não faz parte da estrutura `if`-`else`
+de forma alguma e será executada independentemente do que acontecer. Portanto, chaves são necessárias, conforme mostrado
+abaixo.
 
 [source,java]
 ----
-if (fiftyDollars)
-    lobsterDinner.eat();
+
+if (cinquentaReais)
+    jantarLagosta.comer();
 else {
-    fastFood.eat();
-    peptoBismol.take();
+    fastFood.comer();
+    peptoBismol.pegar();
 }
 ----
 
-This kind of confusion can be avoided if braces are always used. Many style
-guides insist on always using braces, so we will adopt that style for the rest
-of the book.
+Esse tipo de confusão pode ser evitado se sempre forem usadas chaves. Muitos guias de estilo
+insistem no uso constante de chaves, portanto, adotaremos esse estilo pelo resto
+do livro.
 
 ====
 
-==== The `boolean` type and its operations
+==== O tipo `boolean` e suas operações
 
-Recall that Java uses the type `boolean` for values that can only be
-true or false. Just like the numerical types `double` and `int`, the
-`boolean` type has specific operations that can be used to combine them
-together. By design, these operations correspond exactly to the logical
-operations we described before. Here's a table giving the Java
-operators equivalent to the logical Boolean operations.
+Lembre-se de que Java usa o tipo `boolean` para valores que só podem ser
+`true` ou `false`. Assim como os tipos numéricos `double` e `int`, o
+tipo `boolean` possui operações específicas que podem ser usadas para combiná-los
+entre si. Por definição, essas operações correspondem exatamente às operações lógicas
+que descrevemos anteriormente. Aqui está uma tabela apresentando os operadores Java
+equivalentes às operações lógicas booleanas.
 
 [.center%autowidth%unbreakable%header,cols="^.^,^.^,^.^,<.^",]
 |=======================================================================
-^.>|Name
-^.>|Math +
-Symbol
+^.>|Nome
+^.>|Matemática +
+Símbolo
 ^.>|Java +
-Operator
-<.>|Description
-|AND |∧ |`&&` |Returns `true` if both values are `true`
-|OR |∨ |`\|\|` |Returns `true` if either value is `true`
-|XOR |⊕ |`^` |Returns `true` if values are different
-|NOT |¬ |`!` |Returns the opposite of the value
+Operador
+<.>|Descrição
+|AND |∧ |`&&` |Retorna `true` se ambos os valores forem `true`
+|OR |∨ |`\|\|` |Retorna `true` se qualquer um dos valores for `true`
+|XOR |⊕ |`^` |Retorna `true` se os valores forem diferentes
+|NOT |¬ |`!` |Retorna o oposto do valor
 |=======================================================================
 
-Using these operators, we can create `boolean` values and combine them
-together.
+Usando esses operadores, podemos criar valores `boolean` e combiná-los
+entre si.
 
 [source,java]
 ----
@@ -486,174 +496,175 @@ boolean y = false;
 boolean z = !((x || y) ^ (x && y));
 ----
 
-When this code is executed, the value of `z` will be `false`. Although
-it's perfectly legal to perform `boolean` operations this way, it's
-much more common to combine them "`on the fly`" inside of the condition
-of an `if` statement. Recall the statement from the previous section:
+Quando este código for executado, o valor de `z` será `false`. Embora
+seja perfeitamente válido realizar operações `boolean` dessa maneira, é
+muito mais comum combiná-las "`na hora`" dentro da condição
+de uma instrução `if`. Lembre-se da instrução da seção anterior:
 
 ====
-_If I'm bored, or it's late and I can't sleep,_
+_Se eu estiver entediado, ou se for tarde e eu não conseguir dormir,_
 =====
-_I'll watch television._
+_eu vou assistir televisão._
 =====
 ====
 
-If we let `bored`, `late`, and `canSleep` be `boolean` variables whose
-values indicate if we are bored, if it is late, and if we can sleep,
-respectively, we can encode this statement in Java like so.
+Se considerarmos `cansado`, `tarde` e `podeDormir` como variáveis `boolean` cujos
+valores indicam se estamos entediados, se é tarde e se podemos dormir,
+respectivamente, podemos codificar essa instrução em Java da seguinte maneira.
 
 [source,java]
 ----
-if (bored || (late && !canSleep)) {
-    television.watch();
+if (cansado || (tarde && !podeDormir)) {
+    televisao.assistir();
 }
 ----
 
-Combining the `||` operator with other `||` operators is both
-commutative and associative: order and grouping doesn't matter.
-Likewise, combining the `&&` operator with other `&&` operators is
-also commutative and associative. However, once you start mixing `||`
-with `&&`, it's a good idea to use parentheses for grouping. If, in
-the above example, `bored` is `true`, `late` is `false`, and `canSleep`
-is `true`, then the expression `bored || (late && !canSleep)` will be
-`true`. However, with the same values, the expression
-`bored || late && !canSleep` will be `false`.
+Combinar o operador `||` com outros operadores `||` é tanto
+comutativo quanto associativo: a ordem e o agrupamento não importam.
+Da mesma forma, combinar o operador `&&` com outros operadores `&&` é
+também comutativo e associativo. No entanto, quando você começa a misturar `||`
+com `&&`, é uma boa ideia usar parênteses para agrupar. Se, no
+exemplo acima, `cansado` for `true`, `tarde` for `false` e `podeDormir`
+for `true`, então a expressão `cansado || (tarde && !podeDormir)` será
+`true`. No entanto, com os mesmos valores, a expressão
+`cansado || tarde && !podeDormir` será `false`.
 
-Now that we're discussing ordering, note that `||`
-and `&&` are _short circuit_ operators. Short circuit means that, if
-the value of the expression can be determined without evaluating the
-rest of it, the JVM won't bother to compute any more of the
-expression. With `||` this situation arises because `true` OR anything
-else is still `true`. With `&&` this situations arises because `false`
-AND anything else is still `false`.
-
-[source,java]
-----
-if (true || ((late && !canSleep && isTired && isHungry) ||
-    (wantsToFindOutWhatHappensNextInHisFavoriteShow ||
-    likesTV)))
-----
-
-The condition of this `if` statement will always evaluate to `true`, and
-its body will always be executed. Because Java knows this, it won't
-even bother to check any of the conditions after the first `||` operator.
-This short circuit evaluation is done at run time and will work if the
-value of a variable at the beginning of an OR clause is `true`. It need
-not be the literal `true`.
+Agora que estamos discutindo a ordem, observe que `||`
+e `&&` são operadores de _curto-circuito_. Curto-circuito significa que, se
+o valor da expressão puder ser determinado sem avaliar o
+resto dela, a JVM não se dará ao trabalho de calcular mais nada da
+expressão. Com `||`, essa situação ocorre porque `true` `OU` qualquer
+outra coisa ainda é `true`. Com `&&`, essa situação ocorre porque `false`
+`E` qualquer outra coisa ainda é `false`.
 
 [source,java]
 ----
-if (false && ((late || !canSleep || isTired || isHungry) &&
-    (wantsToFindOutWhatHappensNextInHisFavoriteShow ||
-    likesTV)))
+if (true || ((tarde && !podeDormir && cansado & temFome) ||
+    (querDescobrirOQueAconteceA seguirNoSeuProgramaFavorito ||
+    gostaDeTV)))
 ----
 
-The condition of this `if` statement will always evaluate to `false` and
-its body won't be executed. As before, nothing after the first `&&`
-will even be checked. If you're combining literals and `boolean`
-values with the `||` and `&&` operators, it makes no difference that
-short circuit evaluation occurs. However, if a method call is part of
-the clauses, your code might miss valuable side-effects. For example,
-let the `boolean` variable `working` be `false` in the following.
+A condição desta instrução `if` sempre será avaliada como `true`, e
+seu corpo sempre será executado. Como o Java sabe disso, ele nem
+se dará ao trabalho de verificar nenhuma das condições após o primeiro operador `||`.
+Essa avaliação de curto-circuito é feita em tempo de execução e funcionará se o
+valor de uma variável no início de uma cláusula OR for `true`. Não precisa
+ser o literal `true`.
 
 [source,java]
 ----
-if (working && doSomethingImportant())
+if (false && ((tarde || !poderdormir || cansado || temFome) &&
+    (querDescobrirOQueAconteceA seguirNoSeuProgramaFavorito ||
+    gostaDeTV)))
 ----
 
-In this case, the `doSomethingImportant()` method must return a
-`boolean` value to be a valid statement. Still, if `working` is `false`,
-the `doSomethingImportant()` method won't even be called. As soon as the
-JVM realizes that it's applying the `&&` operation to a `false`
-value (or an `||` to a `true`), it'll give up. In many cases, doing so is fine. In fact,
-programmers sometimes exploit this feature to allow code in a
-method like `doSomethingImportant()` to run only if it's safe to do so.
-In this case, if we assume that we always want to run the
-`doSomethingImportant()` method (because it does something important)
-every time the condition of the `if` statement is evaluated, we need to
-restructure the code. For example, we can reverse the order of the two
-terms in the AND clause to achieve this effect. Alternatively, Java
-provides non-short circuit versions of the `||` and `&&` operators,
-namely `|` and `&`, if you need to force full evaluation.
-
-You might have been wondering where the majority of `boolean` values come
-from. Most computer programs don't ask the user a long series of true
-or false questions before spitting out an answer. Most `boolean` values
-in Java programs are the result of comparisons, often of numerical data
-types.
-
-It's can be useful to compare two numbers to see if one is larger, smaller, or
-equal to the other. For example, you might have a `double` variable
-called `pressure` that gives the water pressure in a hydraulic system.
-Perhaps you also have a constant called `CRITICAL_PRESSURE` that gives
-the maximum safe pressure for your system. You can compare these values
-using the `>` operator.
+A condição desta instrução `if` sempre será avaliada como `false` e
+seu trecho não será executado. Como antes, nada após o primeiro `&&`
+será sequer verificado. Se você estiver combinando literais e valores `boolean`
+com os operadores `||` e `&&`, não faz diferença que
+ocorra a avaliação de curto-circuito. No entanto, se uma chamada de método fizer parte das
+cláusulas, seu código pode perder efeitos colaterais valiosos. Por exemplo,
+suponha que a variável `boolean` `trabalhando` seja `false` no exemplo a seguir.
 
 [source,java]
 ----
-if (pressure > CRITICAL_PRESSURE) {
-    emergencyShutdown();
+if (trabalhando & fazerAlgoImportante())
+----
+
+Nesse caso, o método `fazerAlgoImportante()` deve retornar um
+valor `boolean` para ser uma instrução válida. Ainda assim, se `trabalhando` for `false`,
+o método ‘fazerAlgoImportante()’ nem mesmo será chamado. Assim que a
+JVM perceber que está aplicando a operação `&&` a um valor `false`
+(ou um `||` a um `true`), ela desistirá. Em muitos casos, fazer isso é aceitável. Na verdade,
+os programadores às vezes exploram esse recurso para permitir que o código em um
+método como `fazerAlgoImportante()` seja executado apenas se for seguro fazê-lo.
+Nesse caso, se assumirmos que sempre queremos executar o
+método `fazerAlgoImportante()` (porque ele faz algo importante)
+sempre que a condição da instrução `if` for avaliada, precisamos
+reestruturar o código. Por exemplo, podemos inverter a ordem dos dois
+termos na cláusula `AND` para obter esse efeito. Alternativamente, o Java
+fornece versões sem curto-circuito dos operadores `||` e `&&`,
+ou seja, `|` e `&`, caso você precise forçar a avaliação completa.
+
+Você deve estar se perguntando de onde vem a maioria dos valores `boolean`
+. A maioria dos programas de computador não faz ao usuário uma longa série de perguntas do tipo verdadeiro
+ou falso antes de apresentar uma resposta. A maioria dos valores `boolean`
+em programas Java é resultado de comparações, frequentemente de tipos de dados numéricos
+.
+
+Pode ser útil comparar dois números para ver se um é maior, menor ou
+igual ao outro. Por exemplo, você pode ter uma variável `double`
+chamada `pressao` que fornece a pressão da água em um sistema hidráulico.
+Talvez você também tenha uma constante chamada `PRESSAO_CRITICA` que fornece
+a pressão máxima segura para o seu sistema. Você pode comparar esses valores
+usando o operador `>`.
+
+[source,java]
+----
+if (pressao > PRESSAO_CRITICA) {
+    desligamentoDeEmergencia();
 }
 ----
 
-This code allows you to call the appropriate emergency method when
-`pressure` is too high. Of course, the `>` operator is not the only way
-to compare two values in Java. We list all the relational operators in
-<<strings-primitive-types#strings-primitive-types>>, but
-the table below shows them again in a
-mathematical context.
+Este código permite que você chame o método de emergência apropriado quando
+`pressao` estiver muito alta. É claro que o operador `>` não é a única maneira
+de comparar dois valores em Java. Listamos todos os operadores relacionais em
+<<strings-primitive-types#strings-primitive-types>>, mas
+a tabela abaixo os mostra novamente em um
+contexto matemático.
 
 [.center%autowidth,cols="<.^,^.^,^.^,<.^",options="header",]
-.Relational operators
+.Operadores relacionais
 |=======================================================================
-<.>|Name
-^.>|Math +
-Symbol
+<.>|Nome
+^.>|Matemática +
+Símbolo
 ^.>|Java +
-Operator
-<.>|Description
-|Equals |= |`==` |`true` if the two values are equal
-|Not Equals |≠ |`!=` |`true` if the two values are not
-equal
-|Less Than |< |`<` |`true` if the first value is strictly
-less than the second
-|Less Than or Equals |≤ |`\<=` |`true` if the first
-value is less than or equal to the second
-|Greater Than |> |`>` |`true` if the first value is
-strictly greater than the second
-|Greater Than or Equals |≥ |`>=` |`true` if the first
-value is greater than or equal to the second
+Operador
+<.>|Descrição
+|Igual |= |`==` |`true` se os dois valores forem iguais
+|Diferente |≠ |`!=` |`true` se os dois valores não forem
+iguais
+|Menor que |< |`<` |`true` se o primeiro valor for estritamente
+menor que o segundo
+|Menor ou igual a |≤ |`\<=` |`true` se o primeiro
+valor for menor ou igual ao segundo
+|Maior que |> |`>` |`true` se o primeiro valor for
+estritamente maior que o segundo
+|Maior ou igual a |≥ |`>=` |`true` se o primeiro
+valor for maior ou igual ao segundo
 |=======================================================================
 
-The concepts and mathematical symbols for these operators should be
-familiar from mathematics. There are a few differences from the
-mathematical versions of these ideas that are worth pointing out. First,
-only easy-to-type symbols are used for Java operators. Thus, we need two
-characters to represent most relational operators in the language. These operators
-can be used to compare any numerical type with any other numerical type,
-including `char`. In the case of mismatched types, such as an `int` and
-a `double`, the lower precision type is automatically cast to the higher
-precision type. Care should be taken when using the `==` operator with
-floating-point types because of rounding errors. For example, the
-expression `1.0/3.0 == 0.3333333333` always evaluates to `false`.
 
-The `==` operator is not the same as the `=` operator from previous
-chapters. In Java, the double equal sign `==` is used to compare two
-things while the single equal sign `=` is used to assign one thing to
-another.
+Os conceitos e símbolos matemáticos para esses operadores devem ser
+familiares da matemática. Existem algumas diferenças em relação às
+versões matemáticas desses conceitos que vale a pena destacar. Primeiro,
+apenas símbolos fáceis de digitar são usados para os operadores Java. Assim, precisamos de dois
+caracteres para representar a maioria dos operadores relacionais na linguagem. Esses operadores
+podem ser usados para comparar qualquer tipo numérico com qualquer outro tipo numérico,
+incluindo `char`. No caso de tipos incompatíveis, como um `int` e
+um `double`, o tipo de menor precisão é automaticamente convertido para o tipo de maior
+precisão. Deve-se ter cuidado ao usar o operador `==` com
+tipos de ponto flutuante devido a erros de arredondamento. Por exemplo, a
+expressão `1.0/3.0 == 0.3333333333` sempre resulta em `false`.
 
-Confusion can also arise because, in the mathematical world, relational
-symbols are used to make a statement: _x_ < _y_ is an
-announcement or a discovery that the value contained in _x_
-is, in fact, smaller than the value contained in _y_. In the
-Java world, the statement `x < y` is a *test* whose answer is `true` if
-the value contained in `x` is smaller than the value contained in `y`
-and `false` otherwise. Using these operators means performing a test at
-a specific point in the code, asking a question about the values that
-certain variables or literals (or the results of method calls) have at
-that moment in time. In another sense, using these comparisons is a way
-to take numerical data and convert it into the language of `boolean`
-values. Note that the following code does not compile in Java.
+O operador `==` não é o mesmo que o operador `=` dos capítulos anteriores
+. Em Java, o sinal de igual duplo `==` é usado para comparar duas
+coisas, enquanto o sinal de igual simples `=` é usado para atribuir uma coisa a
+outra.
+
+Também pode haver confusão porque, no mundo da matemática, os símbolos relacionais
+são usados para fazer uma afirmação: _x_ < _y_ é uma
+afirmação ou uma constatação de que o valor contido em _x_
+é, de fato, menor do que o valor contido em _y_. No 
+mundo Java, a afirmação `x < y` é um *teste* cuja resposta é `true` se
+o valor contido em `x` for menor que o valor contido em `y`
+e `false` caso contrário. Usar esses operadores significa realizar um teste em
+um ponto específico do código, fazendo uma pergunta sobre os valores que
+certas variáveis ou literais (ou os resultados de chamadas de método) têm naquele
+momento. Em outro sentido, usar essas comparações é uma maneira
+de pegar dados numéricos e convertê-los na linguagem de valores `boolean`
+. Observe que o código a seguir não compila em Java.
 
 [source,java]
 ----
@@ -662,15 +673,15 @@ if (4) {
 }
 ----
 
-To be used in an `if` statement, the value `4` must be first compared
-with some other numerical type to yield a `true` or `false`. +
+Para ser usado em uma instrução `if`, o valor `4` deve primeiro ser comparado
+com algum outro tipo numérico para produzir um `true` ou `false`. +
 
-.Pitfall: Assignment instead of equality
-[WARNING]
+.Armadilha: Atribuição em vez de igualdade
+[AVISO]
 ====
 
-A common pitfall is to forget one of the equal signs
-in the comparison operator.
+Uma armadilha comum é esquecer um dos sinais de igual
+no operador de comparação.
 
 [source,java]
 ----
@@ -679,99 +690,99 @@ if (x = 4) {
 }
 ----
 
-Again, this code won't compile. If it did, the variable `x` would be
-assigned the value `4`, which would in turn be given to the `if`
-statement, but an `if` statement doesn't know what to do with anything
-other than a `boolean` value.
+Novamente, este código não será compilado. Se fosse, a variável `x` teria
+atribuído o valor `4`, que por sua vez seria passado para a instrução `if`,
+mas uma instrução `if` não sabe o que fazer com nada
+além de um valor `boolean`.
 
-Extreme care should be taken when
-comparing two `boolean` values. For example, we might have two `boolean`
-values `likesDogs1` and `likesDogs2`, corresponding to whether or not two
-different people like dogs. Let's say that the value of each one is `true` if the
-person likes dogs and `false` otherwise. We could create an `if`
-statement that would work only if their values are the same.
-
-[source,java]
-----
-if (likesDogs1 == likesDogs2) {
-    makeRoommates();
-}
-----
-
-This code correctly calls the `makeRoommates()` method only if the two
-individuals feel the same way about dogs. It doesn't matter if they both like
-or dislike dogs, but one roommate loving dogs and the other hating dogs will lead to trouble. 
-However, a tiny mistake in the code could yield the following.
+É preciso ter extremo cuidado ao
+comparar dois valores `boolean`. Por exemplo, podemos ter dois valores `boolean`
+"gostaDeCaes1" e "gostaDeCaes2", correspondendo ao fato de duas
+pessoas diferentes gostarem ou não de cães. Digamos que o valor de cada um seja `true` se a
+pessoa gosta de cães e `false` caso contrário. Poderíamos criar uma instrução `if`
+que funcionaria apenas se seus valores fossem iguais.
 
 [source,java]
 ----
-if (likesDogs1 = likesDogs2) {
-    makeRoommates();
+if (gostaDeCaes1 == gostaDeCaes2) {
+    fazerColegasDeQuarto();
 }
 ----
 
-In this case, `likesDogs1` would be assigned to whatever `likesDogs2` is.
-Then, that value would be given to the `if` statement. Here, the `makeRoommates()` method will be called only if `likesDogs2`
-is `true`, meaning that the second person likes dogs. Thus, the two people will become roommates if
-the second one likes dogs, and the feelings of the first person won't be
-considered. Unlike the `x = 4` example, this code will compile with no warning.
+Este código chama corretamente o método `fazerColegasDeQuarto()` apenas se as duas
+pessoas tiverem a mesma opinião sobre cães. Não importa se ambas gostam
+ou não gostam de cães, mas um colega de quarto que ama cães e outro que odeia cães levará a problemas. 
+No entanto, um pequeno erro no código poderia resultar no seguinte.
+
+[source,java]
+----
+if (gostaDeCaes1 = gostaDeCaes2) {
+    fazerColegasDeQuarto();
+}
+----
+
+Nesse caso, `gostaDeCaes1` seria atribuído ao valor de `gostaDeCaes2`.
+Então, esse valor seria passado para a instrução `if`. Aqui, o método `fazerColegasDeQuarto()` será chamado apenas se `gostaDeCaes2`
+for `true`, o que significa que a segunda pessoa gosta de cães. Assim, as duas pessoas se tornarão colegas de quarto se
+a segunda pessoa gosta de cães, e os sentimentos da primeira pessoa não serão
+considerados. Ao contrário do exemplo `x = 4`, este código será compilado sem nenhum aviso.
 
 ====
 
-The next few examples illustrate the use of the `if` statement. They
-also use some methods from class `Math`.
+Os próximos exemplos ilustram o uso da instrução `if`. Eles
+também utilizam alguns métodos da classe `Math`.
 
 
 [[leapYearExample]]
-.Leap year
+.Ano bissexto
 ====
 
-In the standard Gregorian calendar, leap years occur roughly once every
-four years. During leap years, the month of February has 29 days instead
-of 28. This extra day makes up for the fact that it takes a little more than 365.24
-days for the earth to orbit the sun. Unfortunately, the orbit of the
-earth around the sun doesn't match up in any exact way with the
-rotation of the earth, making exceptions to the rule of every
-four years.
+No calendário gregoriano padrão, os anos bissextos ocorrem aproximadamente uma vez a cada
+quatro anos. Durante os anos bissextos, o mês de fevereiro tem 29 dias em vez
+de 28. Esse dia extra compensa o fato de que a Terra leva um pouco mais de 365,24
+dias para orbitar o Sol. Infelizmente, a órbita da
+Terra ao redor do Sol não coincide de forma exata com a
+rotação da Terra, criando exceções à regra de a cada
+quatro anos.
 
-In fact, the official definition for a leap year is a year that is
-evenly divisible by 4, except for those years that are evenly divisible
-by 100, with the exception to the exception of years that are evenly
-divisible by 400. For example, 1988 was a leap year because it was
-divisible by 4. The year 1900 was not a leap year because it was
-divisible by 100 but not by 400, and the year 2000 was a leap year
-because it was divisible by 400.
+Na verdade, a definição oficial de um ano bissexto é um ano que é
+divisível por 4, exceto aqueles anos que são divisíveis
+por 100, com a exceção dos anos que são
+divisíveis por 400. Por exemplo, 1988 foi um ano bissexto porque era
+divisível por 4. O ano de 1900 não foi um ano bissexto porque era
+divisível por 100, mas não por 400, e o ano de 2000 foi um ano bissexto
+porque era divisível por 400.
 
-Recall that the mod operator (`%`) allows us to find the remainder
-after integer division. Thus, if `n % 100` gives zero, `n` has no
-remainder after being divided by `100` and must be evenly divisible by
+Lembre-se de que o operador mod (`%`) nos permite encontrar o resto
+após a divisão inteira. Assim, se `n % 100` for zero, `n` não tem
+resto após ser dividido por `100` e deve ser divisível por
 100.
 
-.Prompts the user for a year and then determines whether or not it is a leap year.
+.Solicita ao usuário um ano e, em seguida, determina se é ou não um ano bissexto.
 [source, java]
 [[LeapYearProgram]]
 ----
 include::{programsdir}/LeapYear.java[]
 ----
 
-As with all of the programs in this section, we begin by importing
-`java.util.*`, which is needed for the `Scanner` class for input. The
-program prompts the user for a year and reads it in. If the year is
-evenly divisible by 400, the program outputs that it's a leap year.
-Otherwise, if the year is evenly divisible by 100, the program outputs
-that it is not a leap year. Otherwise, if the year is evenly divisible
-by 4, the program outputs that it's a leap year. Finally, if all the
-other conditions have failed, the program outputs that the year is not a
-leap year.
+Assim como em todos os programas desta seção, começamos importando
+`java.util.*`, necessário para a classe `Scanner` de entrada. O
+programa solicita ao usuário que digite um ano e o lê. Se o ano for
+divisível por 400, o programa exibe que é um ano bissexto.
+Caso contrário, se o ano for divisível por 100, o programa exibe
+que não é um ano bissexto. Caso contrário, se o ano for divisível
+por 4, o programa exibe que é um ano bissexto. Por fim, se todas as
+outras condições falharem, o programa exibe que o ano não é um
+ano bissexto.
 
 ====
 
-.Quadratic formula
+.Fórmula quadrática
 ====
 
-The quadratic formula is a useful tool from mathematics. Using this
-formula, you can solve equations of the form _ax_^2^ + _bx_
-+ _c_ = 0. You might recall the statement of the quadratic formula given below.
+A fórmula quadrática é uma ferramenta útil da matemática. Usando essa
+fórmula, você pode resolver equações da forma _ax_^2^ + _bx_
++ _c_ = 0. Você deve se lembrar da formulação da fórmula quadrática apresentada abaixo.
 
 //[stem]
 //++++
@@ -781,466 +792,466 @@ formula, you can solve equations of the form _ax_^2^ + _bx_
 [.text-center]
 image::quadratic.svg[scaledwidth=20%,pdfwidth=20%,width=20%]
 
-The _b_^2^ - 4__ac__ part of the formula is called the
-_discriminant_. If the discriminant is positive, there will be two real
-answers to the equation. If the discriminant is negative, there will be
-two complex answers to the equation. Finally, if the discriminant is
-zero, there will be a single real answer to the problem. If you want to
-write a program to solve quadratic equations for you, it should take
-these three possibilities into account.
+A parte _b_^2^ - 4__ac__ da fórmula é chamada de
+_discriminante_. Se o discriminante for positivo, haverá duas
+respostas reais para a equação. Se o discriminante for negativo, haverá
+duas respostas complexas para a equação. Finalmente, se o discriminante for
+zero, haverá uma única resposta real para o problema. Se você quiser
+escrever um programa para resolver equações quadráticas, ele deve levar
+essas três possibilidades em consideração.
 
-.Solves a quadratic equation.
+.Resolve uma equação quadrática.
 [source, java]
 [[QuadraticProgram]]
 ----
 include::{programsdir}/Quadratic.java[]
 ----
-<.> This program prompts the user and reads in values for `a`,
-`b`, and `c`.
-<.> Then, it computes the discriminant. 
-<.> In the first case, we test to see if the discriminant is zero and print the single answer.
-<.> Next, if the discriminant is negative, we compute the real and complex parts separately and output the
-two answers.
-<.> Finally, if the discriminant is positive, we find the two real
-answers and output them.
+<.> Este programa solicita ao usuário e lê os valores de `a`,
+`b` e `c`.
+<.> Em seguida, ele calcula o discriminante. 
+<.> No primeiro caso, verificamos se o discriminante é zero e imprimimos a única resposta.
+<.> Em seguida, se o discriminante for negativo, calculamos as partes real e complexa separadamente e exibimos as
+duas respostas.
+<.> Finalmente, se o discriminante for positivo, encontramos as duas respostas reais
+e as exibimos.
 
-The condition `discriminant == 0.0` is dangerous since we're using
-`double` values. Because of rounding errors, the discriminant might not
-be exactly zero even if it should be, mathematically. Industrial
-strength code would probably check to see if the absolute value of the
-discriminant is less than a very small number (such as 0.00000001).
-Values that small would then be treated as if they were zero.
+A condição `discriminante == 0.0` é perigosa, pois estamos usando
+valores `double`. Devido a erros de arredondamento, o discriminante pode não
+ser exatamente zero, mesmo que devesse ser, matematicamente. Um código de nível industrial
+provavelmente verificaria se o valor absoluto do
+discriminante é menor que um número muito pequeno (como 0.00000001).
+Valores tão pequenos seriam então tratados como se fossem zero.
 
 ====
 
-.20 Questions
+.20 Perguntas
 ====
 
-In the time-honored game of 20 Questions, one person mentally chooses
-something, and the other participants must guess what the thing is by
-asking questions whose answer is either "`yes`" or "`no.`" In one
-popular version, the person who chooses the thing starts by declaring
-whether it is animal, vegetable, or mineral.
+No tradicional jogo das 20 Perguntas, uma pessoa escolhe mentalmente
+algo, e os outros participantes devem adivinhar o que é
+fazendo perguntas cuja resposta seja "`sim`" ou "`não`". Em uma
+versão popular, a pessoa que escolhe o objeto começa declarando
+se é animal, vegetal ou mineral.
 
-Using counting principles from math, 20 yes-or-no questions makes it
-possible to differentiate 2^20^ = 1,048,576 items. If you're also told 
-whether the thing is animal, vegetable, or
-mineral, it should be possible to guess over 3 million items! At this point
-in our development as Java programmers, we're not
-yet ready to deal with such a large range of possibilities. To keep the
-size of the code reasonable, let's narrow the field to 10 different
-items: a lizard, an eagle, a dolphin, a human, some lead, a diamond, a
-tomato, a peach, a maple tree, and a potato.
+Usando princípios de contagem da matemática, 20 perguntas de sim ou não tornam
+possível diferenciar 2^20 = 1.048.576 itens. Se você também souber 
+se a coisa é animal, vegetal ou
+mineral, deve ser possível adivinhar mais de 3 milhões de itens! Neste ponto
+de nosso desenvolvimento como programadores Java, ainda não estamos
+prontos para lidar com uma gama tão grande de possibilidades. Para manter o
+tamanho do código razoável, vamos restringir o campo a 10 itens diferentes
+: um lagarto, uma águia, um golfinho, um ser humano, um pouco de chumbo, um diamante, um
+tomate, um pêssego, uma árvore de bordo e uma batata.
 
 [[figure-flowchart]]
-.Decision tree to distinguish 10 items.
+.Árvore de decisão para distinguir 10 itens.
 image::flowchart.svg[scaledwidth=100%,pdfwidth=100%,width=100%]
 
 
-Using these items, we can construct a tree of decisions,
-starting with the decision between animal, vegetable, and mineral. If
-the thing is an animal, we could then ask if it is a mammal. If it *is* a
-mammal, we could ask if it lives on land, deciding between human and
-dolphin. If it's *not* a mammal, we could ask if it flies, deciding
-between an eagle and a lizard. We can construct similar questions for
-the things in the vegetable and mineral categories, matching
+Usando esses itens, podemos construir uma árvore de decisões,
+começando com a decisão entre animal, vegetal e mineral. Se
+a coisa for um animal, poderíamos então perguntar se é um mamífero. Se *for* um
+mamífero, poderíamos perguntar se vive em terra, decidindo entre humano e
+golfinho. Se *não* for um mamífero, poderíamos perguntar se voa, decidindo
+entre uma águia e um lagarto. Podemos construir perguntas semelhantes para
+as coisas nas categorias vegetal e mineral, correspondendo a
 <<figure-flowchart>>.
 
-.Navigates the possible choices in the decision tree.
+.Navega pelas escolhas possíveis na árvore de decisão.
 [source, java]
 [[TwentyQuestionsProgram]]
 ----
 include::{programsdir}/TwentyQuestions.java[]
 ----
 
-The code in this example is straightforward, although even 10 items
-makes for a lot of `if` and `else` blocks. Other than the `if`-`else`
-statements, only simple input and output are needed to make the program
-function. For proper `String` comparison, it's necessary to use the
-`equals()` method to test if two `String` values are the same.
+O código neste exemplo é simples, embora mesmo 10 itens
+resultem em muitos blocos `if` e `else`. Além das instruções `if`-`else`,
+apenas entradas e saídas simples são necessárias para que o programa
+funcione. Para uma comparação `String` adequada, é necessário usar o
+método `equals()` para testar se dois valores `String` são iguais.
 
-Note that we've added comments specifying what we assume is the case
-for each `else` block. If we were being more careful, we should test for
-the `"y"` and `"n"` cases and then give an error message when the user
-inputs something unexpected, like `"x"` or `"149"` or even `"no"`.
+Observe que adicionamos comentários especificando o que presumimos ser o caso
+para cada bloco `else`. Se fôssemos mais cuidadosos, deveríamos testar
+os casos `"y"` e `"n"` e, então, exibir uma mensagem de erro quando o usuário
+inserisse algo inesperado, como `"x"`, `‘149’` ou mesmo `"no"`.
 
-You might be curious how to make a real 20 Questions game that could
-learn over time. To do so, many more programming tools are necessary:
-repetition, data structures (so that you can organize the questions),
-and file input and output (so that you can store new information
-permanently). These concepts are covered in later chapters.
+Você pode estar curioso para saber como criar um jogo de 20 Perguntas de verdade que possa
+aprender com o tempo. Para isso, são necessárias muitas outras ferramentas de programação:
+repetição, estruturas de dados (para que você possa organizar as perguntas),
+e entrada e saída de arquivos (para que você possa armazenar novas informações
+permanentemente). Esses conceitos são abordados em capítulos posteriores.
 
 ====
 
 
-==== `switch` statements
+==== Instruções `switch`
 
-_This section describes the `switch` statement as it was defined in versions before Java 12 and 14.  <<_switch_expressions>> describes enhancements that allow the `switch` to be used anywhere an expression is used._
+_Esta seção descreve a instrução `switch` tal como foi definida nas versões anteriores ao Java 12 e 14. <<_expressões_switch>> descreve as melhorias que permitem que o `switch` seja usado em qualquer lugar onde uma expressão seja utilizada._
 
-The `if` statement is the workhorse of Java conditional execution. With
-enough care, you can craft code that can make any fixed sequence of
-decisions with arbitrary complexity. Even so, the `if` statement can be
-a little clumsy because it only allows you to choose between two
-alternatives. After all, a conditional can only be `true` or `false`.
-Certainly, decisions can be nested, allowing for more than two
-possibilities, but long lists of possibilities can be cumbersome and hard to read.
+A instrução `if` é o carro-chefe da execução condicional em Java. Com
+o devido cuidado, você pode criar código capaz de tomar qualquer sequência fixa de
+decisões com complexidade arbitrária. Mesmo assim, a instrução `if` pode ser
+um pouco desajeitada, pois permite apenas escolher entre duas
+alternativas. Afinal, uma condição só pode ser `true` ou `false`.
+Certamente, as decisões podem ser aninhadas, permitindo mais de duas
+possibilidades, mas longas listas de possibilidades podem ser pesadas e difíceis de ler.
 
-For example, imagine that we want to create a program that determines
-the appropriate gift for a wedding anniversary. Below is a table of
-traditional categories of gifts based on the anniversary year.
+Por exemplo, imagine que queremos criar um programa que determine
+o presente apropriado para um aniversário de casamento. Abaixo está uma tabela de
+categorias tradicionais de presentes com base no ano de aniversário.
 
 [.center%autowidth%unbreakable,cols="^.^,<.^,^,^.^,<.^",]
 |=================================
-|Year |Gift | |Year |Gift
+|Ano |Presente | |Ano |Presente
 
-|1 |Paper | |13 |Lace
-|2 |Cotton | |14 |Ivory
-|3 |Leather | |15 |Crystal
-|4 |Fruit | |20 |China
-|5 |Wood | |25 |Silver
-|6 |Candy / Iron | |30 |Pearl
-|7 |Wool / Copper | |35 |Coral
-|8 |Bronze / Pottery | |40 |Ruby
-|9 |Pottery / Willow | |45 |Sapphire
-|10 |Tin / Aluminum | |50 |Gold
-|11 |Steel | |55 |Emerald
-|12 |Silk / Linen | |60 |Diamond
+|1 |Papel | |13 |Renda
+|2 |Algodão | |14 |Marfim
+|3 |Couro | |15 |Cristal
+|4 |Fruta | |20 |Porcelana
+|5 |Madeira | |25 |Prata
+|6 |Doces / Ferro | |30 |Pérola
+|7 |Lã / Cobre | |35 |Coral
+|8 |Bronze / Cerâmica | |40 |Rubi
+|9 |Cerâmica / Salgueiro | |45 |Safira
+|10 |Estanho / Alumínio | |50 |Ouro
+|11 |Aço | |55 |Esmeralda
+|12 |Seda / Linho | |60 |Diamante
 |=================================
 
-Let `year` be a variable of type `int` containing the year in question.
-A structure of `if`-`else` statements that can determine the appropriate
-gift based on the year is below.
+Seja `ano` uma variável do tipo `int` contendo o ano em questão.
+Uma estrutura de instruções `if`-`else` que pode determinar o presente apropriado
+com base no ano está abaixo.
 
 [source,java]
 ----
 String gift;
-if (year == 1) {
-    gift = "Paper";
-} else if (year == 2) {
-    gift = "Cotton";
-} else if (year == 3) {
-    gift = "Leather";
-} else if (year == 4) {
-    gift = "Fruit";
-} else if (year == 5) {
-    gift = "Wood";
-} else if (year == 6) {
-    gift = "Candy / Iron";
-} else if (year == 7) {
-    gift = "Wool / Copper";
-} else if (year == 8) {
-    gift = "Bronze / Pottery";
-} else if (year == 9) {
-    gift = "Pottery / Willow";
-} else if (year == 10) {
-    gift = "Tin / Aluminum";
-} else if (year == 11) {
-    gift = "Steel";
-} else if (year == 12) {
-    gift = "Silk / Linen";
-} else if (year == 13) {
-    gift = "Lace";
-} else if (year == 14) {
-    gift = "Ivory";
-} else if (year == 15) {
-    gift = "Crystal";
-} else if (year == 20) {
-    gift = "China";
-} else if (year == 25) {
-    gift = "Silver";
-} else if (year == 30) {
-    gift = "Pearl";
-} else if (year == 35) {
-    gift = "Coral";
-} else if (year == 40) {
-    gift = "Ruby";
-} else if (year == 45) {
-    gift = "Sapphire";
-} else if (year == 50) {
-    gift = "Gold";
-} else if (year == 55) {
-    gift = "Emerald";
-} else if (year == 60) {
-    gift = "Diamond";
+if (ano == 1) {
+    presente = "Papel";
+} else if (ano == 2) {
+    presente = "Algodão";
+} else if (ano == 3) {
+    presente = "Couro";
+} else if (ano == 4) {
+    presente = ‘Fruta’;
+} else if (ano == 5) {
+    presente = "Madeira";
+} else if (ano == 6) {
+    presente = "Doces / Ferro";
+} else if (ano == 7) {
+    presente = "Lã / Cobre";
+} else if (ano == 8) {
+    presente = "Bronze / Cerâmica";
+} else if (ano == 9) {
+    presente = "Cerâmica / Salgueiro";
+} else if (ano == 10) {
+    presente = "Estanho / Alumínio";
+} else if (ano == 11) {
+    presente = ‘Aço’;
+} else if (ano == 12) {
+    presente = "Seda / Linho";
+} else if (ano == 13) {
+    presente = "Renda";
+} else if (ano == 14) {
+    presente = "Marfim";
+} else if (ano == 15) {
+    presente = "Cristal";
+} else if (ano == 20) {
+    presente = ‘Porcelana’;
+} else if (ano == 25) {
+    presente = "Prata";
+} else if (ano == 30) {
+    presente = "Pérola";
+} else if (ano == 35) {
+    presente = "Coral";
+} else if (ano == 40) {
+    presente = ‘Rubi’;
+} else if (ano == 45) {
+    presente = "Safira";
+} else if (ano == 50) {
+    presente = "Ouro";
+} else if (ano == 55) {
+    presente = "Esmeralda";
+} else if (ano == 60) {
+    presente = ‘Diamante’;
 } else {
-    gift = "No traditional gift";
+    presente = "Sem presente tradicional";
 }
 ----
 
-This code stores the correct value in `gift`. Note that we are using the
-feature of `if` statements that treats an entire `if` statement as one
-statement. If we used braces to group things as they actually are, with the
-contents of each `else` indented with each nested `if` inside, the code would
-become unreadable and unmanageably large.
+Este código armazena o valor correto em `presente`. Observe que estamos usando a
+característica das instruções `if` que trata uma instrução `if` inteira como uma única
+instrução. Se usássemos chaves para agrupar as coisas como elas realmente são, com o
+conteúdo de cada `else` indentado com cada `if` aninhado dentro, o código
+se tornaria ilegível e excessivamente grande.
 
 [source,java]
 ----
-String gift;
-if (year == 1) {
-    gift = "Paper";
+String presente;
+if (ano == 1) {
+    presente = "Papel";
 } else {
-    if (year == 2) {
-        gift = "Cotton";
+    if (ano == 2) {
+        presente = ‘Algodão’;
     } else {
-        if (year == 3) {
-            gift = "Leather";
-        } else {
-            if (year == 4) {
-                gift = "Fruit";
+        if (ano == 3) {
+            presente = "Couro";
+        
+} else {
+            if (ano == 4) {
+                present= "Fruit";
             }
             .
             .
             .
 ----
 
-It appears that there's some kind of `else if` construct in Java, but
-there isn't. Still, careful use of the rules for braces allows us to
-write code that nicely expresses a sequence of alternatives.
+Parece que existe algum tipo de construção `else if` em Java, mas
+não existe. Ainda assim, o uso cuidadoso das regras para chaves nos permite
+escrever código que expressa bem uma sequência de alternativas.
 
-Another way of expressing a long sequence of alternatives is by using a
-`switch` statement. A `switch` statement takes a single integer type
-value (`int`, `long`, `short`, `byte`, `char`) or a `String` and jumps
-to a case corresponding to the input. We can recode the anniversary gift
-example using a `switch` statement as follows.
+Outra maneira de expressar uma longa sequência de alternativas é usando uma
+instrução `switch`. Uma instrução `switch` recebe um único valor do tipo inteiro
+(`int`, `long`, `short`, `byte`, `char`) ou uma `String` e salta
+para um caso correspondente à entrada. Podemos reescrever o exemplo do presente de aniversário
+usando uma instrução `switch` da seguinte maneira.
 
 [source#gift-switch-statement,java]
 ----
-String gift;
-switch (year) {
-    case 1:  gift = "Paper"; break;
-    case 2:  gift = "Cotton"; break;
-    case 3:  gift = "Leather"; break;
-    case 4:  gift = "Fruit"; break;
-    case 5:  gift = "Wood"; break;
-    case 6:  gift = "Candy / Iron"; break;
-    case 7:  gift = "Wool / Copper"; break;
-    case 8:  gift = "Bronze / Pottery"; break;
-    case 9:  gift = "Pottery / Willow"; break;
-    case 10: gift = "Tin / Aluminum"; break;
-    case 11: gift = "Steel"; break;
-    case 12: gift = "Silk / Linen"; break;
-    case 13: gift = "Lace"; break;
-    case 14: gift = "Ivory"; break;
-    case 15: gift = "Crystal"; break;
-    case 20: gift = "China"; break;
-    case 25: gift = "Silver"; break;
-    case 30: gift = "Pearl"; break;
-    case 35: gift = "Coral"; break;
-    case 40: gift = "Ruby"; break;
-    case 45: gift = "Sapphire"; break;
-    case 50: gift = "Gold"; break;
-    case 55: gift = "Emerald"; break;
-    case 60: gift = "Diamond"; break;
-    default: gift = "No traditional gift"; break;
+String presente;
+switch (ano) {
+    case 1: presente = "Papel"; break;
+    case 2: presente = "Algodão"; break;
+    case 3: presente = "Couro"; break;
+    case 4: presente = ‘Fruta’; break;
+    case 5: presente = "Madeira"; break;
+    case 6: presente = "Doces / Ferro"; break;
+    case 7: presente= "Lã / Cobre"; break;
+    case 8: presente= "Bronze / Cerâmica"; break;
+    case 9: presente= "Cerâmica / Salgueiro"; break;
+    case 10: presente= "Estanho / Alumínio"; break;
+    caso 11: presente = "Aço"; break;
+    caso 12: presente = "Seda / Linho"; break;
+    caso 13: presente = "Renda"; break;
+    caso 14: presente = ‘Marfim’; break;
+    caso 15: presente = "Cristal"; break;
+    caso 20: presente = "Porcelana"; break;
+    caso 25: presente = "Prata"; break;
+    caso 30: presente = "Pérola"; break;
+    caso 35: presente = "Coral"; break;
+    caso 40: presente = ‘Rubi’; break;
+    caso 45: presente = "Safira"; break;
+    case 50: presente = "Ouro"; break;
+    case 55: presente = "Esmeralda"; break;
+    case 60: presente = ‘Diamante’; break;
+    default: presente = "Sem presente tradicional"; break;
 }
 ----
 
-Just like an `if` statement, a `switch` statement always has parentheses
-enclosing some argument. Unlike an `if`, the argument of a basic `switch` must
-be some kind of data that can be expressed as an integer or a `String`,
-not a `boolean`.  (In the next section, we'll see that in newer versions of Java, the `switch` argument can be more complex.) For each of the possible values you want the `switch`
-to handle, you write a `case` statement. A `case` statement consists of
-the keyword `case` followed by a constant value, either a literal or a
-named constant, then a colon. When executed, the JVM jumps to the
-matching `case` label and starts executing code there. If there is no
-matching `case` label, the JVM goes to the `default` label. If there is
-no `default` label, the entire `switch` statement is skipped.
+Assim como uma instrução `if`, uma instrução `switch` sempre possui parênteses
+que envolvem algum argumento. Ao contrário de um `if`, o argumento de um `switch` básico deve
+ser algum tipo de dado que possa ser expresso como um inteiro ou uma `String`,
+não um `boolean`. (Na próxima seção, veremos que, em versões mais recentes do Java, o argumento do `switch` pode ser mais complexo.) Para cada um dos valores possíveis que você deseja que o `switch`
+trate, você escreve uma instrução `case`. Uma instrução `case` consiste em
+a palavra-chave `case` seguida por um valor constante, seja um literal ou uma
+constante nomeada, e depois dois pontos. Quando executada, a JVM salta para o
+rótulo `case` correspondente e começa a executar o código ali. Se não houver
+rótulo `case` correspondente, a JVM vai para o rótulo `default`. Se não houver
+rótulo `default`, toda a instrução `switch` é ignorada.
 
-One unusual feature of `switch` statements is that execution _falls
-through_ `case` statements. This means that you can use many different
-`case` statements for a single segment of executable code. The execution
-of code in a `switch` statement jumps out when it hits a `break`
-statement. However, a `break` statement is not required with every `case`, as shown in
-this `switch` statement that gives location information for all of the
-telephone area codes in New York state.  If a `case` has no `break` statement, control falls through to the next `case` (or `default`).
+Uma característica incomum das instruções `switch` é que a execução _passa
+pelas_ instruções `case`. Isso significa que você pode usar muitas instruções
+`case` diferentes para um único segmento de código executável. A execução
+do código em uma instrução `switch` salta para fora quando encontra uma instrução `break`
+. No entanto, uma instrução `break` não é necessária em todos os `case`, como mostrado nesta instrução `switch` que fornece informações de localização para todos os
+códigos de área telefônica no estado de Nova York. Se um `case` não tiver uma instrução `break`, o controle passa para o próximo `case` (ou `default`).
 
 [source,java]
 ----
-String location = "";
-switch (code) {
-    case 917: location = "Cellular: ";
+String localidade = "";
+switch (codigo) {
+    
+case 917: localidade = "Celular: ";
     case 212:
     case 347:
     case 646:
-    case 718: location += "New York City"; break;
+    case 718: localidade += "Cidade de Nova York"; break;
 
-    case 315: location = "Syracuse"; break;
+    case 315: localidade = ‘Syracuse’; break;
 
-    case 516: location = "Nassau County"; break;
+    case 516: localidade = "Condado de Nassau"; break;
+    
+case 518: localidade = "Albany"; break;
 
-    case 518: location = "Albany"; break;
+    case 585: localidade = ‘Rochester’; break;
 
-    case 585: location = "Rochester"; break;
+    case 607: localidade = "Centro-Sul de Nova York"; break;
 
-    case 607: location = "South Central New York"; break;
+    case 631: localidade = "Condado de Suffolk"; break;
+    
+case 716: localidade = "Buffalo"; break;
 
-    case 631: location = "Suffolk County"; break;
+    case 845: localidade = "Vale do Baixo Hudson"; break;
 
-    case 716: location = "Buffalo"; break;
+    case 914: localidade = "Condado de Westchester"; break;
 
-    case 845: location = "Lower Hudson Valley"; break;
-
-    case 914: location = "Westchester County"; break;
-
-    default:  location = "Unknown Area Code"; break;
+    default: localidade = "Código de área desconhecido"; break;
 }
 ----
 
-As you can see, five different area codes are used by New York City. By
-leaving out the `break` statements, values of `212`, `347`, `646`, and
-`718` all have `"New York City"` stored into `location`. Area code 917
-was originally designated for cellular phones and pagers although now it
-includes some landlines. By cleverly putting the statement for `917` ahead of
-the other New York City entries, a value of `917` first stores
-`"Cellular: "` into `location` and then falls through and appends
-`"New York City"`. For each of these five area codes, execution in the
-`switch` statement ends only when the `break` statement is reached.
+Como você pode ver, cinco códigos de área diferentes são usados pela cidade de Nova York. Ao
+omitir as instruções `break`, os valores de `212`, `347`, `646` e
+`718` têm `"Cidade de Nova York"` armazenado em `localidade`. O código de área 917
+foi originalmente designado para telefones celulares e pagers, embora agora
+inclua alguns telefones fixos. Ao colocar habilmente a instrução para `917` à frente das outras entradas da cidade de Nova York, um valor de `917` primeiro armazena
+`"Celular: "` em `localidade` e, em seguida, passa adiante e acrescenta
+`"Cidade de Nova York"`. Para cada um desses cinco códigos de área, a execução na
+instrução `switch` termina somente quando a instrução `break` é alcançada.
 
-The remaining nine area codes are separate. Each of them does a
-single assignment and then breaks out of the `switch` block. Finally,
-the `default` label is used if the area code doesn't match one of the
-given codes. Note that we've ordered the (non-NYC) area codes in
-ascending order for the sake of readability. As shown in the
-`917` example, there's no rule about the ordering of the labels. Even
-the `default` label can occur anywhere in the `switch` block you want,
-although it's common to put it at the end. Also, the `break` after the
-`default` label is unnecessary because execution exits the `switch`
-block anyway. Nevertheless, it's always wise to end on a `break`, in
-the event that you add more cases in later.
+Os nove códigos de área restantes são separados. Cada um deles faz uma
+única atribuição e, em seguida, sai do bloco `switch`. Por fim,
+o rótulo `default` é usado se o código de área não corresponder a um dos
+códigos fornecidos. Observe que ordenamos os códigos de área (que não são de Nova York) em
+ordem crescente para facilitar a leitura. Conforme mostrado no
+exemplo `917`, não há regra sobre a ordem dos rótulos. Até mesmo
+o rótulo `default` pode ocorrer em qualquer lugar do bloco `switch` que você desejar,
+embora seja comum colocá-lo no final. Além disso, o `break` após o 
+rótulo `default` é desnecessário, pois a execução sai do bloco `switch`
+de qualquer maneira. No entanto, é sempre aconselhável terminar com um `break`, caso
+você adicione mais casos posteriormente.
 
-Carelessness is always something to watch out for in `switch`
-statements. Leaving out a `break` statement can cause disastrous and
-difficult to discover bugs. The compiler does not warn you about missing
-`break` statements, either. It's entirely your responsibility to use them
-appropriately. Because of the dangers involved, it's often safe to
-use `if`-`else` statements. Any `switch` statement can be rewritten as
-some combination of `if`-`else` statements, but the reverse is not true.
-The benefit of `switch` statements is their ability to list many
-alternatives clearly. Their drawbacks include the ease of making a
-mistake, an inability to express ranges of data or most types (`double`,
-`float`, or any reference type other than `String`), and limited
-expressive power. They should be used only when their benefit of clearly
-displaying a list of data outweighs the drawbacks.
+O descuido é sempre algo a se ter cuidado nas instruções `switch`
+. Deixar de fora uma instrução `break` pode causar bugs desastrosos e
+difíceis de detectar. O compilador também não avisa sobre a falta de
+instruções `break`. É inteiramente sua responsabilidade usá-las
+adequadamente. Devido aos riscos envolvidos, muitas vezes é mais seguro
+usar instruções `if`-`else`. Qualquer instrução `switch` pode ser reescrita como
+alguma combinação de instruções `if`-`else`, mas o inverso não é verdadeiro.
+A vantagem das instruções `switch` é sua capacidade de listar muitas
+alternativas de forma clara. Suas desvantagens incluem a facilidade de cometer um
+erro, a incapacidade de expressar intervalos de dados ou a maioria dos tipos (`double`,
+`float` ou qualquer tipo de referência que não seja `String`) e o
+poder de expressão limitado. Elas devem ser usadas apenas quando a vantagem de exibir claramente
+uma lista de dados superar as desvantagens.
 
-Next we give a number of examples to help you get more familiar with
-`switch` statements.
+A seguir, apresentamos vários exemplos para ajudá-lo a se familiarizar mais com
+as instruções `switch`.
 
-.Days in the month
+.Dias do mês
 ====
 
-There are fewer uses for `switch` statements than `if` statements.
-Nevertheless, there are problems where their
-fall-through behavior can be useful. Imagine that you need to write a
-program that gives the length of each month (with the assumption that February always
-has 28 days). Given the month as a number, we can use `switch` statements to write a program
-that maps the number of the month to the number of days it contains.
+Há menos usos para as instruções `switch` do que para as instruções `if`.
+No entanto, há problemas em que seu
+comportamento de falha pode ser útil. Imagine que você precise escrever um
+programa que forneça a duração de cada mês (partindo do pressuposto de que fevereiro sempre
+tem 28 dias). Dado o mês como um número, podemos usar instruções `switch` para escrever um programa
+que mapeie o número do mês para o número de dias que ele contém.
 
-.Computes the number of days in a given month.
+.Calcula o número de dias em um determinado mês.
 [source, java]
 [[DaysInMonthProgram]]
 ----
 include::{programsdir}/DaysInMonth.java[]
 ----
 
-<.> This program has a single label for February setting `days` to 28.
-<.> Then,
-there are labels for April, June, September, and November, months that
-each have 30 days.
-<.> Finally, the large block of January, March, May,
-July, August, October, and December all set `days` to 31.
+<.> Este programa tem um único rótulo para fevereiro, definindo `days` como 28.
+<.> Em seguida,
+há rótulos para abril, junho, setembro e novembro, meses que
+têm, cada um, 30 dias.
+<.> Por fim, o grande bloco de janeiro, março, maio,
+julho, agosto, outubro e dezembro define `days` como 31.
 
-It would be
-easy to extend this code to prompt the user for a year so that you could
-integrate the leap year code from above for the February case. Note also
-that we didn't use a `default` label. You might want to set `days` to
-some special value (like `-1`) for invalid months.
+Seria
+fácil estender este código para solicitar ao usuário um ano, de modo que você pudesse
+integrar o código de ano bissexto de cima para o caso de fevereiro. Observe também
+que não usamos um rótulo `default`. Você pode querer definir `days` como
+algum valor especial (como `-1`) para meses inválidos.
 
-In this program it's necessary to initialize `days` to some value, in this case `0`.
-Otherwise, the program won't compile, since it'll try to print out the
-value inside `days`, a value that won't exist if `month` is not in the range 1 through 12.
+Neste programa, é necessário inicializar `days` com algum valor, neste caso `0`.
+Caso contrário, o programa não será compilado, pois tentará imprimir o
+valor dentro de `days`, um valor que não existirá se `month` não estiver no intervalo de 1 a 12.
 
 ====
 
 
 [[ordinalNumbersExample]]
-.Ordinal numbers
+.Números ordinais
 ====
 
-The term _ordinal numbers_ refers to numbers that are used for ordering
-within a set of items: first, second, third, and so on. When writing
-these numbers with numerals in English, it is common to append two
-letters to the end of the numeral to give the reader a clue that these
-numerals should be read with their ordinal names: 1st, 2nd, 3rd, and so
-on.
+O termo _números ordinais_ refere-se a números usados para ordenar
+dentro de um conjunto de itens: primeiro, segundo, terceiro e assim por diante. Ao escrever
+esses números com algarismos em inglês, é comum acrescentar duas
+letras ao final do algarismo para dar ao leitor uma pista de que esses
+algarismos devem ser lidos com seus nomes ordinais: 1º, 2º, 3º e assim
+por diante.
 
-Unlike most things in English, the rules for deciding which two letters
-are relatively simple. If the number ends in a 1, the letters "`st`"
-should generally be used. If the number ends in a 2, the letters "`nd`"
-should generally be used. If the number ends in a 3, the letters "`rd`"
-should generally be used. For most other numbers, the letters "`th`"
-should be used. We can use a `switch` statement to write a program to
-give the correct ordinal endings for most numbers as follows.
+Ao contrário da maioria das coisas em inglês, as regras para decidir quais duas letras
+são relativamente simples. Se o número terminar em 1, as letras "`st`"
+devem ser usadas geralmente. Se o número terminar em 2, as letras "`nd`"
+devem ser usadas geralmente. Se o número terminar em 3, as letras "`rd`"
+devem ser usadas geralmente. Para a maioria dos outros números, as letras "`th`"
+devem ser usadas. Podemos usar uma instrução `switch` para escrever um programa que
+forneça as terminações ordinais corretas para a maioria dos números, como segue.
 
-.Appends the appropriate suffix to a numeral to make it an ordinal.
+.Anexa o sufixo apropriado a um numeral para torná-lo um ordinal.
 [source, java]
 [[OrdinalsProgram]]
 ----
 include::{programsdir}/Ordinals.java[]
 ----
 
-This program prompts and then reads in an `int` from the user. We then
-find the remainder of `number` when it's divided by 10, yielding its
-last digit. Based on this digit, we can pick from the four possibilities
-and output the correct ordinal number in most cases. Unfortunately, the
-names for English numbers have an inconsistent naming convention between 11 and 19, inclusive,
-and the ordinals for any number ending in 11, 12, or 13 will be given the wrong
-suffix by our code. We leave a more complete solution as an exercise.
+Este programa solicita e, em seguida, lê um `int` do usuário. Em seguida,
+encontramos o resto da divisão de `number` por 10, obtendo seu
+último dígito. Com base nesse dígito, podemos escolher entre as quatro possibilidades
+e gerar o número ordinal correto na maioria dos casos. Infelizmente, os
+nomes dos números em inglês têm uma convenção de nomenclatura inconsistente entre 11 e 19, inclusive,
+e os ordinais para qualquer número que termine em 11, 12 ou 13 receberão o sufixo errado
+pelo nosso código. Deixamos uma solução mais completa como exercício.
 ====
 
 ****
 <<ordinalNumbersExercise>>
 ****
 
-.Astrology
+.Astrologia
 ====
 
-Many cultures practice astrology, a tradition that the time of a
-person's birth impacts his or her personality or future. One important
-element of Chinese astrology is their zodiac, consisting of 12 animals.
-Each consecutive year in a 12-year cycle corresponds to an animal.
-Because this system repeats, the year one is born in modulo 12
-identifies the animal. Below is a table giving these values. For
-example, if you were born in 1979, 1979 mod 12 ≡ 11; thus, you would be a Ram.
-Note that this arrangement is based on years in the Gregorian calendar.
-Chinese astrologers do not list the Monkey as the first animal in the cycle.
-Note that the names of these animals are also sometimes translated in slightly
-different ways.
+Muitas culturas praticam a astrologia, uma tradição segundo a qual o momento do
+nascimento de uma pessoa influencia sua personalidade ou futuro. Um elemento importante
+da astrologia chinesa é o zodíaco, composto por 12 animais.
+Cada ano consecutivo em um ciclo de 12 anos corresponde a um animal.
+Como esse sistema se repete, o ano em que se nasce, módulo 12,
+identifica o animal. Abaixo está uma tabela com esses valores. Por
+exemplo, se você nasceu em 1979, 1979 mod 12 ≡ 11; portanto, você seria um Carneiro.
+Observe que essa disposição se baseia nos anos do calendário gregoriano.
+Os astrólogos chineses não listam o Macaco como o primeiro animal do ciclo.
+Observe que os nomes desses animais também são, às vezes, traduzidos de maneiras ligeiramente
+diferentes.
 
 
 [.center%autowidth%unbreakable%header,cols="<.>,^.>,^,<.>,^.>"]
 |=====================
-|Animal | Year +
-modulo 12| 
-|Animal | Year +
-modulo 12
-|Monkey |0 | |Tiger |6
-|Rooster |1 | |Rabbit |7
-|Dog |2 | |Dragon |8
-|Boar |3 | |Snake |9
-|Rat |4 | |Horse |10
-|Ox |5 | |Ram |11
+|Animal | Ano +
+módulo 12| 
+|Animal | Ano +
+módulo 12
+|Macaco |0 | |Tigre |6
+|Galo |1 | |Coelho |7
+|Cão |2 | |Dragão |8
+|Javali |3 | |Cobra |9
+|Rato |4 | |Cavalo |10
+|Boi |5 | |Carneiro |11
 |=====================
 
-Unfortunately, this table is not very accurate because it's based on
-numbering from the Gregorian calendar. The years in question actually
-start and end based on Chinese New Year, which occurs between January 21
-and February 20. As a consequence, you may miscalculate your animal if
-your birthday is early in the year. Since calculating the date of
-Chinese New Year is challenging, let's ignore this problem for the
-moment and write a program using a `switch` statement designed to
-correctly output the animal corresponding to an input birth year.
+Infelizmente, esta tabela não é muito precisa porque se baseia na
+numeração do calendário gregoriano. Os anos em questão, na verdade,
+começam e terminam com base no Ano Novo Chinês, que ocorre entre 21 de janeiro
+e 20 de fevereiro. Como consequência, você pode calcular incorretamente seu animal se
+seu aniversário for no início do ano. Como calcular a data do
+Ano Novo Chinês é complicado, vamos ignorar esse problema por enquanto
+e escrever um programa usando uma instrução `switch` projetada para
+exibir corretamente o animal correspondente a um ano de nascimento inserido.
 
-.Determines a Chinese zodiac animal based on birth year.
+.Determina um animal do zodíaco chinês com base no ano de nascimento.
 [source, java]
 [[ChineseZodiacProgram]]
 ----
@@ -1249,313 +1260,320 @@ include::{programsdir}/ChineseZodiac.java[]
 
 [.center%autowidth%unbreakable,cols="<,<,<",]
 |=====================================================
-|Sign |Symbol |Date Range
+|Signo |Símbolo |Intervalo de datas
 
-|Aries |The Ram |March 21 to April 19
-|Taurus |The Bull |April 20 to May 20
-|Gemini |The Twins |May 21 to June 20
-|Cancer |The Crab |June 21 to July 22
-|Leo |The Lion |July 23 to August 22
-|Virgo |The Virgin |August 23 to September 22
-|Libra |The Scales |September 23 to October 22
-|Scorpio |The Scorpion |October 23 to November 21
-|Sagittarius |The Archer |November 22 to December 21
-|Capricorn |The Sea-Goat |December 22 to January 19
-|Aquarius |The Water Bearer |January 20 to February 19
-|Pisces |The Fishes |February 20 to March 20
+|Áries |O Carneiro |21 de março a 19 de abril
+|Touro |O Touro |20 de abril a 20 de maio
+|Gêmeos |Os Gêmeos |21 de maio a 20 de junho
+|Câncer |O Caranguejo |21 de junho a 22 de julho
+|Leão |O Leão |23 de julho a 22 de agosto
+|Virgem |A Virgem |23 de agosto a 22 de setembro
+|Libra |A Balança |23 de setembro a 22 de outubro
+|Escorpião |O Escorpião |23 de outubro a 21 de novembro
+|Sagitário |O Arqueiro |22 de novembro a 21 de dezembro
+|Capricórnio |A Cabra-marinha |22 de dezembro a 19 de janeiro
+|Aquário |O Portador da Água |20 de janeiro a 19 de fevereiro
+|Peixes |Os Peixes |20 de fevereiro a 20 de março
 |=====================================================
 
-In Western astrology, an important element associated with a person's
-birth is also called a zodiac sign. The dates for determining this kind
-of zodiac sign are given by the preceding table.
+Na astrologia ocidental, um elemento importante associado ao
+nascimento de uma pessoa também é chamado de signo do zodíaco. As datas para determinar esse tipo
+de signo do zodíaco são fornecidas pela tabela anterior.
 
-If you want to implement the rules for this zodiac in code, a `switch`
-statement is a good place to start, but you also have to put `if`
-statements for each month to test the exact range of dates.
+Se você quiser implementar as regras desse zodíaco em código, uma instrução `switch`
+é um bom ponto de partida, mas você também precisa colocar instruções `if`
+para cada mês para testar o intervalo exato de datas.
 
-.Determines Western zodiac signs based on birth month and day.
-[source, java]
+.Determina os signos do zodíaco ocidental com base no mês e dia de nascimento.
+[source,java]
 [[WesternZodiacProgram]]
 ----
 include::{programsdir}/WesternZodiac.java[]
 ----
 
-This program is just slightly more complex than the program for the
-Chinese zodiac. You still need to jump to 12 different cases (numbered
-1-12 instead of 0-11), but additional day information is needed to pin
-down the sign.
+Este programa é apenas um pouco mais complexo do que o programa para o
+zodíaco chinês. Você ainda precisa saltar para 12 casos diferentes (numerados
+de 1 a 12 em vez de 0 a 11), mas são necessárias informações adicionais sobre o dia para identificar
+o signo.
+
 
 ====
 
-==== `switch` expressions
+==== Expressões `switch`
 
-The `switch` expression, introduced in Java 12 and 14, computes a single value and can be used anywhere an expression is expected.  Each `case` must compute a single value.  There are two ways to indicate the value being computed:
+A expressão `switch`, introduzida no Java 12 e 14, calcula um único valor e pode ser usada em qualquer lugar onde se espere uma expressão. Cada `case` deve calcular um único valor. Existem duas maneiras de indicar o valor que está sendo calculado:
 
-. Use the new `yield E` statement.  The `yield` statement can be thought of as a `break` statement--it interrupts the flow of the `switch` statement--but also indicates the value to be used as the result.
+. Use a nova instrução `yield E`. A instrução `yield` pode ser considerada como uma instrução `break` — ela interrompe o fluxo da instrução `switch` —, mas também indica o valor a ser usado como resultado.
 
-. Use the new `+case L -> E+` syntax.  This syntax says that the resulting value for `case L` is the value of expression `E`.  The label `L` can be a list of labels separated by commas (see example below).
+. Use a nova sintaxe `+case L -> E+`. Essa sintaxe indica que o valor resultante para `case L` é o valor da expressão `E`. O rótulo `L` pode ser uma lista de rótulos separados por vírgulas (veja o exemplo abaixo).
 
-Note that these two approaches cannot be mixed: A single `switch` expression uses either all cases of the form `case L:` or all cases of the form `+case L -> E+`.
+Observe que essas duas abordagens não podem ser misturadas: uma única expressão `switch` usa ou todos os casos da forma `case L:` ou todos os casos da forma `+case L -> E+`.
 
-The `switch` expression can result in simpler code than the traditional `switch` statement, making it easier to write and maintain.  The code below computes the number of days in a given month, with the month given as a three-letter abbreviation:
+A expressão `switch` pode resultar em um código mais simples do que a instrução `switch` tradicional, tornando-a mais fácil de escrever e manter. O código abaixo calcula o número de dias em um determinado mês, com o mês indicado por uma abreviação de três letras:
 
 [source,java]
 ----
-int length =
-    switch (month) {
-        case "Jan", "Mar", "May", "Jul", "Aug", "Oct", "Dec" -> 31;
-        case "Apr", "Jun", "Sep", "Nov" -> 30;
-        case "Feb" -> 28;
+int dias =
+    switch (mes) {
+        case "Jan", "Mar", "Mai", "Jul", "Ago", "Out", "Dez" -> 31;
+        case "Abr", "Jun", ‘Set’, "Nov" -> 30;
+        
+case "Fev" -> 28;
         default -> 0;
     };
 ----
 
-As another example, below is a `switch` expression to compute the anniversary gift based on the year (compare to the earlier <<gift-switch-statement,statement version>>).
+Como outro exemplo, veja abaixo uma expressão `switch` para calcular o presente de aniversário com base no ano (compare com a versão anterior <<gift-switch-statement,statement version>>).
 
 [source,java]
 ----
-    String gift =
-        switch (year) {
-          case 1 -> "Paper";
-          case 2 -> "Cotton";
-          case 3 -> "Leather";
-          case 4 -> "Fruit";
-          case 5 -> "Wood";
-          case 6 -> "Candy / Iron";
-          case 7 -> "Wool / Copper";
-          case 8 -> "Bronze / Pottery";
-          case 9 -> "Pottery / Willow";
-          case 10 -> "Tin / Aluminum";
-          case 11 -> "Steel";
-          case 12 -> "Silk / Linen";
-          case 13 -> "Lace";
-          case 14 -> "Ivory";
-          case 15 -> "Crystal";
-          case 20 -> "China";
-          case 25 -> "Silver";
-          case 30 -> "Pearl";
-          case 35 -> "Coral";
-          case 40 -> "Ruby";
-          case 45 -> "Sapphire";
-          case 50 -> "Gold";
-          case 55 -> "Emerald";
-          case 60 -> "Diamond";
-          default -> "No traditional gift";
+    
+String presente =
+        switch (ano) {
+          case 1 -> "Papel";
+          case 2 -> "Algodão";
+          case 3 -> "Couro";
+          case 4 -> "Fruta";
+          case 5 -> ‘Madeira’;
+          case 6 -> "Doces / Ferro";
+          case 7 -> "Lã / Cobre";
+          case 8 -> "Bronze / Cerâmica";
+          case 9 -> "Cerâmica / Salgueiro";
+          case 10 -> "Estanho / Alumínio";
+          case 11 -> ‘Aço’;
+          case 12 -> "Seda / Linho";
+          caso 13 -> "Renda";
+          caso 14 -> "Marfim";
+          caso 15 -> "Cristal";
+          caso 20 -> "Porcelana";
+          caso 25 -> "Prata";
+          caso 30 -> ‘Pérola’;
+          caso 35 -> "Coral";
+          case 40 -> "Rubi";
+          case 45 -> "Safira";
+          case 50 -> "Ouro";
+          case 55 -> "Esmeralda";
+          case 60 -> ‘Diamante’;
+          default -> "Sem presente tradicional";
         };
 ----
 
-==== `switch` statements without `break` statements
+==== Instruções `switch` sem instruções `break`
 
-As mentioned earlier, the use of `break` statments can result in careless errors: by accidentally omitting a `break` or adding one where it isn't needed.  With the introduction of the `+case L -> E+` syntax, it is possible to use a `switch` _statement_ without `break` statements at all.  Each `case` becomes a complete block, and there is no follow through to the next case.  If more than one statement is included in a block, the statements must be surrounded by curly braces (`+{ }+`).
+Como mencionado anteriormente, o uso de instruções `break` pode resultar em erros por descuido: ao omitir acidentalmente um `break` ou adicionar um onde não é necessário. Com a introdução da sintaxe `+case L -> E+`, é possível usar uma instrução `switch` sem nenhuma instrução `break`. Cada `case` torna-se um bloco completo, e não há continuidade para o próximo caso. Se mais de uma instrução for incluída em um bloco, as instruções devem ser delimitadas por chaves (`+{ }+`).
 
-Here is an example that prints the number of days in the given month and uses a flag to indicate whether the month is valid:
+Aqui está um exemplo que imprime o número de dias no mês fornecido e usa um sinalizador para indicar se o mês é válido:
 
 [source,java]
 ----
-boolean validMonth = true;
-switch (month) {
-    case "Jan", "Mar", "May", "Jul", "Aug", "Oct", "Dec" ->
-        System.out.println("There are 31 days in " + month);
-    case "Apr", "Jun", "Sep", "Nov" ->
-        System.out.println("There are 30 days in " + month);
-    case "Feb" ->
-        System.out.println("There are 28 days in " + month);
-    default -> {
-        System.out.println("Unrecognized month: " + month);
-        validMonth = false;
+boolean mesValido = true;
+switch (mes) {
+    case "Jan", "Mar", "Mai", "Jul", "Ago", "Out", ‘Dez’ ->
+        System.out.println("Há 31 dias em " + mes);
+    
+case "Abr", "Jun", "Set", "Nov" ->
+        System.out.println("Há 30 dias em " + mes);
+    case ‘Fev’ ->
+        System.out.println("Há 28 dias em " + mes);
+    
+default -> {
+        System.out.println("Mês não reconhecido: " + mes);
+        mesValido = false;
     }
 };
 
-if (validMonth) {
-    // Continue processing...
+if (mesValido) {
+    // Continuar o processamento...
 }
 ----
 
-=== Solution: Monty Hall
+=== Solução: Monty Hall
 
-We now return to the Monty Hall simulation described at the beginning of
-the chapter. Recall that objects of the `Random` class allow us to generate all
-kinds of random values. To implement this simulation successfully, our
-program must make the decisions needed to set up the game for the
-user as well as respond to the user's input. 
-
-[source, java]
-----
-include::{programsdir}/MontyHall.java[lines=1..11]
-----
-<.> We begin with the `import`
-statement needed to use both the `Scanner` and `Random` class
-and then define the `MontyHall` class.
-<.> In the `main()` method we first decide which of the three doors is the
-winner. To do so, we instantiate a `Random` object and use it to
-generate a random number that is either 0, 1, or 2 by calling the
-`nextInt()` method with an argument of `3`. We could have added 1 to
-this value to get a random choice of 1, 2, or 3, but many counting
-systems in computer science start with 0 instead of 1. We might as well
-embrace it.
-<.> Next, we prompt the user to pick from the three doors
-and read the choice.
-<.> Finally, we declare two more `int` values to keep
-track of which door to open and which door is the alternative that the
-user can choose to change over to.
-
-Now, we have to navigate a complicated series of decisions. 
+Voltamos agora à simulação de Monty Hall descrita no início do
+capítulo. Lembre-se de que os objetos da classe `Random` nos permitem gerar todos os
+tipos de valores aleatórios. Para implementar essa simulação com sucesso, nosso
+programa deve tomar as decisões necessárias para configurar o jogo para o
+usuário, bem como responder às entradas do usuário.
+ 
 
 [source, java]
 ----
-include::{programsdir}/MontyHall.java[lines=13..34]
+include::{programsdir}/MontyHall.java[linhas=1..11]
 ----
-<.> In this
-segment of code, we tackle the possibility that the user happened
-to choose the winning door. To obey the rules of the game, we must
-randomly pick which of the two other doors to open.
-<.> First, we determine
-which are the other two doors and save them in `low` and `high`,
-respectively.
-<.> Then, we generate a random number.
-<.> If the random number
-is less than 0.5, we keep the lower numbered door as an alternative
-choice for the user and open the higher numbered door.
-<.> If the random number is greater than or equal to 0.5, we do the opposite.
+<.> Começamos com a instrução `import`
+necessária para usar as classes `Scanner` e `Random`
+e, em seguida, definimos a classe `MontyHall`.
+<.> No método `main()`, primeiro decidimos qual das três portas é a
+vencedora. Para isso, instanciamos um objeto `Random` e o usamos para
+gerar um número aleatório que seja 0, 1 ou 2, chamando o
+método `nextInt()` com um argumento de `3`. Poderíamos ter somado 1 a
+esse valor para obter uma escolha aleatória entre 1, 2 ou 3, mas muitos sistemas de contagem
+em ciência da computação começam com 0 em vez de 1. Podemos muito bem
+aceitar isso.
+<.> Em seguida, solicitamos que o usuário escolha uma das três portas
+e lemos a escolha.
+<.> Por fim, declaramos mais dois valores `int` para acompanhar
+qual porta deve ser aberta e qual porta é a alternativa para a qual o
+usuário pode optar por mudar.
+
+Agora, precisamos lidar com uma série complicada de decisões. 
 
 [source, java]
 ----
-include::{programsdir}/MontyHall.java[lines=35..56]
+include::{programsdir}/MontyHall.java[linhas=13..34]
 ----
-<.> This `else` block covers the case that the player did *not* pick the
-winning door the first time. Unlike the previous code segment, we no
-longer have a choice of which door to open.
-<.> Instead, we must always
-make the winner the alternative for the user to pick. Then, we simply
-determine which door is left over so that we can open it.
+<.> Neste
+trecho de código, lidamos com a possibilidade de o usuário ter
+escolhido a porta vencedora. Para seguir as regras do jogo, precisamos
+escolher aleatoriamente qual das duas outras portas abrir.
+<.> Primeiro, determinamos
+quais são as outras duas portas e as salvamos em `low` e `high`,
+respectivamente.
+<.> Em seguida, geramos um número aleatório.
+<.> Se o número aleatório
+for menor que 0,5, mantemos a porta com o número menor como uma opção
+alternativa para o usuário e abrimos a porta com o número maior.
+<.> Se o número aleatório for maior ou igual a 0,5, fazemos o contrário.
 
 [source, java]
 ----
-include::{programsdir}/MontyHall.java[lines=57..73]
+include::{programsdir}/MontyHall.java[linhas=35..56]
 ----
-<.> This final segment of code informs the user which door has been opened.
-<.> It prompts the user to change his or her decision.
-<.> Depending on the
-final choice, the program says whether or not the user wins gold or
-junk.
+<.> Este bloco `else` abrange o caso em que o jogador *não* escolheu a
+porta vencedora na primeira vez. Ao contrário do segmento de código anterior, não
+temos mais a opção de escolher qual porta abrir.
+<.> Em vez disso, devemos sempre
+tornar a porta vencedora a alternativa para o usuário escolher. Então, simplesmente
+determinamos qual porta resta para que possamos abri-la.
 
-=== Concurrency: Selection
+[source, java]
+----
+include::{programsdir}/MontyHall.java[linhas=57..73]
+----
+<.> Este segmento final de código informa ao usuário qual porta foi aberta.
+<.> Ele solicita que o usuário altere sua decisão.
+<.> Dependendo da
+escolha final, o programa informa se o usuário ganha ouro ou
+porcaria.
 
-Selection statements (`if` and `switch`) seem to have
-little to do with concurrency or parallelism. Selection allows you to
-choose between alternatives while concurrency is about the interaction
-between different threads of execution. As it turns out, there are two
-reasons why selection and concurrency are deeply related to each other.
 
-The first reason is that selection is one of the most basic tools in
-Java. It's impossible to go more than a few lines of a code without
-encountering a selection statement, usually an `if`.
-Concurrent programs are not exempt from this dependence on `if`
-statements. Making decisions is at the heart of all programming
-languages running on all computers.
+=== Concorrência: Seleção
 
-The second, more troubling reason is related to a problem with
-some concurrent programs called a _race condition_, which is discussed
-in detail in <<synchronization#synchronization>>. Remember, one of
-the biggest challenges of programming a computer is thinking in a
-completely sequential and logical way. Each line of code is executed one
-after the other. Adding in `if` statements means that some code is
-executed only if a condition is true and skipped otherwise. Consider the
-following fragment of code.
+As instruções de seleção (`if` e `switch`) parecem ter
+pouca relação com concorrência ou paralelismo. A seleção permite que você
+escolha entre alternativas, enquanto a concorrência diz respeito à interação
+entre diferentes threads de execução. Na verdade, existem duas
+razões pelas quais a seleção e a concorrência estão profundamente relacionadas entre si.
+
+A primeira razão é que a seleção é uma das ferramentas mais básicas em
+Java. É impossível avançar mais do que algumas linhas de código sem
+encontrar uma instrução de seleção, geralmente um `if`.
+Programas concorrentes não estão isentos dessa dependência de instruções `if`
+. Tomar decisões está no cerne de todas as linguagens de programação
+executadas em todos os computadores.
+
+A segunda razão, mais preocupante, está relacionada a um problema em
+alguns programas concorrentes chamado de _condição de corrida_, que é discutido
+em detalhes em <<sincronização#sincronização>>. Lembre-se: um dos
+maiores desafios da programação de computadores é pensar de uma
+maneira completamente sequencial e lógica. Cada linha de código é executada uma
+após a outra. Adicionar instruções `if` significa que parte do código é
+executada apenas se uma condição for verdadeira e ignorada caso contrário. Considere o
+seguinte fragmento de código.
 
 [source,java]
 ----
-if (!matches.areLit() && !flyingSparks) {
-    storageRoom.enter();
-    dynamite.unpack();
+if (!fosforo.saoAcessos() && !faiscasVoando) {
+    despensa.entrar();
+    dinamite.desembrulhar();
 }
 ----
 
-In this `if` statement, an imaginary agent only enters the storage room
-and unpacks the dynamite if the matches are not lit and there are no
-flying sparks. When execution reaches the first line inside the `if`
-block, we are certain that `matches.areLit()` returned `false` and
-`flyingSparks` is `false`. This is a one-time check. If the first thing
-that happens inside the `if` block is code that lights the matches, Java
-will *not* jump out of the `if` statement.
+Nesta instrução `if`, um agente imaginário só entra na sala de armazenamento
+e desembala a dinamite se os fósforos não estiverem acesos e não houver
+faíscas voando. Quando a execução chega à primeira linha dentro do bloco `if`
+, temos certeza de que `fosforo.saoAcessos()` retornou `false` e
+`faiscasVoando` é `false`. Essa é uma verificação única. Se a primeira coisa
+que acontecer dentro do bloco `if` for um código que acenda os fósforos, o Java
+*não* sairá da instrução `if`.
 
-As always, the programmer is responsible for making an `if` statement
-that makes sense. It's possible that entering the storage room or
-unpacking the dynamite causes sparks to fly or matches to burst into
-flames spontaneously, but it seems unlikely. If the `storageRoom` and
-`dynamite` objects were written by other people, we would expect their
-documentation to explain unusual side-effects of this kind. In a
-sequential program, the programmer can be reasonably sure that it's
-safe to unpack the dynamite.
+Como sempre, o programador é responsável por criar uma instrução `if`
+que faça sentido. É possível que entrar na sala de armazenamento ou
+desembalar a dinamite faça faíscas voarem ou os fósforos pegarem fogo
+espontaneamente, mas isso parece improvável. Se os objetos `despensa` e
+`dinamite` tivessem sido escritos por outras pessoas, esperaríamos que sua
+documentação explicasse efeitos colaterais incomuns desse tipo. Em um
+programa sequencial, o programador pode ter razoável certeza de que é
+seguro desembalar a dinamite.
 
-Consider another fragment of code.
+Considere outro fragmento de código.
 
 [source,java]
 ----
-matches.light();
-flyingSparks = sparklers.light(matches);
+fosforos.acender();
+faiscasVoando = fogosDeArtificio.acender(fosforos);
 ----
 
-This code appears to light the matches and then to use the lit matches to set
-some sparklers on fire. Presumably, if the process was successful,
-`flyingSparks` will have the value `true`. This code is reasonable and
-potentially helpful. If you were celebrating the 4^th^ of July or needed
-to signal a passing helicopter to rescue you from a desert island,
-lighting sparklers could be a great idea. This sparkler-lighting code
-could occur before the dynamite-unpacking code or after it, but, in a sequential
-program, the protection of the `if` statement keeps our hero from being blown up if
-she tries to unpack the dynamite with lit sparklers.
+Este código parece acender os fósforos e, em seguida, usar os fósforos acesos para
+acender alguns fogos de artifício. Presumivelmente, se o processo for bem-sucedido,
+`faiscasVoando` terá o valor `true`. Este código é razoável e
+potencialmente útil. Se você estivesse comemorando o 4 de julho ou precisasse
+sinalizar para um helicóptero que passa para resgatá-lo de uma ilha deserta,
+acender fogos de artifício poderia ser uma ótima ideia. Este código de acendimento de fogos de artifício
+poderia ocorrer antes ou depois do código de desembalagem da dinamite, mas, em um programa sequencial
+, a proteção da instrução `if` impede que nossa heroína seja explodida se
+ela tentar desembalar a dinamite com fogos de artifício acesos.
 
-In a concurrent program, all bets are off. Another thread of execution
-can be operating at the very same time. It's as if our hero is trying to
-unpack the dynamite while the villain is lighting sparklers and tossing
-them into the storage room. If the thread of execution gets to the `if`
-statement and makes sure that the matches aren't lit and that there are
-no flying sparks, it continues onward. If sparks start flying after that
-check, it still continues onward, oblivious of the fact. Even though
-this risk of explosion exists, it depends on the timing of the two (or
-more) concurrent threads of execution. It might be possible to run a
-program 1,000 times with no problem. But if the timing is wrong on the
-1,001^st^ time, *BOOM!*
+Em um programa concorrente, nada é garantido. Outra thread de execução
+pode estar operando exatamente ao mesmo tempo. É como se nossa heroína estivesse tentando
+desembalar a dinamite enquanto o vilão acende fogos de artifício e os joga
+na sala de armazenamento. Se a thread de execução chegar à instrução `if`
+e se certificar de que os fósforos não estão acesos e que não há
+faíscas voando, ela continua adiante. Se faíscas começarem a voar após essa
+verificação, ela ainda assim continua, alheia ao fato. Mesmo que
+esse risco de explosão exista, ele depende do sincronismo das duas (ou
+mais) threads de execução simultâneas. Pode ser possível executar um
+programa 1.000 vezes sem nenhum problema. Mas se o sincronismo estiver errado na
+1.001^ª^ vez, *BOOM!*
 
-At this point, you don't need to worry about values inside your `if`
-statements being changed by other segments of code, but that problem is
-at the heart of why concurrent programming can be so difficult. Whether
-or not you're programming concurrently, it's important to keep
-in mind the assumptions your code makes and the way different parts of
-your program interact with each other.
+Nesse ponto, você não precisa se preocupar com valores dentro de suas instruções `if`
+sendo alterados por outros segmentos de código, mas esse problema está
+no cerne do motivo pelo qual a programação concorrente pode ser tão difícil. Quer
+você esteja programando de forma concorrente ou não, é importante ter
+em mente as suposições que seu código faz e a maneira como diferentes partes do
+seu programa interagem entre si.
 
-=== Exercises
-*Conceptual Problems*
+=== Exercícios
+*Problemas conceituais*
 
-. Given that _x_, _y_, and _z_ are
-propositions in Boolean logic, make a truth table for the expression
+. Considerando que _x_, _y_ e _z_ são
+proposições na lógica booleana, elabore uma tabela de verdade para a expressão
 ¬(_x_ ∧ ¬__y__) ⊕ ¬__z__.
-//There's some AsciiDoctor weirdness on the next line if the spaces inside the outer parentheses are removed.
-. What's the value of the Boolean expression ¬( (T ⊕ F) ∧ ¬(F ∨ T) )?
-. The calculation to determine the leap year given in
-<<leapYearExample>> uses three `if` statements and three
-`else` statements. Write the leap year calculation using a single `if`
-and a single `else`. Feel free to use `boolean` connectors such as `||`
-and `&&`.
-.  The XOR operator (`^`) is useful for combining `boolean` values, but
-it can be replaced with a more commonly used *relational* operator in
-Java. Which one?
-. De Morgan's laws are the following, which show that the process of
-negating a clause changes an AND to an OR and vice versa.
+//Há uma anomalia no AsciiDoctor na próxima linha se os espaços dentro dos parênteses externos forem removidos.
+. Qual é o valor da expressão booleana ¬( (T ⊕ F) ∧ ¬(F ∨ T) )?
+. O cálculo para determinar o ano bissexto apresentado em
+<<leapYearExample>> usa três instruções `if` e três
+instruções `else`. Escreva o cálculo do ano bissexto usando um único `if`
+e um único `else`. Sinta-se à vontade para usar operadores lógicos, como `||`
+e `&&`.
+.  O operador XOR (`^`) é útil para combinar valores `boolean`, mas
+pode ser substituído por um operador *relacional* mais comumente usado em
+Java. Qual deles?
+. As leis de De Morgan são as seguintes, mostrando que o processo de
+negar uma cláusula transforma um AND em um OR e vice-versa.
 +
 ¬(_x_ ∧ _y_) = ¬__x__ ∨ ¬__y__ +
 ¬(_x_ ∨ _y_) = ¬__x__ ∧ ¬__y__
 +
-Create truth tables to verify both of these statements.
-. Use De Morgan's laws given above to rewrite the following statement
-in Java to an equivalent statement that contains no negations.
+Crie tabelas de verdade para verificar ambas as afirmações.
+. Use as leis de De Morgan apresentadas acima para reescrever a seguinte afirmação
+em Java como uma afirmação equivalente que não contenha negações.
 +
 [source,java]
 ----
-boolean value = !((x != 4) && (y < 2));
+boolean valor = !((x != 4) && (y < 2));
 ----
-. Consider the following fragment of code.
+. Considere o seguinte fragmento de código.
 +
 [source,java]
 ----
@@ -1564,47 +1582,47 @@ int y = 3;
 if (y > 10 && (x = 10) > 5) {
     ++y;
 }
-System.out.println("x: " + x);
-System.out.println("y: " + y);
+System.out.println(“x: ” + x);
+System.out.println(“y: ” + y);
 ----
 +
-What's the output? Is the output changed if the condition of the `if`
-statement is changed to `y > 10 & (x = 10) > 5`? Why?
-. Consider the following fragment of code.
+Qual é a saída? A saída muda se a condição da instrução `if`
+for alterada para `y > 10 & (x = 10) > 5`? Por quê?
+. Considere o seguinte fragmento de código.
 +
 [source,java]
 ----
 int a = 7;
 if (a++ == 7) {
-    System.out.println("Seven");
+    System.out.println(“Sete”);
 } else {
-    System.out.println("Not seven");
+    System.out.println(“Não é sete”);
 }
 ----
 +
-What's the output? Is the output changed if the condition of the `if`
-statement is changed to `++a == 7`? Why? +
-Note: It is generally wise to
-avoid increment, decrement, and assignment statements in the condition
-of an `if` statement because of the confusion that can arise.
+Qual é a saída? A saída muda se a condição da instrução `if`
+for alterada para `++a == 7`? Por quê? +
+Observação: geralmente é aconselhável
+evitar instruções de incremento, decremento e atribuição na condição
+de uma instrução `if`, devido à confusão que isso pode causar.
 
 
-*Programming Practice*
+*Exercícios de Programação*
 
-. Write programs that:
-..  Read in two `double` values and print the
-larger of the two of them.
-..  Read in *three* `double` values and print the largest of the three out.
-Note: You should use nested `if` statements.
-. [[coinNamesExercise]] Write programs that:
-..  Read an `int` value from the user specifying a certain number of
-cents. Use `if` statements to print out the name of the corresponding
-coin in U.S. currency according to the table below. If the value doesn't
-match any coin, print `no coin`.
+. Escreva programas que:
+..  Leiam dois valores do tipo `double` e imprimam o
+maior dos dois.
+..  Leiam *três* valores do tipo `double` e imprimam o maior dos três.
+Observação: Você deve usar instruções `if` aninhadas.
+. [[coinNamesExercise]] Escreva programas que:
+..  Leiam um valor `int` do usuário especificando um determinado número de
+centavos. Use instruções `if` para imprimir o nome da moeda correspondente
+na moeda dos EUA de acordo com a tabela abaixo. Se o valor não
+corresponder a nenhuma moeda, imprima `no coin`.
 +
-[.center%autowidth%unbreakable,cols="^,^",]
+[.center%autowidth%unbreakable,cols=“^,^”,]
 |===============
-|Cents |Coin
+|Centavos |Moeda
 
 |1 |penny
 |5 |nickel
@@ -1613,41 +1631,41 @@ match any coin, print `no coin`.
 |50 |half-dollar
 |100 |dollar
 |===============
-..  Read a `String` value from the user that gives one of the 6 coin
-names given in the table above. Use `if` statements to print out the
-corresponding number of cents for the input. If the name doesn't many
-any coin, print `unknown coin`.
-. Re-implement both parts from <<coinNamesExercise>> using `switch` statements instead of `if` statements.
-. [[ordinalNumbersExercise]] Expand the program given in
-<<ordinalNumbersExample>> to give the correct suffixes (always
-"`th`") for numbers that end in 11, 12, and 13. Use the modulus operator
-to find the last two digits of the number. Using an `if`
-statement, a `switch` statement, or a combination, check for those three
-cases before going into the normal cases.
-. At the bottom of <<_switch_statements>>, we use a
-`switch` statement to determine the location of various area codes in
-New York state. Write an equivalent fragment of code using `if`-`else`
-statements instead.
-. Every member of your secret club has an ID number. These ID numbers
-are between 1 and 1,000,000 and have two special characteristics: They
-are multiples of 7 and all end with a 3 in the one's place. For example,
-63 is the smallest such value, and 999,943 is the largest such value.
-Write a program that prompts the user for an `int` value, reads it in,
-and then says whether or not it could be used as an ID number. Note: You
-need to use the modulus operator in two different ways to test the value
-correctly.
-. According to the North American Numbering Plan (NANP) used by the
-United States, Canada, and a number of smaller countries, a legal
-telephone number takes the form `XYY-XYY-YYYY`, where `X` is any digit
-2-9 and `Y` is any digit 0-9. Write a program that reads in a `String`
-from the user and verifies that it is a legal NANP phone number. The
-length of the entire `String` must be 12. The fourth and eight
-characters in the `String` (with indexes `3` and `7`) must be hyphens
-(`-`), and all the remaining digits must be in the correct range. Use
-the `charAt()` method of the `String` class to get the `char` value at
-each index. Note: There are several ways to structure the `if`
-statements you need to use, but the number of conditions may become
-large. (23 or more!)
-. Re-implement the solution to the Monty Hall program given in
-<<Solution: Monty Hall>> using `JOptionPane` to generate GUIs for
-input and output.
+..  Leia um valor `String` do usuário que forneça um dos 6 nomes de moedas
+apresentados na tabela acima. Use instruções `if` para imprimir o
+número correspondente de centavos para a entrada. Se o nome não corresponder a
+nenhuma moeda, imprima `moeda desconhecida`.
+. Reimplemente ambas as partes de <<coinNamesExercise>> usando instruções `switch` em vez de instruções `if`.
+. [[ordinalNumbersExercise]] Expanda o programa apresentado em
+<<ordinalNumbersExample>> para fornecer os sufixos corretos (sempre
+“`th`”) para números que terminam em 11, 12 e 13. Use o operador módulo
+para encontrar os dois últimos dígitos do número. Usando uma instrução `if`
+, uma instrução `switch` ou uma combinação, verifique esses três
+casos antes de passar para os casos normais.
+. Na parte inferior de <<_instruções_switch>>, usamos uma
+instrução `switch` para determinar a localização de vários códigos de área no
+estado de Nova York. Escreva um fragmento de código equivalente usando instruções `if`-`else`
+em vez disso.
+. Cada membro do seu clube secreto tem um número de identificação. Esses números de identificação
+estão entre 1 e 1.000.000 e têm duas características especiais: são
+múltiplos de 7 e todos terminam com um 3 na casa das unidades. Por exemplo,
+63 é o menor desses valores, e 999.943 é o maior desses valores.
+Escreva um programa que solicite ao usuário um valor `int`, leia-o
+e, em seguida, indique se ele poderia ou não ser usado como um número de identificação. Observação: você
+precisa usar o operador módulo de duas maneiras diferentes para testar o valor
+corretamente.
+. De acordo com o Plano de Numeração Norte-Americano (NANP) usado pelos
+Estados Unidos, Canadá e vários países menores, um número de telefone válido
+tem o formato `XYY-XYY-YYYY`, onde `X` é qualquer dígito
+de 2 a 9 e `Y` é qualquer dígito de 0 a 9. Escreva um programa que leia uma `String`
+do usuário e verifique se é um número de telefone válido segundo o NANP. O
+comprimento total da `String` deve ser 12. O quarto e o oitavo
+caracteres da `String` (com índices `3` e `7`) devem ser hífens
+(`-`), e todos os dígitos restantes devem estar no intervalo correto. Use
+o método `charAt()` da classe `String` para obter o valor `char` em
+cada índice. Observação: há várias maneiras de estruturar as instruções `if`
+que você precisa usar, mas o número de condições pode se tornar
+grande. (23 ou mais!)
+. Reimplemente a solução para o programa Monty Hall apresentada em
+<<Solução: Monty Hall>> usando `JOptionPane` para gerar GUIs para
+entrada e saída.
