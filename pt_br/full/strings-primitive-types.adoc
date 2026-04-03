@@ -9,7 +9,7 @@ A originalidade existe em cada indivíduo porque cada um de nós difere dos dema
 números primos, divisíveis apenas por nós mesmos.
 ____
 
-=== Problema: Calculadora de custos da faculdade
+=== Problema: Calculadora de custos universitários
 
 Talvez você seja um estudante. Talvez não seja. Em ambos os casos, você deve
 estar ciente do custo cada vez mais alto de uma educação universitária. O
@@ -30,7 +30,7 @@ com o nome do usuário. Abaixo está um exemplo de execução deste programa.
 
 [subs=+macros]
 ....
-Bem-vindo à Calculadora de Custos da Faculdade!
+Bem-vindo à Calculadora de Custos Universitários!
 Digite seu nome: pass:quotes[*Holden*]
 Digite seu sobrenome: pass:quotes[*Caulfield*]
 Digite a mensalidade por semestre: $pass:quotes[*17415*]
@@ -1278,7 +1278,7 @@ encontrar em textos impressos. Valores do tipo `char` são usados para represent
 caracteres individuais.
 
 Nas linguagens mais antigas, como C e {cpp}, o tipo `char` usava 8 bits para
-armazenamento. Pela seção <<computer-basics# noções básicas de informática>>, você sabe que é possível
+armazenamento. Pela seção <<computer-basics#computer-basics>>, você sabe que é possível
 representar até 2^8 = 256 valores com 8 bits. O alfabeto latino
 , usado para escrever em inglês, utiliza 26 letras. Se precisarmos
 representar letras maiúsculas e minúsculas, os 10 dígitos decimais,
@@ -1574,7 +1574,7 @@ pode deixá-la não inicializada.
 
 
 ****
-<<exercício sobre variáveis não inicializadas>>
+<<uninitializedVariableExercise>>
 ****
 
 Há uma diferença entre uma `String` não inicializada (uma referência
@@ -2355,7 +2355,7 @@ String hex = Integer.toString(604, 16); // Contém “25c”
 Exceto por esse tipo de conversão de base, muitos programadores raramente usam
 métodos `toString()` porque há uma maneira mais fácil de converter um número (ou qualquer
 tipo) em uma `String`. O operador de concatenação (`+`) discutido no
-<<Concatenação de valores `String`>> pode ser usado para concatenar um número à
+<<Concatenando valores `String`>> pode ser usado para concatenar um número à
 string vazia (`“”`), “adicionando” uma versão `String` do número a, bem,
 nada. Usando esse estilo, você pode encontrar um código como o seguinte.
 
@@ -2960,8 +2960,8 @@ use um objeto `Scanner` para ler a entrada em uma variável `int` chamada
 `rooms` e, em seguida, exiba o valor na tela. Se você compilar e
 executar seu programa e digitar o valor `3.5`, você consegue explicar a
 saída que vê?
-. Converta a solução da calculadora de custos da faculdade apresentada em
-<<Solução: Calculadora de custos da faculdade>> para usar métodos `JOptionPane` tanto para entrada quanto para saída. Use o cabeçalho com
+. Converta a solução da calculadora de custos universitários apresentada em
+<<Solução: Calculadora de custos universitários>> para usar métodos `JOptionPane` tanto para entrada quanto para saída. Use o cabeçalho com
 o nome e o sobrenome do usuário como título da caixa de diálogo de saída e
 omita a linha de asteriscos. Se você colocar toda a saída em uma única
 `String` com uma quebra de linha (`\n`) separando cada linha, a saída será

@@ -1192,7 +1192,7 @@ devanágari, cirílico e outros alfabetos. Por exemplo, `m\u00F6tleyCr\u00FCe`
 `\u00FC` é uma forma de codificar `ü`. Em alguns sistemas, esse nome de variável pode
 ser renderizado como `mötleyCrüe`, mas o compilador pode gerar um erro se você digitar esses caracteres diretamente. Em resumo, o Java suporta uma enorme variedade de
 caracteres, mas fazer com que esse suporte funcione para você às vezes é mais desafiador.
-A <<Characters: `char`>> discute a codificação de caracteres mais detalhadamente.
+A <<Caracteres: `char`>> discute a codificação de caracteres mais detalhadamente.
 
 Lembre-se de que palavras-chave também não podem ser usadas como identificadores. Por exemplo,
 `public`, `static` e `class` são todas palavras-chave em Java e nunca podem

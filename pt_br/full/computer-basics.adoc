@@ -419,7 +419,7 @@ Firefox, Apple Safari, and Google Chrome. Each has advantages and
 disadvantages in terms of compatibility, standards compliance,
 security, speed, and customer support.
 
-=== Syntax: Data representation
+=== Sintaxe: Representação de dados
 
 After each *Concepts* section, this book usually has a *Syntax* section.
 Syntax is the set of rules for a language. These *Syntax* sections generally
@@ -1556,7 +1556,7 @@ While the above example may seem unrealistic, it does expose the
 inherent dangers of floating-point calculations. Although the error is
 less when using double precision representations, it still exists.
 
-=== Solution: Buying a computer
+=== Solução: Comprando um computador
 
 We pose a motivating problem in the *Problem* section near the beginning
 of most chapters. Whenever there is a *Problem* section, there is a
@@ -1836,7 +1836,7 @@ disagree: Forewarned is forearmed. Concurrency is an integral part of
 modern computation, and the earlier you get introduced to it, the more
 familiar it'll be.
 
-=== Summary
+=== Resumo
 
 This introductory chapter focused on the fundamentals of a computer. We
 began with a description of computer hardware, including the CPU,
@@ -1857,7 +1857,7 @@ The next chapter extends the idea of data representation into the
 specific types of data that Java uses and introduces representation
 systems for individual characters and text.
 
-=== Exercises
+=== Exercícios
 
 *Conceptual Problems*
 
