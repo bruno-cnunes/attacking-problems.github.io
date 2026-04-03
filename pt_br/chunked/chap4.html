@@ -1091,7 +1091,7 @@ outra coisa ainda é <code>true</code>. Com <code>&amp;&amp;</code>, essa situa�
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="kc">true</span> <span class="o">||</span> <span class="o">((</span><span class="n">tarde</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">podeDormir</span> <span class="o">&amp;&amp;</span> <span class="n">cansado</span> <span class="o">&amp;</span> <span class="n">temFome</span><span class="o">)</span> <span class="o">||</span>
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="kc">true</span> <span class="o">||</span> <span class="o">((</span><span class="n">tarde</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">podeDormir</span> <span class="o">&amp;&amp;</span> <span class="n">cansado</span> <span class="o">&amp;&amp;</span> <span class="n">temFome</span><span class="o">)</span> <span class="o">||</span>
     <span class="o">(</span><span class="n">querDescobrirOQueAconteceA</span> <span class="n">seguirNoSeuProgramaFavorito</span> <span class="o">||</span>
     <span class="n">gostaDeTV</span><span class="o">)))</span></code></pre>
 </div>
@@ -1122,13 +1122,13 @@ suponha que a variável <code>boolean</code> <code>trabalhando</code> seja <code
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="n">trabalhando</span> <span class="o">&amp;</span> <span class="n">fazerAlgoImportante</span><span class="o">())</span></code></pre>
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="n">trabalhando</span> <span class="o">&amp;&amp;</span> <span class="n">fazerAlgoImportante</span><span class="o">())</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Nesse caso, o método <code>fazerAlgoImportante()</code> deve retornar um
 valor <code>boolean</code> para ser uma instrução válida. Ainda assim, se <code>trabalhando</code> for <code>false</code>,
-o método ‘fazerAlgoImportante()’ nem mesmo será chamado. Assim que a
+o método "fazerAlgoImportante()" nem mesmo será chamado. Assim que a
 JVM perceber que está aplicando a operação <code>&amp;&amp;</code> a um valor <code>false</code>
 (ou um <code>||</code> a um <code>true</code>), ela desistirá. Em muitos casos, fazer isso é aceitável. Na verdade,
 os programadores às vezes exploram esse recurso para permitir que o código em um
@@ -1605,7 +1605,7 @@ método <code>equals()</code> para testar se dois valores <code>String</code> s�
 <p>Observe que adicionamos comentários especificando o que presumimos ser o caso
 para cada bloco <code>else</code>. Se fôssemos mais cuidadosos, deveríamos testar
 os casos <code>"y"</code> e <code>"n"</code> e, então, exibir uma mensagem de erro quando o usuário
-inserisse algo inesperado, como <code>"x"</code>, <code>‘149’</code> ou mesmo <code>"no"</code>.</p>
+inserisse algo inesperado, como <code>"x"</code>, <code>"149"</code> ou mesmo <code>"no"</code>.</p>
 </div>
 <div class="paragraph">
 <p>Você pode estar curioso para saber como criar um jogo de 20 Perguntas de verdade que possa
@@ -1747,7 +1747,7 @@ com base no ano está abaixo.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nc">String</span> <span class="n">gift</span><span class="o">;</span>
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">String</span> <span class="n">presente</span><span class="o">;</span>
 <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">presente</span> <span class="o">=</span> <span class="s">"Papel"</span><span class="o">;</span>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
@@ -1755,7 +1755,7 @@ com base no ano está abaixo.</p>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">presente</span> <span class="o">=</span> <span class="s">"Couro"</span><span class="o">;</span>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">4</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">presente</span> <span class="o">=</span> <span class="err">‘</span><span class="nc">Fruta</span><span class="err">’</span><span class="o">;</span>
+    <span class="n">presente</span> <span class="o">=</span> <span class="s">"Fruta"</span><span class="o">;</span>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">5</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">presente</span> <span class="o">=</span> <span class="s">"Madeira"</span><span class="o">;</span>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">6</span><span class="o">)</span> <span class="o">{</span>
@@ -1769,7 +1769,7 @@ com base no ano está abaixo.</p>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">10</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">presente</span> <span class="o">=</span> <span class="s">"Estanho / Alumínio"</span><span class="o">;</span>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">11</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">presente</span> <span class="o">=</span> <span class="err">‘</span><span class="nc">Aço</span><span class="err">’</span><span class="o">;</span>
+    <span class="n">presente</span> <span class="o">=</span> <span class="s">"Aço"</span><span class="o">;</span>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">12</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">presente</span> <span class="o">=</span> <span class="s">"Seda / Linho"</span><span class="o">;</span>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">13</span><span class="o">)</span> <span class="o">{</span>
@@ -1779,7 +1779,7 @@ com base no ano está abaixo.</p>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">15</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">presente</span> <span class="o">=</span> <span class="s">"Cristal"</span><span class="o">;</span>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">20</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">presente</span> <span class="o">=</span> <span class="err">‘</span><span class="nc">Porcelana</span><span class="err">’</span><span class="o">;</span>
+    <span class="n">presente</span> <span class="o">=</span> <span class="s">"Porcelana"</span><span class="o">;</span>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">25</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">presente</span> <span class="o">=</span> <span class="s">"Prata"</span><span class="o">;</span>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">30</span><span class="o">)</span> <span class="o">{</span>
@@ -1787,7 +1787,7 @@ com base no ano está abaixo.</p>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">35</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">presente</span> <span class="o">=</span> <span class="s">"Coral"</span><span class="o">;</span>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">40</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">presente</span> <span class="o">=</span> <span class="err">‘</span><span class="nc">Rubi</span><span class="err">’</span><span class="o">;</span>
+    <span class="n">presente</span> <span class="o">=</span> <span class="s">"Rubi"</span><span class="o">;</span>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">45</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">presente</span> <span class="o">=</span> <span class="s">"Safira"</span><span class="o">;</span>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">50</span><span class="o">)</span> <span class="o">{</span>
@@ -1795,7 +1795,7 @@ com base no ano está abaixo.</p>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">55</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">presente</span> <span class="o">=</span> <span class="s">"Esmeralda"</span><span class="o">;</span>
 <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">60</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">presente</span> <span class="o">=</span> <span class="err">‘</span><span class="nc">Diamante</span><span class="err">’</span><span class="o">;</span>
+    <span class="n">presente</span> <span class="o">=</span> <span class="s">"Diamante"</span><span class="o">;</span>
 <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
     <span class="n">presente</span> <span class="o">=</span> <span class="s">"Sem presente tradicional"</span><span class="o">;</span>
 <span class="o">}</span></code></pre>
@@ -1815,7 +1815,7 @@ se tornaria ilegível e excessivamente grande.</p>
     <span class="n">presente</span> <span class="o">=</span> <span class="s">"Papel"</span><span class="o">;</span>
 <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">presente</span> <span class="o">=</span> <span class="err">‘</span><span class="nc">Algodão</span><span class="err">’</span><span class="o">;</span>
+        <span class="n">presente</span> <span class="o">=</span> <span class="s">"Algodão"</span><span class="o">;</span>
     <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
         <span class="k">if</span> <span class="o">(</span><span class="n">ano</span> <span class="o">==</span> <span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">presente</span> <span class="o">=</span> <span class="s">"Couro"</span><span class="o">;</span>
@@ -1848,7 +1848,7 @@ usando uma instrução <code>switch</code> da seguinte maneira.</p>
     <span class="k">case</span> <span class="mi">1</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Papel"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
     <span class="k">case</span> <span class="mi">2</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Algodão"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
     <span class="k">case</span> <span class="mi">3</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Couro"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
-    <span class="k">case</span> <span class="mi">4</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="err">‘</span><span class="nc">Fruta</span><span class="err">’</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">4</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Fruta"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
     <span class="k">case</span> <span class="mi">5</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Madeira"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
     <span class="k">case</span> <span class="mi">6</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Doces / Ferro"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
     <span class="k">case</span> <span class="mi">7</span><span class="o">:</span> <span class="n">presente</span><span class="o">=</span> <span class="s">"Lã / Cobre"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
@@ -1858,17 +1858,17 @@ usando uma instrução <code>switch</code> da seguinte maneira.</p>
     <span class="n">caso</span> <span class="mi">11</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Aço"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
     <span class="n">caso</span> <span class="mi">12</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Seda / Linho"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
     <span class="n">caso</span> <span class="mi">13</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Renda"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
-    <span class="n">caso</span> <span class="mi">14</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="err">‘</span><span class="nc">Marfim</span><span class="err">’</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="n">caso</span> <span class="mi">14</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Marfim"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
     <span class="n">caso</span> <span class="mi">15</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Cristal"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
     <span class="n">caso</span> <span class="mi">20</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Porcelana"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
     <span class="n">caso</span> <span class="mi">25</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Prata"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
     <span class="n">caso</span> <span class="mi">30</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Pérola"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
     <span class="n">caso</span> <span class="mi">35</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Coral"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
-    <span class="n">caso</span> <span class="mi">40</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="err">‘</span><span class="nc">Rubi</span><span class="err">’</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="n">caso</span> <span class="mi">40</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Rubi"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
     <span class="n">caso</span> <span class="mi">45</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Safira"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
     <span class="k">case</span> <span class="mi">50</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Ouro"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
     <span class="k">case</span> <span class="mi">55</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Esmeralda"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
-    <span class="k">case</span> <span class="mi">60</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="err">‘</span><span class="nc">Diamante</span><span class="err">’</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">60</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Diamante"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
     <span class="k">default</span><span class="o">:</span> <span class="n">presente</span> <span class="o">=</span> <span class="s">"Sem presente tradicional"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
 <span class="o">}</span></code></pre>
 </div>
@@ -1904,13 +1904,13 @@ códigos de área telefônica no estado de Nova York. Se um <code>case</code> n�
     <span class="k">case</span> <span class="mi">646</span><span class="o">:</span>
     <span class="k">case</span> <span class="mi">718</span><span class="o">:</span> <span class="n">localidade</span> <span class="o">+=</span> <span class="s">"Cidade de Nova York"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
 
-    <span class="k">case</span> <span class="mi">315</span><span class="o">:</span> <span class="n">localidade</span> <span class="o">=</span> <span class="err">‘</span><span class="nc">Syracuse</span><span class="err">’</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">315</span><span class="o">:</span> <span class="n">localidade</span> <span class="o">=</span> <span class="s">"Syracuse"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
 
     <span class="k">case</span> <span class="mi">516</span><span class="o">:</span> <span class="n">localidade</span> <span class="o">=</span> <span class="s">"Condado de Nassau"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
 
 <span class="k">case</span> <span class="mi">518</span><span class="o">:</span> <span class="n">localidade</span> <span class="o">=</span> <span class="s">"Albany"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
 
-    <span class="k">case</span> <span class="mi">585</span><span class="o">:</span> <span class="n">localidade</span> <span class="o">=</span> <span class="err">‘</span><span class="nc">Rochester</span><span class="err">’</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">585</span><span class="o">:</span> <span class="n">localidade</span> <span class="o">=</span> <span class="s">"Rochester"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
 
     <span class="k">case</span> <span class="mi">607</span><span class="o">:</span> <span class="n">localidade</span> <span class="o">=</span> <span class="s">"Centro-Sul de Nova York"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
 
@@ -2450,7 +2450,7 @@ o signo.</p>
 <pre class="rouge highlight"><code data-lang="java"><span class="kt">int</span> <span class="n">dias</span> <span class="o">=</span>
     <span class="k">switch</span> <span class="o">(</span><span class="n">mes</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">case</span> <span class="s">"Jan"</span><span class="o">,</span> <span class="s">"Mar"</span><span class="o">,</span> <span class="s">"Mai"</span><span class="o">,</span> <span class="s">"Jul"</span><span class="o">,</span> <span class="s">"Ago"</span><span class="o">,</span> <span class="s">"Out"</span><span class="o">,</span> <span class="s">"Dez"</span> <span class="o">-&gt;</span> <span class="mi">31</span><span class="o">;</span>
-        <span class="k">case</span> <span class="s">"Abr"</span><span class="o">,</span> <span class="s">"Jun"</span><span class="o">,</span> <span class="err">‘</span><span class="nc">Set</span><span class="err">’</span><span class="o">,</span> <span class="s">"Nov"</span> <span class="o">-&gt;</span> <span class="mi">30</span><span class="o">;</span>
+        <span class="k">case</span> <span class="s">"Abr"</span><span class="o">,</span> <span class="s">"Jun"</span><span class="o">,</span> <span class="s">"Set"</span><span class="o">,</span> <span class="s">"Nov"</span> <span class="o">-&gt;</span> <span class="mi">30</span><span class="o">;</span>
 
 <span class="k">case</span> <span class="s">"Fev"</span> <span class="o">-&gt;</span> <span class="mi">28</span><span class="o">;</span>
         <span class="k">default</span> <span class="o">-&gt;</span> <span class="mi">0</span><span class="o">;</span>
@@ -2468,26 +2468,26 @@ o signo.</p>
           <span class="k">case</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="s">"Algodão"</span><span class="o">;</span>
           <span class="k">case</span> <span class="mi">3</span> <span class="o">-&gt;</span> <span class="s">"Couro"</span><span class="o">;</span>
           <span class="k">case</span> <span class="mi">4</span> <span class="o">-&gt;</span> <span class="s">"Fruta"</span><span class="o">;</span>
-          <span class="k">case</span> <span class="mi">5</span> <span class="o">-&gt;</span> <span class="err">‘</span><span class="nc">Madeira</span><span class="err">’</span><span class="o">;</span>
+          <span class="k">case</span> <span class="mi">5</span> <span class="o">-&gt;</span> <span class="s">"Madeira"</span><span class="o">;</span>
           <span class="k">case</span> <span class="mi">6</span> <span class="o">-&gt;</span> <span class="s">"Doces / Ferro"</span><span class="o">;</span>
           <span class="k">case</span> <span class="mi">7</span> <span class="o">-&gt;</span> <span class="s">"Lã / Cobre"</span><span class="o">;</span>
           <span class="k">case</span> <span class="mi">8</span> <span class="o">-&gt;</span> <span class="s">"Bronze / Cerâmica"</span><span class="o">;</span>
           <span class="k">case</span> <span class="mi">9</span> <span class="o">-&gt;</span> <span class="s">"Cerâmica / Salgueiro"</span><span class="o">;</span>
           <span class="k">case</span> <span class="mi">10</span> <span class="o">-&gt;</span> <span class="s">"Estanho / Alumínio"</span><span class="o">;</span>
-          <span class="k">case</span> <span class="mi">11</span> <span class="o">-&gt;</span> <span class="err">‘</span><span class="nc">Aço</span><span class="err">’</span><span class="o">;</span>
+          <span class="k">case</span> <span class="mi">11</span> <span class="o">-&gt;</span> <span class="s">"Aço"</span><span class="o">;</span>
           <span class="k">case</span> <span class="mi">12</span> <span class="o">-&gt;</span> <span class="s">"Seda / Linho"</span><span class="o">;</span>
           <span class="n">caso</span> <span class="mi">13</span> <span class="o">-&gt;</span> <span class="s">"Renda"</span><span class="o">;</span>
           <span class="n">caso</span> <span class="mi">14</span> <span class="o">-&gt;</span> <span class="s">"Marfim"</span><span class="o">;</span>
           <span class="n">caso</span> <span class="mi">15</span> <span class="o">-&gt;</span> <span class="s">"Cristal"</span><span class="o">;</span>
           <span class="n">caso</span> <span class="mi">20</span> <span class="o">-&gt;</span> <span class="s">"Porcelana"</span><span class="o">;</span>
           <span class="n">caso</span> <span class="mi">25</span> <span class="o">-&gt;</span> <span class="s">"Prata"</span><span class="o">;</span>
-          <span class="n">caso</span> <span class="mi">30</span> <span class="o">-&gt;</span> <span class="err">‘</span><span class="nc">Pérola</span><span class="err">’</span><span class="o">;</span>
+          <span class="n">caso</span> <span class="mi">30</span> <span class="o">-&gt;</span> <span class="s">"Pérola"</span><span class="o">;</span>
           <span class="n">caso</span> <span class="mi">35</span> <span class="o">-&gt;</span> <span class="s">"Coral"</span><span class="o">;</span>
           <span class="k">case</span> <span class="mi">40</span> <span class="o">-&gt;</span> <span class="s">"Rubi"</span><span class="o">;</span>
           <span class="k">case</span> <span class="mi">45</span> <span class="o">-&gt;</span> <span class="s">"Safira"</span><span class="o">;</span>
           <span class="k">case</span> <span class="mi">50</span> <span class="o">-&gt;</span> <span class="s">"Ouro"</span><span class="o">;</span>
           <span class="k">case</span> <span class="mi">55</span> <span class="o">-&gt;</span> <span class="s">"Esmeralda"</span><span class="o">;</span>
-          <span class="k">case</span> <span class="mi">60</span> <span class="o">-&gt;</span> <span class="err">‘</span><span class="nc">Diamante</span><span class="err">’</span><span class="o">;</span>
+          <span class="k">case</span> <span class="mi">60</span> <span class="o">-&gt;</span> <span class="s">"Diamante"</span><span class="o">;</span>
           <span class="k">default</span> <span class="o">-&gt;</span> <span class="s">"Sem presente tradicional"</span><span class="o">;</span>
         <span class="o">};</span></code></pre>
 </div>
@@ -2505,12 +2505,12 @@ o signo.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kt">boolean</span> <span class="n">mesValido</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
 <span class="k">switch</span> <span class="o">(</span><span class="n">mes</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">case</span> <span class="s">"Jan"</span><span class="o">,</span> <span class="s">"Mar"</span><span class="o">,</span> <span class="s">"Mai"</span><span class="o">,</span> <span class="s">"Jul"</span><span class="o">,</span> <span class="s">"Ago"</span><span class="o">,</span> <span class="s">"Out"</span><span class="o">,</span> <span class="err">‘</span><span class="nc">Dez</span><span class="err">’</span> <span class="o">-&gt;</span>
+    <span class="k">case</span> <span class="s">"Jan"</span><span class="o">,</span> <span class="s">"Mar"</span><span class="o">,</span> <span class="s">"Mai"</span><span class="o">,</span> <span class="s">"Jul"</span><span class="o">,</span> <span class="s">"Ago"</span><span class="o">,</span> <span class="s">"Out"</span><span class="o">,</span> <span class="s">"Dez"</span> <span class="o">-&gt;</span>
         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Há 31 dias em "</span> <span class="o">+</span> <span class="n">mes</span><span class="o">);</span>
 
 <span class="k">case</span> <span class="s">"Abr"</span><span class="o">,</span> <span class="s">"Jun"</span><span class="o">,</span> <span class="s">"Set"</span><span class="o">,</span> <span class="s">"Nov"</span> <span class="o">-&gt;</span>
         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Há 30 dias em "</span> <span class="o">+</span> <span class="n">mes</span><span class="o">);</span>
-    <span class="k">case</span> <span class="err">‘</span><span class="nc">Fev</span><span class="err">’</span> <span class="o">-&gt;</span>
+    <span class="k">case</span> <span class="s">"Fev"</span> <span class="o">-&gt;</span>
         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Há 28 dias em "</span> <span class="o">+</span> <span class="n">mes</span><span class="o">);</span>
 
 <span class="k">default</span> <span class="o">-&gt;</span> <span class="o">{</span>
@@ -3095,8 +3095,8 @@ em Java como uma afirmação equivalente que não contenha negações.</p>
 <span class="k">if</span> <span class="o">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="o">)</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="o">)</span> <span class="o">{</span>
     <span class="o">++</span><span class="n">y</span><span class="o">;</span>
 <span class="o">}</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">“</span><span class="nl">x:</span> <span class="err">”</span> <span class="o">+</span> <span class="n">x</span><span class="o">);</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">“</span><span class="nl">y:</span> <span class="err">”</span> <span class="o">+</span> <span class="n">y</span><span class="o">);</span></code></pre>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"x: "</span> <span class="o">+</span> <span class="n">x</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"y: "</span> <span class="o">+</span> <span class="n">y</span><span class="o">);</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3110,9 +3110,9 @@ for alterada para <code>y &gt; 10 &amp; (x = 10) &gt; 5</code>? Por quê?</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">7</span><span class="o">;</span>
 <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">++</span> <span class="o">==</span> <span class="mi">7</span><span class="o">)</span> <span class="o">{</span>
-    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">“</span><span class="nc">Sete</span><span class="err">”</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Sete"</span><span class="o">);</span>
 <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">“</span><span class="nc">Não</span> <span class="n">é</span> <span class="n">sete</span><span class="err">”</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Não é sete"</span><span class="o">);</span>
 <span class="o">}</span></code></pre>
 </div>
 </div>
@@ -3162,34 +3162,34 @@ corresponder a nenhuma moeda, imprima <code>no coin</code>.</p>
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Centavos</th>
-<th class="tableblock halign-left valign-top">Moeda</th>
+<th class="tableblock halign-center valign-top">Centavos</th>
+<th class="tableblock halign-center valign-top">Moeda</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">penny</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">penny</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">nickel</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">nickel</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">dime</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">dime</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarter</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">25</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">quarter</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">50</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">half-dollar</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">50</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">half-dollar</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">dollar</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">100</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">dollar</p></td>
 </tr>
 </tbody>
 </table>
@@ -3209,7 +3209,7 @@ nenhuma moeda, imprima <code>moeda desconhecida</code>.</p>
 <li>
 <p><a id="ordinalNumbersExercise"></a> Expanda o programa apresentado em
 <a href="chap4.html#ordinalNumbersExample">Exemplo 4.7</a> para fornecer os sufixos corretos (sempre
-“<code>th</code>”) para números que terminam em 11, 12 e 13. Use o operador módulo
+“th”) para números que terminam em 11, 12 e 13. Use o operador módulo
 para encontrar os dois últimos dígitos do número. Usando uma instrução <code>if</code>
 , uma instrução <code>switch</code> ou uma combinação, verifique esses três
 casos antes de passar para os casos normais.</p>

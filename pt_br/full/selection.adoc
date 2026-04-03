@@ -539,7 +539,7 @@ outra coisa ainda é `true`. Com `&&`, essa situação ocorre porque `false`
 
 [source,java]
 ----
-if (true || ((tarde && !podeDormir && cansado & temFome) ||
+if (true || ((tarde && !podeDormir && cansado && temFome) ||
     (querDescobrirOQueAconteceA seguirNoSeuProgramaFavorito ||
     gostaDeTV)))
 ----
@@ -568,12 +568,12 @@ suponha que a variável `boolean` `trabalhando` seja `false` no exemplo a seguir
 
 [source,java]
 ----
-if (trabalhando & fazerAlgoImportante())
+if (trabalhando && fazerAlgoImportante())
 ----
 
 Nesse caso, o método `fazerAlgoImportante()` deve retornar um
 valor `boolean` para ser uma instrução válida. Ainda assim, se `trabalhando` for `false`,
-o método ‘fazerAlgoImportante()’ nem mesmo será chamado. Assim que a
+o método "fazerAlgoImportante()" nem mesmo será chamado. Assim que a
 JVM perceber que está aplicando a operação `&&` a um valor `false`
 (ou um `||` a um `true`), ela desistirá. Em muitos casos, fazer isso é aceitável. Na verdade,
 os programadores às vezes exploram esse recurso para permitir que o código em um
@@ -873,7 +873,7 @@ método `equals()` para testar se dois valores `String` são iguais.
 Observe que adicionamos comentários especificando o que presumimos ser o caso
 para cada bloco `else`. Se fôssemos mais cuidadosos, deveríamos testar
 os casos `"y"` e `"n"` e, então, exibir uma mensagem de erro quando o usuário
-inserisse algo inesperado, como `"x"`, `‘149’` ou mesmo `"no"`.
+inserisse algo inesperado, como `"x"`, `"149"` ou mesmo `"no"`.
 
 Você pode estar curioso para saber como criar um jogo de 20 Perguntas de verdade que possa
 aprender com o tempo. Para isso, são necessárias muitas outras ferramentas de programação:
@@ -924,7 +924,7 @@ com base no ano está abaixo.
 
 [source,java]
 ----
-String gift;
+String presente;
 if (ano == 1) {
     presente = "Papel";
 } else if (ano == 2) {
@@ -932,7 +932,7 @@ if (ano == 1) {
 } else if (ano == 3) {
     presente = "Couro";
 } else if (ano == 4) {
-    presente = ‘Fruta’;
+    presente = "Fruta";
 } else if (ano == 5) {
     presente = "Madeira";
 } else if (ano == 6) {
@@ -946,7 +946,7 @@ if (ano == 1) {
 } else if (ano == 10) {
     presente = "Estanho / Alumínio";
 } else if (ano == 11) {
-    presente = ‘Aço’;
+    presente = "Aço";
 } else if (ano == 12) {
     presente = "Seda / Linho";
 } else if (ano == 13) {
@@ -956,7 +956,7 @@ if (ano == 1) {
 } else if (ano == 15) {
     presente = "Cristal";
 } else if (ano == 20) {
-    presente = ‘Porcelana’;
+    presente = "Porcelana";
 } else if (ano == 25) {
     presente = "Prata";
 } else if (ano == 30) {
@@ -964,7 +964,7 @@ if (ano == 1) {
 } else if (ano == 35) {
     presente = "Coral";
 } else if (ano == 40) {
-    presente = ‘Rubi’;
+    presente = "Rubi";
 } else if (ano == 45) {
     presente = "Safira";
 } else if (ano == 50) {
@@ -972,7 +972,7 @@ if (ano == 1) {
 } else if (ano == 55) {
     presente = "Esmeralda";
 } else if (ano == 60) {
-    presente = ‘Diamante’;
+    presente = "Diamante";
 } else {
     presente = "Sem presente tradicional";
 }
@@ -991,7 +991,7 @@ if (ano == 1) {
     presente = "Papel";
 } else {
     if (ano == 2) {
-        presente = ‘Algodão’;
+        presente = "Algodão";
     } else {
         if (ano == 3) {
             presente = "Couro";
@@ -1022,7 +1022,7 @@ switch (ano) {
     case 1: presente = "Papel"; break;
     case 2: presente = "Algodão"; break;
     case 3: presente = "Couro"; break;
-    case 4: presente = ‘Fruta’; break;
+    case 4: presente = "Fruta"; break;
     case 5: presente = "Madeira"; break;
     case 6: presente = "Doces / Ferro"; break;
     case 7: presente= "Lã / Cobre"; break;
@@ -1032,17 +1032,17 @@ switch (ano) {
     caso 11: presente = "Aço"; break;
     caso 12: presente = "Seda / Linho"; break;
     caso 13: presente = "Renda"; break;
-    caso 14: presente = ‘Marfim’; break;
+    caso 14: presente = "Marfim"; break;
     caso 15: presente = "Cristal"; break;
     caso 20: presente = "Porcelana"; break;
     caso 25: presente = "Prata"; break;
     caso 30: presente = "Pérola"; break;
     caso 35: presente = "Coral"; break;
-    caso 40: presente = ‘Rubi’; break;
+    caso 40: presente = "Rubi"; break;
     caso 45: presente = "Safira"; break;
     case 50: presente = "Ouro"; break;
     case 55: presente = "Esmeralda"; break;
-    case 60: presente = ‘Diamante’; break;
+    case 60: presente = "Diamante"; break;
     default: presente = "Sem presente tradicional"; break;
 }
 ----
@@ -1076,13 +1076,13 @@ case 917: localidade = "Celular: ";
     case 646:
     case 718: localidade += "Cidade de Nova York"; break;
 
-    case 315: localidade = ‘Syracuse’; break;
+    case 315: localidade = "Syracuse"; break;
 
     case 516: localidade = "Condado de Nassau"; break;
     
 case 518: localidade = "Albany"; break;
 
-    case 585: localidade = ‘Rochester’; break;
+    case 585: localidade = "Rochester"; break;
 
     case 607: localidade = "Centro-Sul de Nova York"; break;
 
@@ -1316,7 +1316,7 @@ A expressão `switch` pode resultar em um código mais simples do que a instruç
 int dias =
     switch (mes) {
         case "Jan", "Mar", "Mai", "Jul", "Ago", "Out", "Dez" -> 31;
-        case "Abr", "Jun", ‘Set’, "Nov" -> 30;
+        case "Abr", "Jun", "Set", "Nov" -> 30;
         
 case "Fev" -> 28;
         default -> 0;
@@ -1334,26 +1334,26 @@ String presente =
           case 2 -> "Algodão";
           case 3 -> "Couro";
           case 4 -> "Fruta";
-          case 5 -> ‘Madeira’;
+          case 5 -> "Madeira";
           case 6 -> "Doces / Ferro";
           case 7 -> "Lã / Cobre";
           case 8 -> "Bronze / Cerâmica";
           case 9 -> "Cerâmica / Salgueiro";
           case 10 -> "Estanho / Alumínio";
-          case 11 -> ‘Aço’;
+          case 11 -> "Aço";
           case 12 -> "Seda / Linho";
           caso 13 -> "Renda";
           caso 14 -> "Marfim";
           caso 15 -> "Cristal";
           caso 20 -> "Porcelana";
           caso 25 -> "Prata";
-          caso 30 -> ‘Pérola’;
+          caso 30 -> "Pérola";
           caso 35 -> "Coral";
           case 40 -> "Rubi";
           case 45 -> "Safira";
           case 50 -> "Ouro";
           case 55 -> "Esmeralda";
-          case 60 -> ‘Diamante’;
+          case 60 -> "Diamante";
           default -> "Sem presente tradicional";
         };
 ----
@@ -1368,12 +1368,12 @@ Aqui está um exemplo que imprime o número de dias no mês fornecido e usa um s
 ----
 boolean mesValido = true;
 switch (mes) {
-    case "Jan", "Mar", "Mai", "Jul", "Ago", "Out", ‘Dez’ ->
+    case "Jan", "Mar", "Mai", "Jul", "Ago", "Out", "Dez" ->
         System.out.println("Há 31 dias em " + mes);
     
 case "Abr", "Jun", "Set", "Nov" ->
         System.out.println("Há 30 dias em " + mes);
-    case ‘Fev’ ->
+    case "Fev" ->
         System.out.println("Há 28 dias em " + mes);
     
 default -> {
@@ -1582,8 +1582,8 @@ int y = 3;
 if (y > 10 && (x = 10) > 5) {
     ++y;
 }
-System.out.println(“x: ” + x);
-System.out.println(“y: ” + y);
+System.out.println("x: " + x);
+System.out.println("y: " + y);
 ----
 +
 Qual é a saída? A saída muda se a condição da instrução `if`
@@ -1594,9 +1594,9 @@ for alterada para `y > 10 & (x = 10) > 5`? Por quê?
 ----
 int a = 7;
 if (a++ == 7) {
-    System.out.println(“Sete”);
+    System.out.println("Sete");
 } else {
-    System.out.println(“Não é sete”);
+    System.out.println("Não é sete");
 }
 ----
 +
@@ -1620,7 +1620,7 @@ centavos. Use instruções `if` para imprimir o nome da moeda correspondente
 na moeda dos EUA de acordo com a tabela abaixo. Se o valor não
 corresponder a nenhuma moeda, imprima `no coin`.
 +
-[.center%autowidth%unbreakable,cols=“^,^”,]
+[.center%autowidth%unbreakable,cols="^,^",]
 |===============
 |Centavos |Moeda
 
@@ -1638,7 +1638,7 @@ nenhuma moeda, imprima `moeda desconhecida`.
 . Reimplemente ambas as partes de <<coinNamesExercise>> usando instruções `switch` em vez de instruções `if`.
 . [[ordinalNumbersExercise]] Expanda o programa apresentado em
 <<ordinalNumbersExample>> para fornecer os sufixos corretos (sempre
-“`th`”) para números que terminam em 11, 12 e 13. Use o operador módulo
+"`th`") para números que terminam em 11, 12 e 13. Use o operador módulo
 para encontrar os dois últimos dígitos do número. Usando uma instrução `if`
 , uma instrução `switch` ou uma combinação, verifique esses três
 casos antes de passar para os casos normais.
