@@ -74,13 +74,12 @@ image::vonNeumann.svg[scaledwidth=100%,pdfwidth=100%,width=100%]
 
 ===== CPU
 
-The processor, or central processing unit (CPU), is the "`brain`" of a
-computer. It fetches instructions, decodes them, and executes them. It
-may send data to or from memory or I/O devices. The CPU on virtually all
-modern computers is a _microprocessor_, meaning that all the computation
-is done by an integrated circuit fabricated out of silicon. What
-are the important features of CPUs? How do we measure their speed and
-power?
+O processador, ou unidade central de processamento (CPU), é o "`cerebro`" de um computador.
+Ele recebe instruções, as decodifica e as executa. Ele pode enviar ou receber informações
+das memórias ou dispositivos de entrada e saída (E/S). A CPU, em quase todos os computadores
+modernos é um _microprocessador_, significando que toda computação é realizada por um circuito
+integrado fabricado em silício. Quais são as características importantes em uma CPU? Como medimos
+sua velocidade e potência?
 
 [horizontal]
 Frequency::
