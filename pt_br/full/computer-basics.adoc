@@ -82,7 +82,7 @@ integrado fabricado em silício. Quais são as características importantes em u
 sua velocidade e potência?
 
 [horizontal]
-Frequency::
+Frequência::
 A velocidade de uma CPU (e de um computador como um todo) é geralmente
 apresentada em gigahertz (GHz). Hertz (Hz) é a unidade de medida de 
 frequência. Se alguma coisa acontece uma vez por segundo, então sua 
@@ -97,7 +97,7 @@ gigahertz. O prefixo "`giga`" significa "`bilhão`". Portanto, estamos
 falando de computadores realizando *algo* mais de um bilhão (1.000.000.000) 
 de vezes por segundo.
 +
-Mas *o que* eles estão fazendo? Essa frequência é a _velocidade de 
+Mas *o que* eles estão fazendo? Essa frequência é a _frequência de 
 clock_, que indica a frequência que um sinal elétrico passa pela CPU. 
 Em cada ciclo, a CPU realiza algum cálculo. Quanto? Depende. Em alguns 
 sistemas, simples instruções (como somar dois números) pode ser computada 
@@ -112,67 +112,68 @@ medida em gigahertz, não é uma maneira precisa de comparar a velocidade
 efetiva de um processador com a de outro, a menos que os dois processadores 
 sejam muito semelhantes. Mesmo que não faça muito sentido, a frequência do 
 clock é comumente anunciada como a velocidade de um computador.
-Word size::
-Perhaps you have heard of a 32-bit or 64-bit computer. As we discuss
-in the subsection about memory, a bit is a 0 or a 1, the smallest
-amount of information you can record. Most new laptop and desktop
-computers are 64-bit machines, meaning that they operate on 64 bits at
-a time and can use 64-bit values as memory addresses. The instructions
-that they execute often perform calculations on 64-bit quantities,
-i.e., numbers made up of 64 0s and 1s.
-The size of data that a computer can operate on with a
-single instruction is known as its _word size_.
+Tamanho da palavra::
+Talvez você já tenha ouvido falar de computadores de 32-bit ou 64-bit. Como
+nós falamos sobre no subtópico sobre memórias, um bit é um 0 ou um 1, a menor
+quantidade de informação que pode ser armazenada. A maioria dos novos computadores 
+são 64-bit, o que significa que eles operam a 64 bits por vez e podem utilizar valores
+de 64-bit como endereços de memória. As instruções que eles executam nofmalmente
+performam em quantidades de 64-bit, ou seja, números compostos de 64 0s e 1s. O tamanho
+dos dados que um computador pode operar com uma única instrução é conhecido como _tamamnho 
+da palavra_.
 +
-In day-to-day operations, word size is not important to most users.
-Certain programs that interact directly with the hardware, such as the
-operating system, may be affected by the word size. For example, most
-modern 32-bit operating systems are designed to run on a 64-bit
-processor, but most 64-bit operating systems do not run on a 32-bit
-processor.
+Em operações do dia-a-dia, o tamanho da palavra não é importante para a
+maioria dos usuátios. Certos programas que interagem diretamente com  o 
+hardware, como sistemas operacionais, podem ser influenciados pelo tamanho 
+da palavra. Por exemplo, a maioria dos sistemas operacionais de 32-bit foram 
+desenvolvidos para funcionar em um processador de 64-bit, mas a maioria dos 
+sistemas operacionais de 64-bit não funcionam em processadores 32-bit.
 +
-Programs often run faster on machines with a larger word size, but
-they typically take up more memory. A 32-bit processor (or operating
-system) cannot use more than 4 gigabytes (defined below) of memory.
-Thus, a 64-bit computer is needed to take advantage of the larger
-amounts of memory that are now available.
+Programas normalmente são executdos com maior velocidade em máquinas com
+um tamanho da palavra maior, mas normalmente consomem mais memória. Um 
+processador de 32-bit (ou sistema operacional) não pode usar mais de 4 
+gigabytes (definido abaixo) de memória. Assim, um computador de 64-bit
+é necessário para aproveitar a grande quantidade de memória que existem
+hoje.
 Cache::
-Human brains both perform computations and store information. A
-computer CPU performs computations, but for the most part, does not
-store information. The CPU cache is the exception. Most modern CPUs
-have a small, very fast section of memory built right onto the chip.
-By guessing what information the CPU is going to use next, it
-can pre-load it into the cache and avoid waiting around for the slower
-regular memory.
+O cérebro humano realiza cálculos e armazena informações. A CPU de um 
+computador realiza cálculos, mas, na maioria das vezes, não armazena 
+informações. O cache da CPU é a exceção. A maioria das CPUs modernas 
+possui uma seção pequena e muito rápida de memória integrada diretamente 
+ao chip. Ao prever quais informações a CPU utilizará em seguida, ela pode 
+pré-carregá-las no cache e evitar a espera pela memória normal, que é mais 
+lenta.
 +
-Over time, caches have become more complicated and often have multiple
-levels. The first level is very small but incredibly fast. The second
-level is larger and slower. And so on. It would be preferable to have
-a large, first-level cache, but fast memory is expensive memory. Each
-level is larger, slower, and cheaper than the last.
+Com o tempo, os caches se tornaram mais complexos e, muitas vezes, possuem 
+vários níveis. O primeiro nível é muito pequeno, mas incrivelmente rápido. 
+O segundo nível é maior e mais lento. E assim por diante. Seria preferível 
+ter um cache de primeiro nível grande, mas memória rápida é memória cara. 
+Cada nível é maior, mais lento e mais barato que o anterior.
 +
-Cache size is not a heavily advertised CPU feature, but it makes a
-huge difference in performance. A processor with a larger cache can
-often outperform a processor that's faster in terms of clock rate.
-Cores::
-Most laptops and desktops available today have _multicore_ processors.
-These processors contain two, four, six, or even more cores. Each core
-is a processor capable of independently executing instructions, and
-they can all communicate with the same memory.
+O tamanho do cache não é um recurso da CPU amplamente divulgado, mas faz uma 
+enorme diferença no desempenho. Um processador com um cache maior pode 
+frequentemente superar um processador que é mais rápido em termos de frequência 
+de clock.
+Núcleos::
+A maioria do notebooks e computadores de mesa disponíveis hoje possui processadores _multicore_.
+Esses processadores contêm dois, quatro, seis ou até mais núcleos. Cada núcleo
+é um processador capaz de executar instruções de forma independente, e
+todos eles podem se comunicar com a mesma memória.
 +
-In theory, having six cores could allow your computer to run six times
-as fast. In practice, this speedup is hard to achieve. Learning how to
-get more performance out of multicore systems is a major
-themes of this book. <<concurrency#concurrency>> and <<synchronization#synchronization>> as well as
-sections marked *Concurrency* in other chapters are specifically
-tailored for students interested in programming these multicore
-systems to work effectively. If you aren't interested in concurrent
-programming, you can skip these chapters and sections and use this
-book as a traditional introductory Java programming textbook. On the
-other hand, if you are interested in the increasingly important area
-of concurrent programming, <<Concurrency: Multicore processors>>
-near the end of this chapter is the first *Concurrency* section of the
-book and discusses multicore processors more deeply.
-
+Em teoria, ter seis núcleos poderia permitir que seu computador funcionasse seis vezes
+mais rápido. Na prática, esse aumento de velocidade é difícil de alcançar. Aprender como
+obter mais desempenho de sistemas multicore é um dos principais
+temas deste livro. <<concurrency#concurrency, Concorrência>> e 
+<<synchronization#synchronization, Sincronização>>, bem como as seções 
+marcadas com *Concorrência* em outros capítulos, são especificamente
+adaptadas para alunos interessados em programar esses sistemas multicore
+para que funcionem de maneira eficaz. Se você não estiver interessado em 
+programação concorrente, pode pular esses capítulos e seções e usar este
+livro como um manual introdutório tradicional de programação Java. Por outro
+lado, se você estiver interessado na área cada vez mais importante
+da programação concorrente, <<Concurrency: Multicore processors,Concorrência: Processos Multicores>>
+perto do final deste capítulo é a primeira seção *Concorrência* do
+livro e discute os processadores multicore mais profundamente.
 ===== Memory
 
 Memory is where all the programs and data on a computer are stored. The
