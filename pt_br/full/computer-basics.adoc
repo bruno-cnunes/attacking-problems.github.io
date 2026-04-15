@@ -83,35 +83,35 @@ sua velocidade e potência?
 
 [horizontal]
 Frequency::
-The speed of a CPU (and indeed a computer as a whole) is often quoted
-in gigahertz (GHz). Hertz (Hz) is a measurement of frequency. If
-something happens once per second, it has a frequency of exactly 1 Hz.
-Perhaps the second hand on your watch moves with a frequency of 1 Hz.
-In North America, the current in electrical outlets alternates with a
-frequency of approximately 60 Hz. Sound can also be measured by
-frequency. The lowest-pitched sound the human ear can hear is around
-20 Hz. The highest-pitched sound is around 20,000 Hz. Such a sound
-pulses against your eardrum 20,000 times per second. That sounds like
-a lot, but many modern computers operate at a frequency of 1 to 4
-gigahertz. The prefix "`giga`" means "`billion.`" So, we're talking
-about computers doing *something* more than a billion (1,000,000,000)
-times per second.
+A velocidade de uma CPU (e de um computador como um todo) é geralmente
+apresentada em gigahertz (GHz). Hertz (Hz) é a unidade de medida de 
+frequência. Se alguma coisa acontece uma vez por segundo, então sua 
+frequência é exatamente 1 Hz. Talvez o ponteiro de segundos do seu 
+relógio se mova numa frequência de 1 Hz.Na América do Norte, a corrente 
+nas tomadas alternam  com uma frequência de 60 Hz. O som também pode 
+ser medido pela sua frequência. O som mais grave que um ouvido humano pode 
+ouvir é de cerca de 20 Hz. O som mais agudo é cerca de 20.000 Hz. Um som 
+como esse pulsa contra o seu tímpano 20.000 vezes por segundo. Parece 
+muito, mas muitos computadores modernos operam em uma frequência de 1 a 4 
+gigahertz. O prefixo "`giga`" significa "`bilhão`". Portanto, estamos 
+falando de computadores realizando *algo* mais de um bilhão (1.000.000.000) 
+de vezes por segundo.
 +
-But *what* are they doing? This frequency is the _clock rate_, which
-marks how often a regular electrical signal passes through the CPU. On
-each tick, the CPU does some computation. How much? It depends. On
-some systems, simple instructions (like adding two numbers) can be
-computed in a single clock cycle. Other instructions can take ten or
-more clock cycles. Different processor designs can take different
-numbers of cycles to execute the same instructions. Instructions are
-also _pipelined_, meaning that one instruction is being executed while
-another one is being fetched from memory or decoded. Different processors can have
-different ways of optimizing this process. Because of these
-differences, the frequency of a processor as measured in gigahertz is
-not an accurate way to compare the effective speed of one processor to
-another, unless the two processors are very closely related. Even
-though it doesn't really make sense, clock rate is commonly advertised
-as the speed of a computer.
+Mas *o que* eles estão fazendo? Essa frequência é a _velocidade de 
+clock_, que indica a frequência que um sinal elétrico passa pela CPU. 
+Em cada ciclo, a CPU realiza algum cálculo. Quanto? Depende. Em alguns 
+sistemas, simples instruções (como somar dois números) pode ser computada 
+em um único ciclo de clock. Outras instruções podem levar dez ou mais 
+ciclos. Diferentes projetos de processadores podem levar diferentes números 
+de ciclos para executar as mesmas instruções. As instruções também são 
+executadas em _pipeline_, o que significa que uma instrução está sendo 
+executada enquanto outra está sendo buscada na memória ou decodificada. 
+Diferentes processadores podem ter maneiras diferentes de otimizar esse 
+processo. Devido a essas diferenças, a frequência de um processador, 
+medida em gigahertz, não é uma maneira precisa de comparar a velocidade 
+efetiva de um processador com a de outro, a menos que os dois processadores 
+sejam muito semelhantes. Mesmo que não faça muito sentido, a frequência do 
+clock é comumente anunciada como a velocidade de um computador.
 Word size::
 Perhaps you have heard of a 32-bit or 64-bit computer. As we discuss
 in the subsection about memory, a bit is a 0 or a 1, the smallest
