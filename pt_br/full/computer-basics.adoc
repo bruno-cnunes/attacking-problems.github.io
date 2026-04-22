@@ -196,194 +196,75 @@ Unidades comuns para medir memória são bytes, kilobytes, megabytes, gigabytes 
 
 [.center%autowidth%unbreakable,cols="<,<,<,<",]
 |=======================================================================
-|Unit |Size |Bytes |Practical Measure
+|Unidade |Tamanho |Bytes |Medida Prática
 
-|byte |8 bits |2^0^ = 10^0^ |a single character
-|kilobyte (KB) |1,024 bytes |2^10^ &#8776; 10^3^ |a
-paragraph of text
-|megabyte (MB) |1,024 kilobytes |2^20^ &#8776; 10^6^ |a
-minute of MP3 music
-|gigabyte (GB) |1,024 megabytes |2^30^ &#8776; 10^9^ |an
-hour of standard definition streaming video
-|terabyte (TB) |1,024 gigabytes |2^40^ &#8776; 10^12^
-|80% of human memory capacity, +
-estimated by Raymond Kurzweil
+|byte |8 bits |2^0^ = 10^0^ |um único caracter
+|kilobyte (KB) |1,024 bytes |2^10^ &#8776; 10^3^ |um parágrafo de texto
+|megabyte (MB) |1,024 kilobytes |2^20^ &#8776; 10^6^ |um minuto de uma música MP3
+|gigabyte (GB) |1,024 megabytes |2^30^ &#8776; 10^9^ |uma hora de streaming de vídeo em qualidade padrão
+|terabyte (TB) |1,024 gigabytes |2^40^ &#8776; 10^12^|80% da capacidade da memória humana, estimado por Raymond Kurzweil
 |=======================================================================
 
-We called memory a pyramid earlier in this section. At the top there's
-a small but very fast amount of memory. As we work down the pyramid, the
-storage capacity grows, but the speed slows down. Of course, the pyramid
-for every computer is different. Below is a table that shows many kinds
-of memory moving from the fastest and smallest to the slowest and
-largest. Effective speed is hard to measure (and is changing as
-technology progresses), but note that each layer in the pyramid tends to
-be 10-100 times slower than the previous layer.
+No início desta seção, nos referimos à memória como uma pirâmide. No topo, há uma quantidade pequena, mas muito rápida, de memória. À medida que descemos pela pirâmide, a capacidade de armazenamento aumenta, mas a velocidade diminui. É claro que a pirâmide varia de computador para computador. Abaixo, há uma tabela que mostra vários tipos de memória, ordenados da mais rápida e menor à mais lenta e maior. A velocidade efetiva é difícil de medir (e muda à medida que a tecnologia avança), mas observe que cada camada da pirâmide tende a ser de 10 a 100 vezes mais lenta do que a camada anterior.
 
 [%unbreakable,cols="<15,<25,<60",]
 |=======================================================================
-|Memory |Typical Capacity |Use
+|Memória |Capacidade Típica |Uso
 
-|Cache |kilobytes or megabytes |Cache is fast, temporary storage for the
-CPU itself. Modern CPUs have two or three levels of cache that get
-progressively bigger and slower.
+|Cache |kilobytes ou megabytes |O cache é um armazenamento rápido e temporário para a própria CPU. As CPUs modernas possuem dois ou três níveis de cache, que se tornam progressivamente maiores e mais lentos.
 
-|RAM |gigabytes |The bulk of primary memory is RAM. RAM comes on sticks
-that can be swapped out to upgrade a computer.
+|RAM |gigabytes |A maior parte da memória primária é a RAM. A RAM vem em módulos que podem ser trocados para atualizar um computador.
 
-|Flash drives |gigabytes up to terabytes|Flash drives provide some
-of the fastest secondary storage available to regular consumers. Flash
-drives come as USB keychain drives but also as drives that sit inside the
-computer (sometimes called _solid state drives_ or SSDs).
-As the price of flash drives drops, they are expected to replace hard drives
-entirely. Some SSDs already have capacities in the terabyte range.
+|Unidades Flash |gigabytes até terabytes|As unidades flash oferecem um dos armazenamentos secundários mais rápidos disponíveis para consumidores comuns. Os pen drives vêm na forma de dispositivos USB tipo chaveiro, mas também como unidades que ficam dentro do computador (às vezes chamadas de _unidades de estado sólido_ ou SSDs). À medida que o preço das unidades flash caem, espera-se que eles substituam totalmente os discos rígidos. Alguns SSDs já têm capacidades na faixa dos terabytes.
 
-|Hard drives |terabytes|Hard drives are still
-the most common secondary storage for desktops, laptops, and servers.
-They are limited in speed partly because of their moving parts.
+|Discos rígidos |terabytes|Os discos rígidos ainda são o armazenamento secundário mais comum para desktops, laptops e servidores. Eles têm velocidade limitada, em parte devido às suas peças móveis. 
 
-|Tape backup |terabytes and beyond |Some large companies still store
-huge quantities of information on magnetic tape. Tape performs well for
-long sequential accesses.
+|Backup em fita |terabytes e mais |Algumas grandes empresas ainda armazenam enormes quantidades de informação em fitas magnéticas. As fitas têm bom desempenho para acessos sequenciais longos.
 
-|Network storage |terabytes and beyond |Storage that is accessed through
-a network is limited by the speed of the network. Many companies use
-networked computers for backup and redundancy as well as distributed
-computation. Amazon, Google, Microsoft, and others rent their network
-storage systems at rates based on storage size and total data
-throughput. These services are part of what is called _cloud computing_.
+|Armazenamento em rede |terabytes e mais |O armazenamento acessado por meio de uma rede é limitado pela velocidade da rede. Muitas empresas utilizam computadores em rede para backup e redundância, bem como para computação distribuída. Amazon, Google, Microsoft e outras empresas alugam seus sistemas de armazenamento em rede a taxas baseadas no tamanho do armazenamento e na taxa de transferência total de dados. Esses serviços fazem parte do que é chamado de _computação em nuvem_.
 |=======================================================================
 
-===== I/O devices
+===== Dispositivos E/S
 
-I/O devices have much more variety than CPUs or memory. Some I/O
-devices, such as USB ports, are permanently connected by a printed
-circuit board to the CPU. Other devices called _peripherals_ are
-connected to a computer as needed. Their types and features are many and
-varied, and this book does not go deeply into how to interact with
-I/O devices.
+Os dispositivos de E/S apresentam uma variedade muito maior do que as CPUs ou a memória. Alguns dispositivos de E/S, como as portas USB, estão permanentemente conectados à CPU por meio de uma placa de circuito impresso. Outros dispositivos, chamados de periféricos, são conectados ao computador conforme necessário. Seus tipos e recursos são muitos e variados, e este livro não aborda em profundidade como interagir com dispositivos de E/S.
 
-Common input devices include mice, keyboards, touch pads, microphones,
-game pads, and drawing tablets. Common output devices include monitors,
-speakers, and printers. Some devices perform both input and output, such
-as network cards.
+Dispositivos de entrada comuns incluem mouses, teclados, touchpads, microfones, controles de videogame e mesas digitalizadoras. Dispositivos de saída comuns incluem monitores, alto-falantes e impressoras. Alguns dispositivos realizam tanto entrada quanto saída, como as placas de rede.
 
-Remember that our view of computer hardware as CPU, memory, and I/O
-devices is only a model. A PCI Express socket can be considered an I/O
-device, but the graphics card that fits into the socket can be
-considered one as well. And the monitor that connects to the graphics
-card is yet another one. Although the graphics card is an I/O device, it
-has its own processor and memory, too. It's pointless to get bogged down
-in details unless they are relevant to the problem you're trying to solve.
-One of the most important skills in computer
-science is finding the right level of detail and abstraction to view a
-given problem.
+Lembre-se de que nossa visão do hardware do computador como CPU, memória e dispositivos de E/S é apenas um modelo. Um soquete PCI Express pode ser considerado um dispositivo de E/S, mas a placa de vídeo que se encaixa no soquete também pode ser considerada um. E o monitor que se conecta à placa de vídeo é mais um. Embora a placa de vídeo seja um dispositivo de E/S, ela também possui seu próprio processador e memória. Não faz sentido se perder em detalhes, a menos que sejam relevantes para o problema que você está tentando resolver. Uma das habilidades mais importantes na ciência da computação é encontrar o nível certo de detalhe e abstração para analisar um determinado problema.
 
 ==== Software
 
-Without hardware computers would not exist, but software is equally
-important. Software consists of the programs and data that are executed and
-stored by the computer. The focus of this book is learning to write
-software.
+Sem hardware, os computadores não existiriam, mas o software é igualmente importante. O software consiste nos programas e dados que são executados e armazenados pelo computador. O foco deste livro é aprender a escrever software.
 
-Software includes the nearly infinite variety of computer programs. With the
-right tools (many of which are free), anyone can write a program that
-runs on a Windows, Mac, or Linux machine. Although it would be nearly
-impossible to list all the different kinds of software, a few categories
-are worth mentioning.
+O software abrange uma variedade quase infinita de programas de computador. Com as ferramentas certas (muitas das quais são gratuitas), qualquer pessoa pode escrever um programa que rode em uma máquina Windows, Mac ou Linux. Embora seja quase impossível listar todos os diferentes tipos de software, vale a pena mencionar algumas categorias.
 
 [horizontal]
-Operating Systems:::
-The _operating system_ (OS) is the software that manages the
-interaction between the hardware and the rest of the software.
-Programs called _drivers_ are added to the OS for each hardware
-device. For example, when an application wants to print a document, it
-communicates with the printer via a printer driver that's customized
-for the specific printer, the OS, and the computer hardware. The OS
-also schedules, runs, and manages memory for all other programs. The
-three most common OSes for desktop machines are Microsoft Windows,
-Apple macOS, and Linux. At the present time, all three run on similar hardware
-based on the Intel x86 and x64 architectures.
+Sistemas Operacionais:::
+O _sistema operacional_ (SO) é o software que gerencia a interação entre o hardware e o restante do software. Programas chamados _drivers_ são adicionados ao SO para cada dispositivo de hardware. Por exemplo, quando um aplicativo deseja imprimir um documento, ele se comunica com a impressora por meio de um driver de impressora personalizado para aquela impressora específica, o SO e o hardware do computador. O SO também agenda, executa e gerencia a memória para todos os outros programas. Os três SO mais comuns para computadores desktop são o Microsoft Windows, o Apple macOS e o Linux. Atualmente, todos os três rodam em hardware semelhante, baseado nas arquiteturas Intel x86 e x64.
 +
-Microsoft does not sell desktop computers, but many desktop and laptop
-computers come bundled with Windows. For individuals and businesses
-who assemble their own computer hardware, it's also possible to
-purchase Windows separately. In contrast, almost all computers
-running macOS are sold by Apple, and macOS is usually bundled with the computer.
-Linux is _open-source software_, meaning that all the source code used
-to create it is freely available. In spite of Linux being free, many
-consumers prefer Windows or macOS because of ease of use,
-compatibility with specific software, and technical support. Many
-consumers are also unaware that hardware can be purchased separately
-from an OS or that Linux is a free alternative to the other two.
+A Microsoft não vende computadores desktop, mas muitos computadores desktop e laptops vêm com o Windows pré-instalado. Para pessoas físicas e jurídicas que montam seu próprio hardware, também é possível adquirir o Windows separadamente. Em contrapartida, quase todos os computadores que rodam o macOS são vendidos pela Apple, e o macOS geralmente vem integrado ao computador. O Linux é um _software de código aberto_, o que significa que todo o código-fonte usado para criá-lo está disponível gratuitamente. Apesar do Linux ser gratuito, muitos consumidores preferem o Windows ou o macOS devido à facilidade de uso, compatibilidade com softwares específicos e suporte técnico. Muitos consumidores também não sabem que o hardware pode ser adquirido separadamente de um sistema operacional ou que o Linux é uma alternativa gratuita aos outros dois.
 +
-Other computers have OSes as well. Many kinds of
-mobile telephones use the Google Android OS. The Apple iPad and iPhone
-use the competing Apple iOS. Phones, microwave ovens, automobiles, and
-countless other devices have computers in them that use some kind of
-embedded OS.
+Outros computadores também possuem sistemas operacionais. Muitos tipos de telefones celulares utilizam o sistema operacional Android, do Google. O iPad e o iPhone da Apple utilizam o iOS, concorrente da Apple. Telefones, fornos de micro-ondas, automóveis e inúmeros outros dispositivos possuem computadores internos que utilizam algum tipo de sistema operacional incorporado.
 +
-Consider two applications running on a mobile phone with a single core
-CPU. One application is a web browser and the other is a music player.
-The user may start listening to music and then start the browser. In
-order to function, both applications need to access the CPU at the
-same time. Since the CPU only has a single core, it can execute only
-one instruction at a time.
+Considere dois aplicativos em execução em um telefone celular com uma CPU de núcleo único. Um aplicativo é um navegador da web e o outro é um reprodutor de música. O usuário pode começar a ouvir música e, em seguida, iniciar o navegador. Para funcionar, ambos os aplicativos precisam acessar a CPU ao mesmo tempo. Como a CPU tem apenas um núcleo, ela pode executar apenas uma instrução por vez.
 +
-Rather than forcing the user to finish listening to the song before
-using the web browser, the OS switches the CPU between the two
-applications very quickly. This switching allows the user to continue
-browsing while the music plays in the background. The user perceives
-an illusion that both applications are using the CPU at the same time.
+Em vez de forçar o usuário a terminar de ouvir a música antes de usar o navegador da web, o sistema operacional alterna a CPU entre os dois aplicativos muito rapidamente. Essa alternância permite que o usuário continue navegando enquanto a música toca em segundo plano. O usuário tem a ilusão de que ambos os aplicativos estão usando a CPU ao mesmo tempo.
+Compiladores:::
+Um _compilador_ é um tipo de programa particularmente importante para os programadores. Os programas de computador são escritos em linguagens especiais, como Java, que são legíveis para os humanos. Um compilador pega esse programa legível para humanos e o transforma em instruções (geralmente código de máquina) que um computador pode entender.
 +
-Compilers:::
-A _compiler_ is a kind of program that's particularly important to
-programmers. Computer programs are written in special languages, such
-as Java, that are human readable. A compiler takes this human-readable
-program and turns it into instructions (often machine code) that a
-computer can understand.
+Para compilar os programas deste livro, você usa o compilador Java `javac`, seja diretamente, digitando seu nome como um comando, seja indiretamente, por meio do IntelliJ IDEA, Eclipse ou de alguma outra ferramenta que execute o compilador para você.
+Aplicativos Empresariais:::
+Existem muitos tipos diferentes de programas que se enquadram na categoria de software empresarial ou de produtividade. Talvez o mais conhecido seja o pacote de ferramentas Microsoft Office, que inclui o processador de texto Word, a planilha eletrônica Excel e o software de apresentações PowerPoint.
 +
-To compile the programs in this book, you use the Java compiler
-`javac`, either directly by typing its name as a command or indirectly
-as IntelliJ IDEA, Eclipse, or some other tool that runs the compiler for you.
-Business Applications:::
-Many different kinds of programs fall under the umbrella of business
-or productivity software. Perhaps the best known is the Microsoft
-Office suite of tools, which includes the word-processing software
-Word, the spreadsheet software Excel, and the presentation software
-PowerPoint.
-+
-Programs in this category are often the first to come to mind when
-people think of software, and this category has had tremendous
-historical impact. The popularity of Microsoft Office led to the
-widespread adoption of Microsoft Windows in the 1990s. A single
-application that's so desirable that a consumer is willing to buy the
-hardware and the OS just to be able to run it is sometimes called a
-_killer app_.
+Os programas dessa categoria costumam ser os primeiros a vir à mente quando as pessoas pensam em software, e essa categoria teve um impacto histórico tremendo. A popularidade do Microsoft Office levou à ampla adoção do Microsoft Windows na década de 1990. Um único aplicativo tão desejável que um consumidor está disposto a comprar o hardware e o sistema operacional apenas para poder executá-lo é, às vezes, chamado de _killer app_.
 Video Games:::
-Video games are software like other programs, but they deserve special
-attention because they represent an enormous, multi-billion dollar
-industry. They are usually challenging to program, and the video game
-development industry is highly competitive.
+Os videogames são softwares como qualquer outro programa, mas merecem atenção especial por representarem uma indústria gigantesca, avaliada em bilhões de dólares. Geralmente, são desafiadores de programar, e o setor de desenvolvimento de videogames é altamente competitivo.
 +
-The intense 3D graphics required by modern video games have pushed
-hardware manufacturers such as Nvidia, AMD, and Intel to develop
-high-performance graphics cards for desktop and laptop computers. At
-the same time, companies like Nintendo, Sony, and Microsoft have
-developed computers such as the Switch 2, PlayStation 5, and Xbox Series
-X that specialize in video games but are not designed for general
-computing tasks.
-Web Browsers:::
-Web browsers are programs that can connect to the Internet and
-download and display web pages and other files. Early web browsers
-could only display relatively simple pages containing text and images.
-Because of the growing importance of communication over the Internet,
-web browsers have evolved to play sounds,
-display video, and allow for sophisticated real-time communication.
+Os gráficos 3D intensos exigidos pelos videogames modernos levaram fabricantes de hardware como Nvidia, AMD e Intel a desenvolver placas de vídeo de alto desempenho para computadores desktop e laptops. Ao mesmo tempo, empresas como Nintendo, Sony e Microsoft desenvolveram consoles como o Switch 2, o PlayStation 5 e o Xbox Series X, que são especializados em videogames, mas não foram projetados para tarefas gerais de computação.
+Navegadores Web:::
+Os navegadores da Web são programas capazes de se conectar à Internet, baixar e exibir páginas da Web e outros arquivos. Os primeiros navegadores da Web só conseguiam exibir páginas relativamente simples, contendo texto e imagens. Devido à crescente importância da comunicação pela Internet, os navegadores da Web evoluíram para reproduzir sons, exibir vídeos e permitir uma comunicação sofisticada em tempo real.
 +
-Popular web browsers include Microsoft Edge, Mozilla
-Firefox, Apple Safari, and Google Chrome. Each has advantages and
-disadvantages in terms of compatibility, standards compliance,
-security, speed, and customer support.
+Entre os navegadores da Web mais populares estão o Microsoft Edge, o Mozilla Firefox, o Apple Safari e o Google Chrome. Cada um deles apresenta vantagens e desvantagens em termos de compatibilidade, conformidade com padrões, segurança, velocidade e suporte ao cliente.
 
 === Sintaxe: Representação de dados
 
