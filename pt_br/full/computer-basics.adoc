@@ -177,57 +177,22 @@ livro e discute os processadores multicore mais profundamente.
 
 ===== Memory
 
-Memory is where all the programs and data on a computer are stored. The
-memory in a computer is usually not a single piece of hardware. Instead,
-the storage requirements of a computer are met by many different
-technologies.
+A memória é onde todos os programas e dados de um computador são armazenados. A memória de um computador geralmente não é um único componente de hardware. Em vez disso, as necessidades de armazenamento de um computador são atendidas por diversas tecnologias.
 
-At the top of the pyramid of memory is primary storage, memory that the
-CPU can access and control directly. On desktop and laptop computers,
-primary storage usually takes the form of random access memory (RAM). It
-is called random access memory because it takes the same amount of time
-to access any part of RAM. Traditional RAM is volatile, meaning that its
-contents are lost when it's unpowered. All programs and data must be
-loaded into RAM to be used by the CPU.
+No topo da pirâmide da memória está o armazenamento primário, a memória que a CPU pode acessar e controlar diretamente. Em computadores de mesa e portáteis, o armazenamento primário geralmente assume a forma de memória de acesso aleatório (RAM). Ela é chamada de memória de acesso aleatório porque leva o mesmo tempo para acessar qualquer parte da RAM. A RAM tradicional é volátil, o que significa que seu conteúdo é perdido quando a energia é desligada. Todos os programas e dados devem ser carregados na RAM para serem usados pela CPU.
 
-After primary storage comes secondary storage. The realm of secondary
-storage is dominated by hard drives that store data on spinning magnetic platters
-though flash technology is beginning to replace them. Optical
-drives (such as CD, DVD, and Blu-ray) and the now virtually obsolete
-floppy drives also fall into the category of secondary
-storage. Secondary storage is slower than primary storage, but
-it is non-volatile. Some forms of secondary storage such as CD-ROM and
-DVD-ROM are read only, but most are capable of reading and writing.
+Depois do armazenamento primário vem o armazenamento secundário. O campo do armazenamento secundário é dominado por discos rígidos que armazenam dados em pratos magnéticos giratórios, embora a tecnologia flash esteja começando a substituí-los. Unidades ópticas (como CD, DVD e Blu-ray) e as unidades de disquete, agora praticamente obsoletas, também se enquadram na categoria de armazenamento secundário. O armazenamento secundário é mais lento que o primário, mas é não volátil. Algumas formas de armazenamento secundário, como CD-ROM e DVD-ROM, são somente de leitura, mas a maioria é capaz de ler e gravar.
 
-Before we can compare these kinds of storage effectively, we need to
-have a system for measuring how much they store. In modern digital
-computers, all data is stored as a sequence of 0s and 1s. In memory, the
-space that can hold either a single 0 or a single 1 is called a _bit_,
-which is short for "`binary digit.`"
+Antes de podermos comparar esses tipos de armazenamento de forma eficaz, precisamos ter um sistema para medir a quantidade de dados que eles armazenam. Nos computadores digitais modernos, todos os dados são armazenados como uma sequência de 0s e 1s. Na memória, o espaço que pode conter um único 0 ou um único 1 é chamado de bit, que é a abreviação de “binary digit”(dígito binário).
 
-A bit is a tiny amount of information. For organizational purposes, we
-call a sequence of eight bits a _byte_. The word size of a CPU is two or
-more bytes, but memory capacity is usually listed in bytes not words.
+Um bit é uma quantidade minúscula de informação. Para fins organizacionais, chamamos uma sequência de oito bits de byte. O tamanho em palavras de uma CPU é de dois ou mais bytes, mas a capacidade de memória é geralmente listada em bytes, não em palavras.
 
-.Shown here is a word containing four bytes, or 32 bits. Computer scientists often number items starting at zero, as we discuss in <<arrays#arrays>>.
+.Aqui é mostrada uma palavra que contém quatro bytes, ou 32 bits. Os cientistas da computação costumam numerar os itens a partir do zero, como discutimos em <<arrays#arrays>>.
 image::bitsBytesFigure.svg[scaledwidth=100%,pdfwidth=100%,width=100%]
 
-Both primary and secondary storage capacities have become so large that
-it is inconvenient to describe them in bytes. Computer scientists have
-borrowed prefixes from physical scientists to create suitable units.
+Tanto a capacidade de armazenamento primário quanto a secundária tornaram-se tão grandes que é inconveniente descrevê-las em bytes. Os cientistas da computação adotaram prefixos da física para criar unidades adequadas.
 
-Common units for measuring memory are bytes, kilobytes, megabytes,
-gigabytes, and terabytes. Each unit is 1,024 times the size of the
-previous unit. You may have noticed that 2^10^ (1,024) is almost the
-same as 10^3^ (1,000). Sometimes it's not clear which
-value is meant. Disk drive manufacturers always use powers of 10 when
-they quote the size of their disks. Thus, a 1 TB hard disk might hold
-10^12^ (1,000,000,000,000) bytes, not
-2^40^ (1,099,511,627,776) bytes. Standards organizations
-have advocated that the terms kibibyte (KiB), mebibyte (MiB), gibibyte
-(GiB), and tebibyte (TiB) be used to refer to the units based on powers
-of 2 while the traditional names be used to refer only to the units
-based on powers of 10, but the new terms have not yet become popular.
+Unidades comuns para medir memória são bytes, kilobytes, megabytes, gigabytes e terabytes. Cada unidade é 1.024 vezes maior que a unidade anterior. Você deve ter notado que 210 (1.024) é quase igual a 103 (1.000). Às vezes, não fica claro qual valor se refere. Os fabricantes de unidades de disco sempre usam potências de 10 quando indicam o tamanho de seus discos. Assim, um disco rígido de 1 TB pode armazenar 1012 (1.000.000.000.000) bytes, e não 240 (1.099.511.627.776) bytes. Organizações de padronização têm defendido que os termos kibibyte (KiB), mebibyte (MiB), gibibyte (GiB) e tebibyte (TiB) sejam usados para se referir às unidades baseadas em potências de 2, enquanto os nomes tradicionais sejam usados apenas para se referir às unidades baseadas em potências de 10, mas os novos termos ainda não se popularizaram.
 
 [.center%autowidth%unbreakable,cols="<,<,<,<",]
 |=======================================================================
