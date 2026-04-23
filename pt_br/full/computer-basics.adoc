@@ -268,209 +268,85 @@ Entre os navegadores da Web mais populares estão o Microsoft Edge, o Mozilla Fi
 
 === Sintaxe: Representação de dados
 
-After each *Concepts* section, this book usually has a *Syntax* section.
-Syntax is the set of rules for a language. These *Syntax* sections generally
-focus on concrete Java language features and technical specifics related to
-the concepts described in the chapter.
+Após cada seção *Conceitos*, este livro geralmente apresenta uma seção *Sintaxe*. Sintaxe é o conjunto de regras de uma linguagem. Essas seções *Sintaxe* geralmentese concentram em recursos concretos da linguagem Java e em detalhes técnicos relacionados aos conceitos descritos no capítulo.
 
-In this chapter, we're still trying to describe computers at a general
-level. Consequently, the technical details we cover in this section will
-not be Java syntax. Although everything we say applies to Java, it also
-applies to many other programming languages.
+Neste capítulo, ainda estamos tentando descrever computadores em um nível geral. Consequentemente, os detalhes técnicos que abordaremos nesta seção não serão sobre a sintaxe do Java. Embora tudo o que dizemos se aplique ao Java, também se aplica a muitas outras linguagens de programação.
 
-==== Compilers and interpreters
+=== Compiladores e Interpretadores
 
-This book is primarily about solving problems with computer programs.
-From now on, we only mention hardware when it has an impact on
-programming. The first step to writing a computer program is deciding
-what language to use.
+Este livro trata principalmente da resolução de problemas por meio de programas de computador. Daqui em diante, só mencionaremos o hardware quando ele tiver impacto na programação. O primeiro passo para escrever um programa de computador é decidir qual linguagem usar.
 
-Most humans communicate via natural languages such as Chinese, English,
-French, Russian, or Tamil. However, computers are poor at understanding
-natural languages. As a compromise, programmers write programs
-(instructions for a computer to follow) in a language more similar to a
-natural language than it is to the language understood by the CPU. These
-languages are called _high-level languages_, because they are closer to
-natural language (the highest level) than they are to _machine language_
-(the lowest level). We may also refer to machine language as _machine
-code_ or _native code_.
+A maioria das pessoas se comunica por meio de línguas naturais, como o chinês, o inglês, o francês, o russo ou o tâmil. No entanto, os computadores têm dificuldade em compreender línguas naturais. Como um meio-termo, os programadores escrevem programas (instruções para o computador seguir) em uma linguagem mais semelhante a uma linguagem natural do que à linguagem compreendida pela CPU. Essas linguagens são chamadas de _linguagens de alto nível_, porque estão mais próximas da linguagem natural (o nível mais alto) do que da _linguagem de máquina_ (o nível mais baixo). Também podemos nos referir à linguagem de máquina como _código de máquina_ ou _código nativo_.
 
-Thousands of programming languages have been created over the years, but
-some of the most popular high-level languages of all time include
-Fortran, Cobol, Visual Basic, C, {cpp}, Python, Java, JavaScript (which is almost
-entirely unrelated to Java) and C#.
+Milhares de linguagens de programação foram criadas ao longo dos anos, mas algumas das linguagens de alto nível mais populares de todos os tempos incluem Fortran, Cobol, Visual Basic, C, {cpp}, Python, Java, JavaScript (que é quase totalmente independente do Java) e C#. 
 
-As we mentioned in the previous section, a compiler is a program that
-translates one language into another. In many cases, a compiler
-translates a high-level language into a low-level language that the CPU
-can understand and execute. Because all the work is done ahead of time,
-this kind of compilation is known as static or ahead-of-time
-compilation. In other cases, the output of the compiler is an
-intermediate language that's easier for the computer to understand than
-the high-level language but still takes some translation before the
-computer can follow the instructions.
+Como mencionamos na seção anterior, um compilador é um programa que traduz uma linguagem para outra. Em muitos casos, um compilador traduz uma linguagem de alto nível para uma linguagem de baixo nível que a CPU possa compreender e executar. Como todo o trabalho é feito antecipadamente, esse tipo de compilação é conhecido como compilação estática ou antecipada. Em outros casos, a saída do compilador é uma linguagem intermediária que é mais fácil para o computador compreender do que a linguagem de alto nível, mas ainda assim requer alguma tradução antes que o computador possa seguir as instruções.
 
-An _interpreter_ is a program with many similarities to a compiler. However, an
-interpreter takes code in one language as input and, on the fly, runs
-each instruction on the CPU as it translates it. Interpreters generally
-execute code more slowly than if it had been translated to machine
-language before execution.
+Um _interpretador_ é um programa semelhante a um compilador. No entanto, um interpretador recebe código em uma linguagem como entrada e, em tempo real, executa cada instrução na CPU à medida que a traduz. Os interpretadores geralmente executam o código mais lentamente do que se ele tivesse sido traduzido para linguagem de máquina antes da execução.
 
-Note that both compilers and interpreters are normal programs. They are
-usually written in high-level languages and compiled into machine
-language before execution. This raises a philosophical question: If you
-need a compiler to create a program, where did the first compiler come
-from?
+Observe que tanto compiladores quanto interpretadores são programas normais. Eles geralmente são escritos em linguagens de alto nível e compilados para linguagem de máquina antes da execução. Isso levanta uma questão filosófica: se você precisa de um compilador para criar um programa, de onde veio o primeiro compilador?
 
-.(a) Static compilation. (b) Interpreted execution. (c) Compilation into bytecode with later just-in-time compilation.
+.(a) Compilação Estática. (b) Execução Interpretada. (c) Compilação em bytecode seguida de compilação just-in-time.
 image::compilerFigure.svg[scaledwidth=100%,pdfwidth=100%,width=100%]
 
-.Java compilation
+.Compilação Java 
 ====
-Java is the popular high-level programming language we focus on in
-this book. The standard way to run a Java program has an extra step that
-many compiled languages do not. Most compilers for Java, though not all,
-translate a program written in Java to an intermediate language known as
-_bytecode_. This intermediate version of the high-level program is used
-as input for another program called the Java Virtual Machine (JVM). Most
-popular JVMs translate the bytecode into machine code that is executed
-directly by the CPU. This conversion from bytecode into machine code is
-done with a just-in-time (JIT) compiler. It's called "`just-in-time`"
-because sections of bytecode are not compiled until the moment they're
-needed. Since the output is going to be used for this specific
-execution of the program, the JIT can do optimizations to make the final
-machine code run particularly well in the current environment.
+Java é a popular linguagem de programação de alto nível em que nos concentramos neste livro. A maneira padrão de executar um programa Java envolve uma etapa adicional que muitas linguagens compiladas não possuem. A maioria dos compiladores de Java, embora não todos, traduz um programa escrito em Java para uma linguagem intermediária conhecida como _bytecode_. Essa versão intermediária do programa de alto nível é usada como entrada para outro programa chamado JVM "Java Virtual Machine"(Máquina Virtual Java) . A maioria das JVMs populares traduz o bytecode em código de máquina que é executado diretamente pela CPU. Essa conversão de bytecode em código de máquina é feita com um compilador just-in-time (JIT). É chamado de “just-in-time” porque as seções do bytecode não são compiladas até o momento em que são necessárias. Como a saída será usada para essa execução específica do programa, o JIT pode fazer otimizações para que o código de máquina final funcione particularmente bem no ambiente atual.
 
-Why does Java use the intermediate step of bytecode? One of Java's
-design goals is to be platform independent, meaning that it can be
-executed on any kind of computer. This is a difficult goal because every
-combination of OS and CPU will need different low-level instructions.
-Java attacks the problem by keeping its bytecode platform independent.
-You can compile a program into bytecode on a Windows machine and then
-run the bytecode on a JVM in a macOS environment. Part of the work is
-platform independent, and part is not. Each JVM must be tailored to the
-combination of OS and hardware that it runs on. Sun Microsystems, Inc.,
-the original developer of the Java language and the JVM,
-marketed this feature of the language with the slogan "`Write once, run anywhere.`"
+Por que o Java usa a etapa intermediária do bytecode? Um dos objetivos de design do Java é ser independente de plataforma, o que significa que ele pode ser executado em qualquer tipo de computador. Esse é um objetivo difícil, pois cada combinação de SO e CPU precisará de instruções de baixo nível diferentes.
 
-Sun Microsystems was bought by Oracle Corporation in 2009. Oracle continues
-to produce HotSpot, the standard JVM, but many other JVMs exist,
-including Apache Harmony and Dalvik, the Google Android JVM.
+O Java aborda o problema mantendo seu bytecode independente de plataforma. Você pode compilar um programa em bytecode em uma máquina Windows e, em seguida, executar o bytecode em uma JVM em um ambiente macOS. Parte do trabalho é independente de plataforma, e parte não é. Cada JVM deve ser adaptada à combinação de sistema operacional e hardware em que é executada. A Sun Microsystems, Inc., desenvolvedora original da linguagem Java e da JVM, comercializou esse recurso da linguagem com o slogan “Escreva uma vez, execute em qualquer lugar.” 
+
+A Sun Microsystems foi comprada pela Oracle Corporation em 2009. A Oracle continua a produzir o HotSpot, a JVM padrão, mas existem muitas outras JVMs, incluindo o Apache Harmony e o Dalvik, a JVM do Google Android.
 ====
 
-==== Numbers
+==== Números
 
-All data inside of a computer is represented with numbers. Although
-humans use numbers in our daily lives, the representation and
-manipulation of numbers by computers function differently. In this
-subsection we introduce the notions of number systems, bases, conversion
-from one base to another, and arithmetic in arbitrary number systems.
+Todos os dados dentro de um computador são representados por números. Embora os seres humanos utilizem números em nosso dia a dia, a representação e a manipulação de números pelos computadores funcionam de maneira diferente. Nesta subseção, apresentamos os conceitos de sistemas numéricos, bases, conversão de uma base para outra e aritmética em sistemas numéricos arbitrários.
 
-===== A few number systems
+===== Alguns Sistemas Numéricos
 
-A number system is a way to represent numbers. It's easy to confuse the
-_numeral_ that represents the _number_ with the number itself. You might
-think of the number ten as "`10,`" a numeral made of two symbols, but
-the number itself is the concept of *ten-ness*. You could express that
-quantity by holding up all your fingers, with the symbol "`X,`" or by
-knocking ten times.
+Um sistema numérico é uma forma de representar números. É fácil confundir o _algarismo_ que representa o _número_ com o próprio número. Você pode pensar no número dez como “`10,`”, um algarismo composto por dois símbolos, mas o próprio número é o conceito de *ser dez*. Você poderia expressar essa quantidade levantando todos os dedos, com o símbolo “`X,`” ou batendo dez vezes.
 
-Representing ten with "`10`" is an example of a _positional number
-system_, namely base 10. In a positional number system, the position of
-the digits determines the magnitude they represent. For example, the
-numeral 3,432 contains the digit 3 twice. The first time, it represents
-three groups of one thousand. The second time, it represents three
-groups of ten. In contrast, the Roman numeral system is an example of a number
-system that is *not* positional.
+Representar dez com “`10`” é um exemplo de um _sistema numérico posicional_, ou seja, de base 1. Em um sistema numérico posicional, a posição dos dígitos determina a magnitude que eles representam. Por exemplo, o numeral 3.432 contém o dígito 3 duas vezes. Na primeira vez, ele representa três grupos de mil. Na segunda vez, representa três grupos de dez. Em contrapartida, o sistema numérico romano é um exemplo de sistema numérico que *não* é posicional.
 
-The numeral 3,432 and possibly every other normally written number you've
-seen is expressed in base 10 or the _decimal_ system. It's called
-base 10 because, as you move from the rightmost digit leftward, the
-value of each position goes up by a factor of 10. Also, in base 10, ten
-is the smallest positive integer that requires two digits for
-representation. Each smaller number has its own digit: 0, 1, 2, 3, 4, 5,
-6, 7, 8, and 9. Representing ten requires two existing digits to be
-combined. Every base has the property that the number it's named after
-takes two digits to write, namely "`1`" and "`0.`" (An exception is base
-1, which does not behave like the other bases and is not a normal
-positional number system.)
+O número 3.432 e, possivelmente, todos os outros números escritos normalmente que você já viu são expressos na base 10 ou no sistema _decimal_. É chamado de base 10 porque, à medida que você se move do dígito mais à direita para a esquerda, o valor de cada posição aumenta em um fator de 10. Além disso, na base 10, dez é o menor inteiro positivo que requer dois dígitos para ser representado. Cada número menor tem seu próprio dígito: 0, 1, 2, 3, 4, 5, 6, 7, 8 e 9. Representar dez requer a combinação de dois dígitos existentes. Toda base tem a propriedade de que o número que lhe dá nome requer dois dígitos para ser escrito, a saber, “`1`” e “`0.`” (Uma exceção é a base 1, que não se comporta como as outras bases e não é um sistema numérico posicional normal.)
 
 .Decimal numbers
 ====
-The number 723 can be written as
-723 = 7 · 10^2^ + 2 · 10^1^ + 3 · 10^0^.
+O número 723 pode ser escrito como 723 = 7 · 10^2^ + 2 · 10^1^ + 3 · 10^0^.
 
-Note that the rightmost digit is the ones place, which is equivalent to
-10^0^. Be sure to start with _b_^0^ and not
-_b_^1^ when considering the value of a number written in base
-_b_, no matter what _b_ is. The second digit
-from the right is multiplied by 10^1^, and so on. The
-product of a digit and the corresponding power of 10 tells us how much a
-digit contributes to the number. In the above expansion, digit 7
-contributes 700 to the number 723. Digits 2 and 3 contribute,
-respectively, 20 and 3 to 723.
+Observe que o dígito mais à direita é a casa das unidades, o que equivale a 10^0^. Certifique-se de começar com _b_^0^ e não com _b_^1^_ ao considerar o valor de um número escrito na base _b_, independentemente do valor de _b_. O segundo dígito a partir da direita é multiplicado por 10^1^, e assim por diante. O produto de um dígito pela potência correspondente de 10 nos diz quanto um dígito contribui para o número. Na expansão acima, o dígito 7 contribui com 700 para o número 723. Os dígitos 2 e 3 contribuem, respectivamente, com 20 e 3 para 723.
 
-As we move to the right, the power of 10 goes down by one, and this
-pattern works even for negative powers of 10. If we expand the
-fractional value 0.324, we get
-0.324 = 3 · 10^-1^ + 2 · 10^-2^ + 4 · 10^-3^.
+À medida que avançamos para a direita, a potência de 10 diminui em um, e esse padrão funciona mesmo para potências negativas de 10. Se expandirmos o valor fracionário 0,324, obtemos 0,324 = 3 · 10^-1^ + 2 · 10^-2^ + 4 · 10^-3^.
 
-We can combine the above two numbers to get
-723.324 = 7 · 10^2^ + 2 · 10^1^ + 3 · 10^0^ + 3 · 10^-1^ + 2 · 10^-2^ + 4 · 10^-3^.
+Podemos combinar os dois números acima para obter 723,324 = 7 · 10^2^ + 2 · 10^1^ + 3 · 10^0^ + 3 · 10^-1^ + 2 · 10^-2^ + 4 · 10^-3^.
 ====
 
-We can extend these ideas to any base, checking our logic against the
-familiar base 10. Suppose that a numeral consists of _n_ symbols
-_s_~_n_-1~, _s_~_n_-2~, …, _s_~1~, _s_~0~. Furthermore, suppose that this numeral
-belongs to the base _b_ number system. We can expand the
-value of this numeral as:
+Podemos estender essas ideias a qualquer base, verificando nossa lógica em relação à conhecida base 10. Suponhamos que um numeral seja composto por _n_ símbolos  _s_~_n_-1~, _s_~_n_-2~, …, _s_~1~, _s_~0~_. Além disso, suponhamos que esse numeral pertença ao sistema numérico de base _b_. Podemos expandir o valor desse numeral da seguinte forma:
 
 [.text-center]
 _s_~_n_-1~ _s_~_n_-2~ … _s_~1~ _s_~0~ = _s_~_n_-1~ · _b_^_n_-1^ + _s_~_n_-2~ · _b_^_n_-2^ + … + _s_~1~ · _b_^1^ + _s_~0~ · _b_^0^
 
-The leftmost symbol in the numeral is the _highest order digit_ and the
-rightmost symbol is the _lowest order digit_. For example, in the
-decimal numeral 492, 4 is the highest order digit and 2 the lowest order
-digit.
+O símbolo mais à esquerda no número é o _dígito de maior ordem_ e o símbolo mais à direita é o _dígito de menor ordem_. Por exemplo, no número decimal 492, 4 é o dígito de maior ordem e 2, o dígito de menor ordem.
 
-Fractions can be expanded in a similar manner. For example, a
-fraction with _n_ symbols
-_s_~1~, _s_~2~, …, _s_~_n_-1~, _s_~_n_~ in a number system
-with base _b_ can be expanded to:
+As frações podem ser expandidas de maneira semelhante. Por exemplo, uma fração com _n_ símbolos _s_~1~, _s_~2~, …, _s_~_n_-1~, _s_~_n_~_ em um sistema numérico de base _b_ pode ser expandida para:
 
 [.text-center]
 0._s_~1~ _s_~2~ … _s_~_n_-2~ _s_~_n_-1~ = _s_~1~ · _b_^-1^ + _s_~2~ · _b_^-2^ + … + _s_^_n_-1^ · _b_^-_n_+1^ + _s_~_n_~ · _b_^-_n_^
 
-As
-computer scientists, we have a special interest in base 2 because that's the base
-used to express numbers inside of computers. Base 2 is also called
-_binary_. The only symbols allowed to represent numbers in binary are
-"`0`" and "`1`", the binary digits or _bits_.
+Como cientistas da computação, temos um interesse especial pela base 2, pois é a base usada para expressar números dentro dos computadores. A base 2 também é chamada de _binária_. Os únicos símbolos permitidos para representar números em binário são “`0`” e “`1`”, os dígitos binários ou _bits_.
 
-In the binary numeral 10011, the leftmost 1 is the highest order bit
-and the rightmost 0 is the lowest order bit. By the rules of positional
-number systems, the highest order bit represents
-1 · 2^4^ = 16.
+No número binário 10011, o 1 mais à esquerda é o bit de ordem mais alta e o 0 mais à direita é o bit de ordem mais baixa. Pelas regras dos sistemas numéricos posicionais, o bit de ordem mais alta representa 1 · 2^4^ = 16.
 
-.Binary numbers
+.Números binários
 ====
-Examples of numbers written in binary are 100~2~, 111~2~, 10101~2~, and 11000001~2~.
-Recall that the base of the binary number system is 2. Thus, we can
-write a number in binary as the sum of products of powers of 2. For
-example, the numeral 10011~2~ can be expanded to:
+Exemplos de números escritos em binário são 100~2~, 111~2~, 10101~2~ e 11000001~2~ Lembre-se de que a base do sistema numérico binário é 2. Assim, podemos escrever um número em binário como a soma dos produtos das potências de 2. Por exemplo, o número 10011~2~ pode ser expandido para:
 
 [.text-center]
 10011~2~ = 1 · 2^4^ + 0 · 2^3^ + 0 · 2^2^ + 1 · 2^1^ + 1 · 2^0^ = 16 + 0 + 0 + 2 + 1 = 19
 
-
-By expanding the number, we've also shown how to convert a binary
-numeral into a decimal numeral. Remember that both 10011~2~ and 19
-represent the same value, namely nineteen. The conversion between bases
-changes only the way the number is written. As before, the rightmost bit
-is multiplied by 2^0^ to determine its contribution to the
-binary number. The bit to its left is multiplied by 2^1^ to
-determine its contribution, and so on. In this case, the leftmost 1
-contributes 1 · 2^4^ = 16 to the value.
+Ao expandir o número, também mostramos como converter um número binário em um número decimal. Lembre-se de que tanto 10011~2~ quanto 19 representam o mesmo valor, ou seja, dezenove. A conversão entre bases altera apenas a forma como o número é escrito. Como antes, o bit mais à direita é multiplicado por 2^0^ para determinar sua contribuição para o número binário. O bit à sua esquerda é multiplicado por 2^1^ para determinar sua contribuição, e assim por diante. Neste caso, o 1 mais à esquerda contribui com 1 · 2^4^ = 16 para o valor.
 ====
 
 ****
@@ -478,132 +354,78 @@ contributes 1 · 2^4^ = 16 to the value.
 <<positiveBinaryToDecimalExercise>>
 ****
 
-Another useful number system is _base 16_, also known as _hexadecimal_.
-Hexadecimal is surprising because it requires more than the familiar 10
-digits. Numerals in this system are written with 16 hexadecimal digits
-that include the ten digits 0 through 9 and the six letters A, B, C, D,
-E, and F. The six letters, starting from A, correspond to the values 10,
-11, 12, 13, 14, and 15.
+Outro sistema numérico útil é o _base 16_, também conhecido como _hexadecimal_. O sistema hexadecimal é surpreendente porque requer mais do que os 10 dígitos a que estamos acostumados. Os números nesse sistema são escritos com 16 dígitos hexadecimais, que incluem os dez dígitos de 0 a 9 e as seis letras A, B, C, D, E e F. As seis letras, começando por A, correspondem aos valores 10, 11, 12, 13, 14 e 15.
 
-Hexadecimal is used as a compact representation of binary. Although binary
-numbers can get very long, four binary digits can be represented
-with only a single hexadecimal digit.
+O hexadecimal é usado como uma representação compacta do binário. Embora os números binários possam ficar muito longos, quatro dígitos binários podem ser representados com apenas um único dígito hexadecimal.
 
-.Hexadecimal numbers
+.Números hexadecimais
 ====
-39A~16~, 32~16~, and AFBC12~16~ are examples of numbers written in hexadecimal. A
-hexadecimal numeral can be expressed as the sum of products of powers of
-16. For example, the hexadecimal numeral A0BF~16~ can be expanded to:
+39A~16~, 32~16~ e AFBC12~16~ são exemplos de números escritos em hexadecimal. Um número hexadecimal pode ser expresso como a soma dos produtos das potências de 16. Por exemplo, o número hexadecimal A0BF~16~ pode ser expandido para:
 
 [.text-center]
 A · 16^3^ + 0 · 16^2^ + B · 16^1^ + F ·
 16^0^
 
-To convert a hexadecimal numeral to decimal, we must substitute the
-values 10 through 15 for the digits A through F. Now we can rewrite the
-sum of products from above as:
+Para converter um número hexadecimal em decimal, devemos substituir os dígitos de A a F pelos valores de 10 a 15. Agora podemos reescrever a soma dos produtos acima como:
 
 [.text-center]
-10 · 16^3^ + 0 · 16^2^ + 11 · 16^1^ + 15 · 16^0^ = 40,960 + 0 + 176 + 15 = 41,151
+10 · 16^3^ + 0 · 16^2^ + 11 · 16^1^ + 15 · 16^0^ = 40.960 + 0 + 176 + 15 = 41.151
 
-Thus, we get A0BF~16~ = 41,151.
+Assim, obtemos A0BF~16~ = 41.151.
 ====
 
-The base 8 number system is also called _octal_. Like hexadecimal, octal
-is used as a shorthand for binary. A numeral in octal uses the octal
-digits 0, 1, 2, 3, 4, 5, 6, and 7. Otherwise the same rules apply. For
-example, the octal numeral 377 can be expanded to:
+O sistema numérico de base 8 também é chamado de _octal_. Assim como o hexadecimal, o octal é usado como uma forma abreviada do binário. Um número octal utiliza os dígitos octais 0, 1, 2, 3, 4, 5, 6 e 7. Fora isso, aplicam-se as mesmas regras. Por exemplo, o número octal 377 pode ser expandido para:
 
 [.text-center]
 377~8~ = 3 · 8^2^ + 7 · 8^1^ + 7 · 8^0^ = 255
 
-You may have noticed that it is not always clear which base a numeral is
-written in. The digit sequence 337 is a legal numeral in octal, decimal,
-and hexadecimal, but it represents different numbers in each system.
-Mathematicians use a subscript to denote the base in which a numeral is
-written.
+Você deve ter notado que nem sempre fica claro em qual base um numeral está escrito. A sequência de dígitos 337 é um numeral válido em octal, decimal e hexadecimal, mas representa números diferentes em cada sistema. Os matemáticos usam um subscrito para indicar a base na qual um numeral está escrito.
 
-Thus, 337~8~ = 255~10~, 377~10~ = 377~10~,
-and 377~16~ = 887~10~. Base numbers are always written
-in base 10. A number without a subscript is assumed to be in base 10. In
-Java, there's no way to mark subscripts, so prefixes are used. A prefix of `0b`
-is used for binary, a prefix of `0` is used for octal, no prefix is used for
-decimal, and a prefix of `0x` is used for hexadecimal. The corresponding
-numerals in Java code would thus be written `0377`, `377`, and `0x377`. Be
-careful not to pad numbers with zeroes in Java since they might be interpreted
-as base 8! Remember that the value `056` is *not* the same as the value `56` in
-Java.
+Assim, 337~8~ = 255~10~, 377~10~ = 377~10~, e 377~16~ = 887~10~. Os números de base são sempre escritos na base 10. Presume-se que um número sem subscrito esteja na base 10. Em Java, não há como marcar subscritos, então são usados prefixos. O prefixo `0b` é usado para binário, o prefixo `0` é usado para octal, nenhum prefixo é usado para decimal e o prefixo `0x` é usado para hexadecimal. Os números correspondentes no código Java seriam, portanto, escritos como `0377`, `377` e `0x377`. Tenha cuidado para não preencher números com zeros em Java, pois eles podem ser interpretados como base 8! Lembre-se de que o valor `056` *não* é o mesmo que o valor `56` em Java.
 
-The following table lists a few characteristics of the four number
-systems we have discussed with representations of the numbers 7 and
-29.
+A tabela a seguir lista algumas características dos quatro sistemas numéricos que discutimos, com representações dos números 7 e 29.
 
 [.center%autowidth%unbreakable%header,cols="<.^,^.^,<.^,<.^,<.^",]
 |=======================================================================
-<.^|Number System
+<.^|Sistema Numérico
 ^.^|Base
-<.^|Digits
-<.^|Math +
-Numerals
-<.^|Java +
-Numerals
-|Binary |2 |0, 1 |111~2~, 11101~2~ | `0b111`, `0b11101`
+<.^|Digitos
+<.^|Numerais +
+Matemáticos
+<.^|Numerais +
+Java
+|Binário |2 |0, 1 |111~2~, 11101~2~ | `0b111`, `0b11101`
 |Octal |8 |0, 1, 2, 3, 4, 5, 6, 7 |7~8~, 35~8~|`07`, `035`
 |Decimal |10 |0, 1, 2, 3, 4, 5, 6, 7, 8, 9 |7, 29|`7`, `29`
 |Hexadecimal |16 |0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F|7~16~, 1D~16~ |`0x7`,`0x1D`
 |=======================================================================
 
-===== Conversion across number systems
+===== Conversão entre sistemas numéricos
 
-It's useful to know how to convert a number represented in one
-base to the equivalent representation in another base. Our examples have
-shown how to convert a numeral in any base to decimal by expanding the
-numeral in the sum-of-product form and then adding the different terms
-together. But how do you convert a decimal numeral to another base?
+É útil saber como converter um número representado em uma base para a representação equivalente em outra base. Nossos exemplos mostraram como converter um número em qualquer base para o sistema decimal, expandindo-o na forma de soma de produtos e, em seguida, somando os diferentes termos. Mas como converter um número decimal para outra base?
 
-===== Decimal to binary conversion
+===== Conversão decimal para binário
 
-There are at least two different ways to convert a decimal numeral to
-binary. One way is to write the decimal number as a sum of powers of two
-as in the following conversion of the number 23.
+Existem pelo menos duas maneiras diferentes de converter um número decimal em binário. Uma delas consiste em escrever o número decimal como uma soma de potências de dois, como na seguinte conversão do número 23.
 
 [.text-center]
 23 = 16 + 0 + 4 + 2 + 1 = 1 · 2^4^ + 0 · 2^3^ + 1 · 2^2^ + 1 · 2^1^ + 1 · 2^0^ = 10111~2~
 
-First, find the largest power of two that's less than or equal to
-the number. In this case, 16 fits the bill because 32 is too large.
-Subtract that value from the number, leaving 7 in this case. Then repeat
-the process. The last step is to collect the coefficients of the powers
-of two into a sequence to get the binary equivalent. We used 16, 4, 2,
-and 1 but skipped 8. If we write a 1 for every place we used and a 0 for
-every place we skipped, we get 23 = 10111~2~. While this is a
-straightforward procedure for decimal to binary conversion, it can be
-cumbersome for larger numbers.
+Primeiro, encontre a maior potência de dois que seja menor ou igual ao número. Neste caso, 16 se encaixa, pois 32 é muito grande. Subtraia esse valor do número, restando 7 neste caso. Em seguida, repita o processo. O último passo é reunir os coeficientes das potências de dois em uma sequência para obter o equivalente binário. Usamos 16, 4, 2 e 1, mas pulamos o 8. Se escrevermos um 1 para cada posição que usamos e um 0 para cada posição que pulamos, obtemos 2³ = 10111~2~. Embora esse seja um procedimento simples para a conversão de decimal para binário, ele pode ser complicado para números maiores.
 
 ****
 <<positiveDecimalToBinaryExercise>>
 ****
 
-An alternate way to convert a decimal numeral to an equivalent binary
-numeral is to divide the given number by 2 until the quotient is 0
-(keeping only the integer part of the quotient). At each step, record
-the remainder found when dividing by 2. Collect these remainders (which
-will always be either 0 or 1) to form the binary equivalent. The least
-significant bit is the remainder obtained after the first division, and
-the most significant bit is the remainder obtained after the last
-division.  In other words, this approach finds the digits of the binary number in backward order.
+Uma maneira alternativa de converter um número decimal em seu equivalente binário é dividir o número dado por 2 até que o quociente seja 0 (mantendo apenas a parte inteira do quociente). A cada etapa, registre o resto obtido ao dividir por 2. Reúna esses restos (que serão sempre 0 ou 1) para formar o equivalente binário. O bit menos significativo é o resto obtido após a primeira divisão, e o bit mais significativo é o resto obtido após a última divisão. Em outras palavras, essa abordagem determina os dígitos do número binário na ordem inversa.
 
-.Decimal to binary with remainders
+.Conversão decimal para binário com resto
 ====
-Let's use this method to convert 23 to its binary equivalent. The
-following table shows the steps need for the conversion. The leftmost
-column lists the step number. The second column contains the number to
-be divided by 2 at each step. The third column contains the quotient for
-each step, and the last column contains the current remainder.
+Vamos usar esse método para converter 23 em seu equivalente binário. A tabela a seguir mostra as etapas necessárias para a conversão. A coluna mais à esquerda indica o número da etapa. A segunda coluna contém o número a ser dividido por 2 em cada etapa. A terceira coluna contém o quociente de cada etapa, e a última coluna contém o resto atual.
 
 [.center%autowidth%unbreakable,cols="^,>,>,>",]
 |=========================================
-|Step |Number |Quotient |Remainder
+|Etapa |Número |Quociente |Resto
 
 |1 |23 |11 |1
 |2 |11 |5 |1
@@ -612,41 +434,30 @@ each step, and the last column contains the current remainder.
 |5 |1 |0 |1
 |=========================================
 
-We begin by dividing 23 by 2, yielding 11 as the quotient and 1 as the
-remainder. The quotient 11 is then divided by 2, yielding 5 as the
-quotient and 1 as the remainder. This process continues until we get a
-quotient of 0 and a remainder of 1 in Step 5. We now write the
-remainders from the most recent to the least recent and get the same result as before,
-23 = 10111~2~.
+Começamos dividindo 23 por 2, obtendo 11 como quociente e 1 como resto. O quociente 11 é então dividido por 2, resultando em 5 como quociente e 1 como resto. Esse processo continua até chegarmos a um quociente de 0 e um resto de 1 na Etapa 5. Agora escrevemos os restos do mais recente para o menos recente e obtemos o mesmo resultado de antes, 23 = 10111~2~.
 ====
 
-===== Other conversions
+===== Outras conversões
 
-A decimal number can be converted to its hexadecimal equivalent using
-either of the two procedures described above. Instead of writing a
-decimal number as a sum of powers of 2, one writes it as a sum of powers
-of 16. Similarly, when using the division method, instead of dividing by
-2, one divides by 16. Octal conversion is similar.
+Um número decimal pode ser convertido para seu equivalente hexadecimal usando qualquer um dos dois procedimentos descritos acima. Em vez de escrever um número decimal como uma soma de potências de 2, escreve-se como uma soma de potências de 16. Da mesma forma, ao usar o método da divisão, em vez de dividir por 2, divide-se por 16. A conversão para o sistema octal é semelhante.
 
 ****
 <<convertDecimalToOctalAndHexExercise>>
 ****
 
-We use hexadecimal because it's straightforward to convert from it to
-binary or back. The following table lists binary equivalents for the 16
-hexadecimal digits.
+Usamos o sistema hexadecimal porque é fácil converter dele para o binário e vice-versa. A tabela a seguir lista os equivalentes binários dos 16 dígitos hexadecimais.
 
 [.center%autowidth%unbreakable%header,cols="^.>,^.>,^,^.>,^.>",]
 |==============================================================
-|Hexadecimal +
-Digit
-|Binary +
-Equivalent
+|Dígito +
+Hexadecimal
+|Equivalente +
+Binário
 |
-|Hexadecimal +
-Digit
-|Binary +
-Equivalent
+|Dígito +
+Hexadecimal
+|Equivalente +
+Binário
 
 |0 |0000  | |8 |1000
 |1 |0001  | |9 |1001
@@ -658,44 +469,22 @@ Equivalent
 |7 |0111  | |F |1111
 |==============================================================
 
-With the help of the table above, let's convert
-3FA~16~ to binary. By simple substitution,
-3FA~16~ = 0011 1111 1010~2~.
-Note that we've grouped the binary digits into clusters of
-4 bits each. Of course, the leftmost zeroes in the binary equivalent are
-useless as they do not contribute to the value of the number.
+Com a ajuda da tabela acima, vamos converter 3FA~16~ para binário. Por simples substituição, 3FA~16~ = 0011 1111 1010~2~. Observe que agrupamos os dígitos binários em blocos de 4 bits cada. É claro que os zeros mais à esquerda no equivalente binário são irrelevantes, pois não contribuem para o valor do número.
 
 ****
 <<octalEquivalentsOfBinaryExercise>> +
 <<convertOctalToBinaryExercise>>
 ****
 
-===== Integer representation in a computer
+===== Representação de números inteiros em um computador
 
-In mathematics, binary numerals can represent arbitrarily big numbers.
-Inside of a computer, the size of a number is constrained by the number
-of bits used to represent it. For general purpose computation, 32- and
-64-bit integers are commonly used. The largest integer that
-Java represents with 32 bits is 2,147,483,647, which is good enough for
-most tasks. For larger numbers, Java can represent up to
-9,223,372,036,854,775,807 with 64 bits. Java also provides
-representations for integers using 8 and 16 bits.
+Na matemática, os números binários podem representar números arbitrariamente grandes. Dentro de um computador, o tamanho de um número é limitado pelo número de bits usados para representá-lo. Para cálculos de uso geral, são comumente utilizados inteiros de 32 e 64 bits. O maior inteiro que o Java representa com 32 bits é 2.147.483.647, o que é suficiente para a maioria das tarefas. Para números maiores, o Java pode representar até 9.223.372.036.854.775.807 com 64 bits. O Java também oferece representações para inteiros usando 8 e 16 bits.
 
-These representations are easy to determine for positive numbers: Find
-the binary equivalent of the number and then pad the left side with
-zeroes to fill the remaining space. For example,
-19 = 10011~2~. If stored using 8 bits, 19 would be
-represented as `0001 0011`. If stored using 16 bits, 19 would be
-represented as `0000 0000 0001 0011`. (We separate groups of 4 bits for
-easier reading.)
+Essas representações são fáceis de determinar para números positivos: encontre o equivalente binário do número e, em seguida, preencha o lado esquerdo com zeros para ocupar o espaço restante. Por exemplo, 19 = 10011~2~. Se armazenado usando 8 bits, 19 seria representado como `0001 0011`. Se armazenado usando 16 bits, 19 seria representado como `0000 0000 0001 0011`. (Separamos grupos de 4 bits para facilitar a leitura).
 
-===== Binary arithmetic
+===== Aritmética binária
 
-Recall that computers deal with numbers in their binary representation,
-meaning that all arithmetic is done on binary numbers. Sometimes it's
-useful to understand how this process works and compare it to decimal arithmetic.
-The table below lists rules for
-binary addition. +
+Lembre-se de que os computadores lidam com números em sua representação binária, o que significa que toda a aritmética é realizada com números binários. Às vezes, é útil compreender como esse processo funciona e compará-lo com a aritmética decimal. A tabela abaixo lista as regras para a adição binária. +
 
 [.center%autowidth%unbreakable,cols="^h,>,>"]
 |========
@@ -705,36 +494,25 @@ binary addition. +
 |1 |1 |10
 |========
 
-As indicated above, the addition of two 1s leads to a 0 with a carry of
-1 into the next position to the left. Addition for numbers composed of
-more than one bit use the same rules as any addition, carrying values
-that are too large into the next position. In decimal addition, values
-over 9 must to be carried. In binary addition, values over 1 must be
-carried. The next example shows a sample binary addition. To simplify
-its presentation, we assume that the integers are represented with only 8 bits.
+Conforme indicado acima, a soma de dois 1s resulta em um 0, com um transporte de 1 para a posição seguinte à esquerda. A soma de números compostos por mais de um bit segue as mesmas regras de qualquer soma, transportando valores excessivamente grandes para a posição seguinte. Na soma decimal, valores acima de 9 devem ser transportados. Na soma binária, valores acima de 1 devem ser transportados. O exemplo a seguir mostra uma demonstração de soma binária. Para simplificar a apresentação, assumimos que os números inteiros são representados com apenas 8 bits.
 
-.Binary addition
+.Adição binária
 ====
-Let's add the numbers 60 and 6 in binary. Using the conversion
-techniques described above, we can find that 60 = 111100~2~
-and 6 = 110~2~. Inside the computer, these numbers would
-already be in binary and padded to fill 8 bits. +
+Vamos somar os números 60 e 6 no sistema binário. Usando as técnicas de conversão descritas acima, podemos ver que 60 = 111100₂ e 6 = 110₂. No computador, esses números já estariam no sistema binário e preenchidos com zeros à esquerda para ocupar 8 bits. +
 
 [.center%autowidth%unbreakable,cols="^,>,>",]
 |=====================
-| |Binary |Decimal
+| |Binário |Decimal
 
 | m|0011 1100 m|60
 |+ m|0000 0110 m|6
 | m|0100 0010 m|66
 |=====================
 
-The result is no surprise, but note that the addition can proceed in
-binary without conversion to decimal at any point.
+O resultado não é nenhuma surpresa, mas observe que a soma pode ser realizada em binário sem a necessidade de conversão para decimal em nenhum momento.
 ====
 
-Subtraction in binary is also similar to subtraction in decimal. The
-rules are given in the following table.
+A subtração no sistema binário também é semelhante à subtração no sistema decimal. As regras estão apresentadas na tabela a seguir.
 
 [.center%autowidth%unbreakable,cols="^h,>,>"]
 |==========
@@ -744,16 +522,15 @@ rules are given in the following table.
 |1 |(1)1 |0
 |==========
 
-When subtracting a 1 from a 0, a 1 is borrowed from the next left
-position. The next example illustrates binary subtraction.
+Ao subtrair um 1 de um 0, toma-se emprestado um 1 da posição imediatamente à esquerda. O exemplo a seguir ilustra a subtração binária.
 
-.Binary subtraction
+.Subtração binária
 ====
-Again, we'll use 60 and 6 and their binary equivalents given above.
+Mais uma vez, usaremos 60 e 6 e seus equivalentes binários indicados acima.
 
 [.center%autowidth%unbreakable,cols="^,>,>",]
 |=====================
-| |Binary |Decimal
+| |Binário |Decimal
 
 | m|0011 1100 m|60
 |- m|0000 0110 m|6
@@ -765,154 +542,101 @@ Again, we'll use 60 and 6 and their binary equivalents given above.
 <<hexArithmeticExercise>>
 ****
 
-===== Negative integers in a computer
+===== Representação de números inteiros negativos em um computador
 
-Negative integers are also represented in computer memory as binary
-numbers, using a system called _two's complement_. When looking at the
-binary representation of a signed integer in a computer, the leftmost
-(most significant) bit will be 1 if the number's negative and 0 if
-it's positive. Unfortunately, there's more to finding the representation
-of a negative number than flipping this bit.
+Os números inteiros negativos também são representados na memória do computador como números binários, utilizando um sistema chamado _complemento a dois_. Ao analisar a representação binária de um número inteiro com sinal em um computador, o bit mais à esquerda (o mais significativo) será 1 se o número for negativo e 0 se for positivo. Infelizmente, encontrar a representação de um número negativo envolve mais do que apenas inverter esse bit.
 
-Suppose that we need to find the binary equivalent of the decimal number
--12 using 8 bits in two's complement form. The first step
-is to convert 12 to its 8-bit binary equivalent. Doing so we get 12 =
-`0000 1100`. Note that the leftmost bit of the representation is a 0,
-indicating that the number is positive. Next, we take the two's
-complement of the 8-bit representation in two steps. In the first step,
-we flip every bit, i.e., change every 0 to 1 and every 1 to 0. This
-gives us the _one's complement_ of the number, `1111 0011`. In the
-second step, we add 1 to the one's complement to get the two's
-complement. The result is `1111 0011` + `1` = `1111 0100`.
+Suponhamos que precisemos encontrar o equivalente binário do número decimal -12 usando 8 bits na forma de complemento de dois. O primeiro passo é converter 12 para seu equivalente binário de 8 bits. Ao fazer isso, obtemos 12 = `0000 1100`. Observe que o bit mais à esquerda da representação é um 0, indicando que o número é positivo. Em seguida, calculamos o complemento a dois da representação de 8 bits em duas etapas. Na primeira etapa, invertemos todos os bits, ou seja, mudamos todos os 0 para 1 e todos os 1 para 0. Isso nos dá o _complemento a um_ do número, `1111 0011`. Na segunda etapa, somamos 1 ao complemento a um para obter o complemento a dois. O resultado é `1111 0011` + `1` = `1111 0100`. 
 
-Thus, the 8-bit, two's complement binary equivalent of -12 is
-`1111 0100`. Note that the leftmost bit is a 1, indicating that this is
-a negative number.
+Assim, o equivalente binário de 8 bits em complemento de dois de -12 é `1111 0100`. Observe que o bit mais à esquerda é um 1, indicando que este é um número negativo.
 
 ****
 <<onesToTwosComplementProcessExercise>> +
 <<onesToTwosComplementExercise>>
 ****
 
-.Decimal to two's complement
+.De decimal para complemento a dois
 ====
-Let's convert -29 to its binary equivalent assuming that the number will
-be stored in 8-bit, two's complement form. First we convert positive 29 to its 8-bit binary equivalent, 29 = `0001 1101`.
+Vamos converter -29 para seu equivalente binário, assumindo que o número será armazenado na forma de complemento a dois de 8 bits. Primeiro, convertemos o número positivo 29 para seu equivalente binário de 8 bits: 29 = `0001 1101`.
 
-Next we obtain the one's complement of the binary representation by
-flipping 0s to 1s and 1s to 0s. This gives us `1110 0010`. Finally, we
-add 1 to the one's complement representation to get `1110 0010` + `1` =
-`1110 0011`, which is the desired binary equivalent of -29.
+Em seguida, obtemos o complemento à 1 da representação binária invertendo os 0s para 1s e os 1s para 0s. Isso nos dá `1110 0010`. Por fim, somamos 1 à representação do complemento à 1 para obter `1110 0010` + `1` = `1110 0011`, que é o equivalente binário desejado de -29.
 ====
 
 ****
 <<convertNegativeDecimalToBinaryExercise>>
 ****
 
-.Two's complement to decimal
+.Complemento de dois para decimal
 ====
-Let's convert the 8-bit, two's complement value `1000 1100` to
-decimal. We note that the leftmost bit of this number is 1, making it a
-negative number. Therefore, we reverse the process of making a two's
-complement. First, we subtract 1 from the representation, yielding
-`1000 1100` - `1` = `1000 1011`. Next, we flip all the bits in this
-one's complement form, yielding `0111 0100`.
+Vamos converter o valor de 8 bits em complemento de dois `1000 1100` para decimal. Observamos que o bit mais à esquerda desse número é 1, o que o torna um número negativo. Portanto, invertemos o processo de formação do complemento de dois. Primeiro, subtraímos 1 da representação, obtendo `1000 1100` - `1` = `1000 1011`. Em seguida, invertemos todos os bits nesta forma de complemento de um, obtendo `0111 0100`.
 
-We convert this binary representation to its decimal equivalent,
-yielding 116. Thus, the decimal equivalent of `1000 1100` is -116.
+Convertemos essa representação binária em seu equivalente decimal, obtendo 116. Assim, o equivalente decimal de `1000 1100` é -116.
 ====
 
 ****
 <<convertNegativeBinaryToDecimalExercise>>
 ****
 
-Why do computers use two's complement? First of all, they need a system that
-can represent both positive and negative numbers. They could have
-used the leftmost bit as a sign bit and represented the rest of the
-number as a positive binary number. Doing so would require a check on
-the bit and some conversion for negative numbers every time a computer
-wanted to perform an addition or subtraction.
+Por que os computadores usam o complemento a dois? Em primeiro lugar, eles precisam de um sistema capaz de representar tanto números positivos quanto negativos. Eles poderiam ter usado o bit mais à esquerda como bit de sinal e representado o restante do número como um número binário positivo. Fazer isso exigiria uma verificação desse bit e alguma conversão para números negativos toda vez que o computador quisesse realizar uma adição ou subtração.
 
-Because of the way it's designed, positive and negative integers stored
-in two's complement can be added or subtracted *without* any special
-conversions. The leftmost bit is added or subtracted just like any other
-bit, and values that carry past the leftmost bit are ignored. Two's
-complement has an advantage over one's complement in that there is only
-one representation for zero. The next example shows two's complement in
-action.
+Devido à forma como foi projetado, os números inteiros positivos e negativos armazenados no complemento a dois podem ser somados ou subtraídos *sem* nenhuma conversão especial. O bit mais à esquerda é somado ou subtraído exatamente como qualquer outro bit, e os valores que ultrapassam o bit mais à esquerda são ignorados. O complemento a dois tem uma vantagem sobre o complemento de um, pois existe apenas uma representação para o zero. O próximo exemplo mostra o complemento a dois em ação.
 
-.Two's complement arithmetic
+.Aritmética do complemento a dois
 ====
-We'll add -126 and 126. After performing the needed conversions, their
-8-bit, two's complement representations are `1000 0010` and `0111 1110`.
+Vamos somar -126 e 126. Após realizar as conversões necessárias, suas representações em complemento de dois de 8 bits são `1000 0010` e `0111 1110`.
 
 [.center%autowidth%unbreakable,cols="^,>,>",]
 |=====================
-| |Binary |Decimal
+| |Binário |Decimal
 
 | m|1000 0010 m|-126
 |+ m|0111 1110 m|126
 | m|0000 0000 m|0
 |=====================
 
-As expected, the sum is 0.
+Como experado, a soma retorna 0.
 
-Now, let's add the two negative integers -126 and -2, whose 8-bit, two's
-complement representations are `1000 0010` and `1111 1110`.
+Agora, vamos somar os dois números inteiros negativos -126 e -2, cujas representações em complemento de dois de 8 bits são `1000 0010` e `1111 1110`.
 
 [.center%autowidth%unbreakable,cols="^,>,>",]
 |=====================
-| |Binary |Decimal
+| |Binário |Decimal
 
 | m|1000 0010 m|-126
 |+ m|1111 1110 m|-2
 | m|1000 0000 m|-128
 |=====================
 
-The result is -128, which is the smallest negative integer that can be
-represented in 8-bit two's complement.
+O resultado é -128, que é o menor número inteiro negativo que pode ser representado no complemento a dois de 8 bits.
 ====
 
 ****
 <<binaryArithmeticExercise>>
 ****
 
-===== Overflow and underflow
+===== Estouro e estouro negativo
 
-When performing arithmetic on numbers, an overflow
-is said to occur when the result of the operation is larger than the
-largest value that can be stored in that representation. An underflow is
-said to occur when the result of the operation is smaller than the
-smallest possible value.
+Ao realizar operações aritméticas com números, diz-se que ocorre um estouro quando o resultado da operação é maior do que o maior valor que pode ser armazenado nessa representação. Diz-se que ocorre um estouro negativo quando o resultado da operação é menor do que o menor valor possível.
 
-Both overflows and underflows lead to wrapped-around values. For
-example, adding two positive numbers together can result in a negative
-number or adding two negative numbers together can result in a positive
-number.
+Tanto os estouros quanto os estouros negativos levam a valores que retornam ao início do intervalo. Por exemplo, somar dois números positivos pode resultar em um número negativo, ou somar dois números negativos pode resultar em um número positivo.
 
-.Binary addition with overflow
+.Adição binária com estouro
 ====
-Let's add the numbers 124 and 6. Their 8-bit, two's complement
-representations are `0111 1100` and `0000 0110`.
+Vamos somar os números 124 e 6. Suas representações em complemento de dois, de 8 bits, são `0111 1100` e `0000 0110`.
 
 [.center%autowidth%unbreakable,cols="^,>,>"]
 |=====================
-| |Binary |Decimal
+| |Binário |Decimal
 
 | m|0111 1100 m|124
 |+ m|0000 0110 m|6
 | m|1000 0010 m|-126
 |=====================
 
-This surprising result happens because the largest 8-bit two's
-complement integer is 127. Adding 124 and 6 yields 130, a value larger
-than this maximum, resulting in overflow with a negative answer.
+Esse resultado surpreendente ocorre porque o maior inteiro de 8 bits no complemento a dois é 127. A soma de 124 e 6 resulta em 130, um valor superior a esse máximo, o que causa um estouro com um resultado negativo.
 ====
 
-The smallest (most negative) number that can be represented in 8-bit
-two's complement is -128. A result smaller than this will result in
-underflow. For example, -115 - 31 = 110. Try out the conversions needed
-to test this result.
+O menor número (o mais negativo) que pode ser representado no complemento a dois de 8 bits é -128. Um resultado menor que esse resultará em um estouro negativo. Por exemplo, -115 - 31 = 110. Experimente as conversões necessárias para testar esse resultado.
 
 ===== Bitwise operators
 
