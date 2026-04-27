@@ -453,7 +453,6 @@ Usamos o sistema hexadecimal porque é fácil converter dele para o binário e v
 Hexadecimal
 |Equivalente +
 Binário
-|
 |Dígito +
 Hexadecimal
 |Equivalente +
@@ -614,11 +613,11 @@ O resultado é -128, que é o menor número inteiro negativo que pode ser repres
 <<binaryArithmeticExercise>>
 ****
 
-===== Estouro e estouro negativo
+===== Estouro e subfluxo
 
-Ao realizar operações aritméticas com números, diz-se que ocorre um estouro quando o resultado da operação é maior do que o maior valor que pode ser armazenado nessa representação. Diz-se que ocorre um estouro negativo quando o resultado da operação é menor do que o menor valor possível.
+Ao realizar operações aritméticas com números, diz-se que ocorre um estouro quando o resultado da operação é maior do que o maior valor que pode ser armazenado nessa representação. Diz-se que ocorre um subfluxo quando o resultado da operação é menor do que o menor valor possível.
 
-Tanto os estouros quanto os estouros negativos levam a valores que retornam ao início do intervalo. Por exemplo, somar dois números positivos pode resultar em um número negativo, ou somar dois números negativos pode resultar em um número positivo.
+Tanto os estouros quanto os subfluxos levam a valores que retornam ao início do intervalo. Por exemplo, somar dois números positivos pode resultar em um número negativo, ou somar dois números negativos pode resultar em um número positivo.
 
 .Adição binária com estouro
 ====
@@ -638,269 +637,167 @@ Esse resultado surpreendente ocorre porque o maior inteiro de 8 bits no compleme
 
 O menor número (o mais negativo) que pode ser representado no complemento a dois de 8 bits é -128. Um resultado menor que esse resultará em um estouro negativo. Por exemplo, -115 - 31 = 110. Experimente as conversões necessárias para testar esse resultado.
 
-===== Bitwise operators
+===== Operadores bit a bit
 
-Although we most commonly manipulate numbers using traditional
-mathematical operations such as addition, subtraction, multiplication,
-and division, there are also operations that work directly on the binary
-representations of the numbers. Some of these operators have clear relationships
-to mathematical operations, and some don't.
+Embora normalmente manipulemos números usando operações matemáticas tradicionais, como adição, subtração, multiplicação e divisão, também existem operações que atuam diretamente sobre as representações binárias dos números. Alguns desses operadores têm relações claras com as operações matemáticas, enquanto outros não.
 
 [.center%unbreakable,cols="^.<15,<.<20,<.<65",width=90%]
 |=======================================================================
-|Operator |Name |Description
+|Operador |Nome |Descrição
 
-| `&`  |Bitwise AND |Combines two binary representations into a new
-representation which has a 1 in every position where both the original
-representations have a 1
+| `&` |E bit a bit |Combina duas representações binárias em uma nova representação que contém um 1 em todas as posições em que ambas as representações originais têm um 1
 
-|`\|` |Bitwise OR |Combines two binary representations into a new
-representation which has a 1 in every position where either of the
-original representations has a 1
+| `\|` |OU bit a bit |Combina duas representações binárias em uma nova representação que contém um 1 em todas as posições em que qualquer uma das representações originais tem um 1
 
-| `^` |Bitwise XOR |Combines two binary representations into a new
-representation which has a 1 in every position that the original
-representations have different values
+| `^` |OU EXCLUSIVO bit a bit |Combina duas representações binárias em uma nova representação que possui um 1 em todas as posições em que as representações originais  possuem valores diferentes
 
-|`~` |Bitwise complement |Takes a representation and creates a new
-representation in which every bit is flipped from 0 to 1 and 1 to 0
+| `~` |Complemento bit a bit |Pega uma representação e cria uma nova representação na qual cada bit é invertido de 0 para 1 e de 1 para 0
 
-| `<<` |Signed left shift |Moves all the bits the specified number of
-positions to the left, shifting 0s into the rightmost bits
+| `<<` |Deslocamento à esquerda com sinal |Desloca todos os bits o número especificado de posições para a esquerda, inserindo zeros nos bits mais à direita
 
-| `>>` |Signed right shift |Moves all the bits the specified number of
-positions to the right, padding the left with copies of the sign bit
+| `>>` |Deslocamento à direita com sinal |Desloca todos os bits o número especificado de posições para a direita, preenchendo a esquerda com cópias do bit de sinal
 
-| `>>>` |Unsigned right shift |Moves all the bits the specified number of
-positions to the right, padding with 0s
+| `>>>` |Deslocamento à direita sem sinal |Desloca todos os bits o número especificado de posições para a direita, preenchendo com zero.
 |=======================================================================
 
-Bitwise AND, bitwise OR, and bitwise XOR take two integer
-representations and combine them to make a new representation. In
-bitwise AND, each bit in the result will be a 1 if *both* of the
-original integer representations in that position are 1 and 0 otherwise.
-In bitwise OR, each bit in the result will be a 1 if *either* of the
-original integer representations in that position are 1 and 0 otherwise.
-In bitwise XOR, each bit in the result will be a 1 if the two bits of
-the original integer representations in that position are *different*
-and 0 otherwise.
+O E bit a bit, o OU bit a bit e o OU EXCLUSIVO bit a bit recebem duas representações inteiras e as combinam para formar uma nova representação. No E bit a bit, cada bit do resultado será um 1 se *ambas* as representações inteiras originais nessa posição forem 1 e 0 caso contrário. No OU bit a bit, cada bit do resultado será um 1 se *qualquer uma* das representações inteiras originais nessa posição for 1 e 0 caso contrário. No OU EXCLUSIVO bit a bit, cada bit no resultado será um 1 se os dois bits das representações inteiras originais nessa posição forem *diferentes* e 0 caso contrário.
 
-Bitwise complement is a unary operator like the negation operator (`-`).
-Instead of merely changing the sign of a value (which it will also do),
-its result changes every 1 in the original representation to 0 and
-every 0 to 1.
+O complemento bit a bit é um operador unário, como o operador de negação (`-`). Em vez de apenas alterar o sinal de um valor (o que ele também faz), seu resultado altera todos os 1 na representação original para 0 e todos os 0 para 1.
 
-The signed left shift, signed right shift, and unsigned right shift
-operators all create a new binary representation by shifting the bits in
-the original representation a certain number of places to the left or
-the right. The signed left shift moves the bits to the left, padding
-with 0s. If you do a signed left shift
-by _n_ positions, it's equivalent to multiplying the number
-by 2^_n_^ (until overflow occurs). The signed right shift moves the bits to the
-right, padding with whatever the sign bit is. If you do a signed right
-shift by _n_ positions, it's equivalent to dividing the
-number by 2^_n_^ (with integer division). The unsigned right
-shift moves the bits to the right, including the sign bit, filling the
-left side with 0s. An unsigned right shift will always make a value
-positive but is otherwise similar to a signed right shift. A few
-examples follow.
+Os operadores de deslocamento à esquerda com sinal, deslocamento à direita com sinal e deslocamento à direita sem sinal criam uma nova representação binária deslocando os bits da representação original um certo número de posições para a esquerda ou para a direita. O deslocamento à esquerda com sinal move os bits para a esquerda, preenchendo com zeros. Se você fizer um deslocamento à esquerda com sinal em _n_ posições, isso é equivalente a multiplicar o número por 2^_n _^(até ocorrer estouro). O deslocamento à direita com sinal move os bits para a direita, preenchendo com o valor do bit de sinal. Se você fizer um deslocamento à direita com sinal em _n_ posições, isso é equivalente a dividir o número por 2^_n_ ^(com divisão inteira). O deslocamento à direita sem sinal move os bits para a direita, incluindo o bit de sinal, preenchendo o lado esquerdo com zeros. Um deslocamento à direita sem sinal sempre tornará um valor positivo, mas, fora isso, é semelhante a um deslocamento à direita com sinal. Seguem alguns exemplos.
 
 .Bitwise operators
 ====
-Here are a few examples of the result of bitwise operations. We'll
-assume that the values are represented using 32-bit two's complement,
-instead of using 8-bit values as before. In Java, bitwise operators
-automatically convert smaller values to 32-bit representations before
-proceeding.
+Aqui estão alguns exemplos do resultado de operações bit a bit. Vamos supor que os valores sejam representados usando o complemento a dois de 32 bits, em vez de valores de 8 bits como antes. Em Java, os operadores bit a bit convertem automaticamente os valores menores para representações de 32 bits antes de prosseguir.
 
-Let's consider the result of `21 & 27`.
+Vamos analisar o resultado de `21 & 27`.
 
 [.center%autowidth%unbreakable,cols="^,>,>",]
 |==================================================
-| |Binary |Decimal
+| |Binário |Decimal
 
 | |`0000 0000 0000 0000 0000 0000 0001 0101` |21
 |`&` |`0000 0000 0000 0000 0000 0000 0001 1011` |27
 | |`0000 0000 0000 0000 0000 0000 0001 0001` |17
 |==================================================
 
-Note how this result is different from `21 | 27`.
+Observe como esse resultado difere de `21 | 27`.
 
 [.center%autowidth%unbreakable,cols="^,>,>",]
 |==================================================
-| |Binary |Decimal
+| |Binário |Decimal
 
 | |`0000 0000 0000 0000 0000 0000 0001 0101` |21
 |`\|` |`0000 0000 0000 0000 0000 0000 0001 1011` |27
 | |`0001 1111` |31
 |==================================================
 
-And also from `21 ^ 27`.
+E também de `21 ^ 27`.
 
 [.center%autowidth%unbreakable,cols="^,>,>",]
 |=================================================
-| |Binary |Decimal
+| |Binário |Decimal
 
 | |`0000 0000 0000 0000 0000 0000 0001 0101` |21
 |`^` |`0000 0000 0000 0000 0000 0000 0001 1011` |27
 | |`0000 1110` |14
 |=================================================
 
-Ignoring overflow, signed left shifting is equivalent to repeated
-multiplications by 2. Consider `11 << 3`. The representation
-`0000 0000 0000 0000 0000 0000 0000 1011` is shifted to the left to make
-`0000 0000 0000 0000 0000 0000 0101 1000` = 88 = 11 · 2^3^.
+Ignorando o estouro, o deslocamento à esquerda com sinal é equivalente a multiplicações repetidas por 2. Considere `11 << 3`. A representação `0000 0000 0000 0000 0000 0000 0000 1011` é deslocada para a esquerda para formar `0000 0000 0000 0000 0000 0000 0101 1000` = 88 = 11 · 2^3^.
 
-Signed right shifting is equivalent to repeated integer divisions by 2.
-Consider `-104 >> 2`. The representation
-`1111 1111 1111 1111 1111 1111 1001 1000` is shifted to the right to
-make `1111 1111 1111 1111 1111 1111 1110 0110` = -26 = -104 ÷ 2^2^.
+O deslocamento à direita com sinal é equivalente a divisões inteiras repetidas por 2. Considere `-104 >> 2`. A representação `1111 1111 1111 1111 1111 1111 1001 1000` é deslocada para a direita para formar `1111 1111 1111 1111 1111 1111 1110 0110` = -26 = -104 ÷ 2^2^.
 
-Unsigned right shifting is the same as signed right shifting except when
-it is done on negative numbers. Since their sign bit is replaced by `0`,
-an unsigned right shift produces a (generally large) positive number.
-Consider `-104 >>> 2`. The representation
-`1111 1111 1111 1111 1111 1111 1001 1000` is shifted to the right to
-make `0011 1111 1111 1111 1111 1111 1110 0110` = 1,073,741,798.
+O deslocamento à direita sem sinal é igual ao deslocamento à direita com sinal, exceto quando é feito em números negativos. Como seu bit de sinal é substituído por `0`, um deslocamento à direita sem sinal produz um número positivo (geralmente grande). Considere `-104 >>> 2`. A representação `1111 1111 1111 1111 1111 1111 1001 1000` é deslocada para a direita, resultando em `0011 1111 1111 1111 1111 1111 1110 0110` = 1.073.741.798.
 
-Because of the way two's complement is designed, bitwise complement is
-equivalent to negating the sign of the number and then subtracting
-1. Consider `~(-104)`. The
-representation `1111 1111 1111 1111 1111 1111 1001 1000` is complemented
-to `0000 0000 0000 0000 0000 0000 0110 0111` = 103.
+Devido à forma como o complemento de dois é projetado, o complemento bit a bit é equivalente a negar o sinal do número e, em seguida, subtrair 1. Considere `~(-104)`. A representação `1111 1111 1111 1111 1111 1111 1001 1000` é complementada para `0000 0000 0000 0000 0000 0000 0110 0111` = 103.
 ====
 
-===== Rational numbers
+===== Números racionais
 
-We've seen how to represent positive and negative integers in computer
-memory, but this section shows how rational numbers, such as 12.33,
--149.89, and 3.14159, can be converted into binary and represented.
+Já vimos como representar números inteiros positivos e negativos na memória do computador, mas esta seção mostra como os números racionais, como 12,33, -149,89 e 3,14159, podem ser convertidos para o sistema binário e representados.
 
-===== Scientific notation
+===== Notação científica
 
-_Scientific notation_ is closely related to the way a computer
-represents a rational number in memory. Scientific notation is a tool
-for representing very large or very small numbers without writing a lot
-of zeroes. A decimal number in scientific notation is written
-_a_ × 10^_b_^ where _a_ is called the
-_mantissa_ and _b_ is called the _exponent_.
+A _notação científica_ está intimamente relacionada à forma como um computador representa um número racional na memória. A notação científica é uma ferramenta para representar números muito grandes ou muito pequenos sem precisar escrever muitos zeros. Um número decimal na notação científica é escrito como _a_ × 10^_b_^, em que _a_ é chamado de _mantissa_(ou _coeficiente_) e _b_ é chamado de _expoente_.
 
-For example, the number 3.14159 can be written in scientific notation as
-0.314159 × 10^1^. In this case, 0.314159
-is the mantissa, and 1 is the exponent. Here a few more
-examples of writing numbers in scientific notation.
+Por exemplo, o número 3,14159 pode ser escrito em notação científica como 0,314159 × 10^1^. Nesse caso, 0,314159 é a mantissa e 1 é o expoente. Aqui estão mais alguns exemplos de como escrever números em notação científica.
 
 [.center%autowidth,grid="none", frame="none",cols=">,^,<"]
 |===
-|3.14159|=|3.14159 × 10^0^
-|3.14159|=|314159 × 10^-5^
-|-141.324|=|-0.141324 × 10^3^
-|30,000|=|.3 × 10^5^
+|3,14159|=|3,14159 × 10^0^
+|3,14159|=|314159 × 10^-5^
+|-141,324|=|-0,141324 × 10^3^
+|30,000|=|0,3 × 10^5^
 |===
 
-
-There are many ways of writing any given number in scientific notation. A more
-standardized way of writing real numbers is _normalized scientific
-notation_. In this notation, the mantissa is always written as a number
-whose absolute value is less than 10 but greater than or equal to 1.
-Following are a few examples of decimal numbers in normalized scientific
-notation.
+Existem várias maneiras de escrever um determinado número na notação científica. Uma forma mais padronizada de escrever números reais é a _notação científica normalizada_. Nessa notação, a mantissa é sempre escrita como um número cujo valor absoluto é menor que 10, mas maior ou igual a 1. A seguir, apresentamos alguns exemplos de números decimais na notação científica normalizada.
 
 [.center%autowidth,grid="none", frame="none",cols=">,^,<"]
 |===
-|3.14159|=|3.14159 × 10^0^
-|-141.324|=|-1.41324 × 10^2^
-|30,000|=|3.0 × 10^4^
+|3,14159|=|3,14159 × 10^0^
+|-141,324|=|-1,41324 × 10^2^
+|30,000|=|3,0 × 10^4^
 |===
 
-A shorthand for scientific notation is E notation, which is written with
-the mantissa followed by the letter '`E`' followed by the exponent. For
-example, 39.2 in E notation can be written 3.92E1 or 0.392E2. The letter '`E`' should be read
-"`multiplied by 10 to the power.`" It's legal to use E notation to represent
-numbers in scientific notation in Java.
+Uma forma abreviada da notação científica é a notação E, que é escrita com a mantissa seguida da letra ‘`E`’ e, em seguida, do expoente. Por exemplo, 39,2 na notação E pode ser escrito como 3,92E1 ou 0,392E2. A letra ‘`E`’ deve ser lida como “`multiplicado por 10 elevado a.`” É permitido usar a notação E para representar números em notação científica em Java.
 
-===== Fractions
+===== Frações
 
-A rational number can be broken into an integer part and a fractional
-part. In the number 3.14, 3 is the integer part, and .14 is the
-fractional part. We've already seen how to convert the integer part to
-binary. Now, we'll see how to convert the fractional part into binary.
-We can then combine the binary equivalents of the integer and fractional
-parts to find the binary equivalent of a decimal real number.
+Um número racional pode ser dividido em uma parte inteira e uma parte fracionária. No número 3,14, 3 é a parte inteira e 0,14 é a parte fracionária. Já vimos como converter a parte inteira para o sistema binário. Agora, veremos como converter a parte fracionária para o sistema binário. Podemos então combinar os equivalentes binários das partes inteira e fracionária para encontrar o equivalente binário de um número real decimal.
 
-A decimal fraction _f_ is converted to its binary equivalent
-by successively multiplying it by 2. At the end of each multiplication
-step, either a 0 or a 1 is obtained as an integer part and is recorded
-separately. The remaining fraction is again multiplied by 2 and the
-resulting integer part recorded. This process continues until the
-fraction reduces to zero or enough binary digits for the desired
-precision have been found. The binary equivalent of _f_ then
-consists of the bits in the order they have been recorded, as shown in
-the next example.
+Uma fração decimal _f_ é convertida em seu equivalente binário multiplicando-a sucessivamente por 2. Ao final de cada etapa de multiplicação, obtém-se um 0 ou um 1 como parte inteira, que é registrado separadamente. A fração restante é novamente multiplicada por 2 e a parte inteira resultante é registrada. Esse processo continua até que a fração se reduza a zero ou até que sejam encontrados dígitos binários suficientes para a precisão desejada. O equivalente binário de _f_ consiste, então, nos bits na ordem em que foram registrados, conforme mostrado no próximo exemplo.
 
-.Fraction conversion to binary
+.Conversão de frações para binário
 ====
-Let's convert 0.8125 to binary. The table below shows the steps to do
-so.
+Vamos converter 0,8125 para o sistema binário. A tabela abaixo mostra os passos para fazer isso.
 
 [.center%unbreakable,cols=">10,>20,>20,>25,>25",width=60%]
 |=======================================================================
-|Step |_f_ |2__f__ |Integer part |Remainder
+|Etapa|_f_ |2__f__ |Parte Inteira|Resto
 
-|1 |0.8125 |1.625 |1 |0.625
+|1 |0,8125 |1,625 |1 |0,625
 
-|2 |0.625 |1.25 |1 |0.25
+|2 |0,625 |1,25 |1 |0,25
 
-|3 |0.25 |0.5 |0 |0.5
+|3 |0,25 |0,5 |0 |0,5
 
-|4 |0.5 |1.0 |1 |0
+|4 |0,5 |1,0 |1 |0
 |=======================================================================
 
-We then collect all the integer parts and get 0.1101~2~ as the binary
-equivalent of 0.8125. We can convert this binary fraction back into
-decimal to verify that it's correct.
+Em seguida, reunimos todas as partes inteiras e obtemos 0,1101~2~ como o equivalente binário de 0,8125. Podemos converter essa fração binária de volta para decimal para verificar se está correta.
 
 [.text-center]
-0.1101~2~ = 1 · 2^-1^ + 1 · 2^-2^ + 0 · 2^-3^ + 1 · 2^-4^ = 0.5 + 0.25 + 0 + 0.0625 = 0.8125
+0,1101~2~ = 1 · 2^-1^ + 1 · 2^-2^ + 0 · 2^-3^ + 1 · 2^-4^ = 0,5 + 0,25 + 0 + 0,0625 = 0,8125
 ====
 
-In some cases the process described above will never have a remainder
-of 0.  Then, we can only find an approximate representation of
-the given fraction as demonstrated in the next example.
+Em alguns casos, o processo descrito acima nunca resultará em um resto igual a 0. Nesse caso, só podemos encontrar uma representação aproximada da fração dada, conforme demonstrado no exemplo a seguir.
 
-.Non-terminating fraction
+.Fração não terminal
 [[Non-terminating_fraction]]
 ====
-Let's convert 0.3 to binary assuming that we have only five bits in
-which to represent the fraction. The following table shows the five
-steps in the conversion process. +
+Vamos converter 0,3 para o sistema binário, partindo do princípio de que temos apenas cinco bits para representar a fração. A tabela a seguir mostra as cinco etapas do processo de conversão. +
 
 [.center%unbreakable,cols=">10,>20,>20,>25,>25",width=60%]
 |=======================================================================
-|Step |_f_ |2__f__ |Integer part |Remainder
+|Etapa|_f_ |2__f__ |Parte Inteira|Resto
 
-|1 |0.3 |0.6 |0 |0.6
+|1 |0,3 |0,6 |0 |0,6
 
-|2 |0.6 |1.2 |1 |0.2
+|2 |0,6 |1,2 |1 |0,2
 
-|3 |0.2 |0.4 |0 |0.4
+|3 |0,2 |0,4 |0 |0,4
 
-|4 |0.4 |0.8 |0 |0.8
+|4 |0,4 |0,8 |0 |0,8
 
-|5 |0.8 |1.6 |1 |0.6
+|5 |0,8 |1,6 |1 |0,6
 |=======================================================================
 
-Collecting the integer parts we get 0.01001~2~ as the binary representation
-of 0.3. Let's convert this back to decimal to see how accurate it is.
+Reunindo as partes inteiras, obtemos 0,01001~2~ como representação binária de 0,3. Vamos converter isso de volta para decimal para ver qual é o grau de precisão.
 
 [.text-center]
-0.01001~2~ = 0 · 2^-1^ + 1 · 2^-2^ + 0 · 2^-3^ + 0 · 2^-4^ + 1 · 2^-5^ = 0 + 0.25 + 0 + 0 + 0.03125 = 0.28125
+0,01001~2~ = 0 · 2^-1^ + 1 · 2^-2^ + 0 · 2^-3^ + 0 · 2^-4^ + 1 · 2^-5^ = 0 + 0,25 + 0 + 0 + 0,03125 = 0,28125
 
-Five bits are not enough to represent 0.3 fully. Indeed, perfect accuracy would require
-an infinite number of bits! In this case, we have
-an error of 0.3 - 0.28125 = 0.01875. Most computers use many
-more bits to represent fractions and obtain much better accuracy in
-their representation.
+Cinco bits não são suficientes para representar 0,3 com precisão total. Na verdade, uma precisão perfeita exigiria um número infinito de bits! Neste caso, temos um erro de 0,3 - 0,28125 = 0,01875. A maioria dos computadores usa muito mais bits para representar frações e obtém uma precisão muito maior nessa representação.
 ====
 
 ****
@@ -908,84 +805,37 @@ their representation.
 <<terminatingDecimalExercise>>
 ****
 
-Now that we understand how integers as well as fractions can be
-converted from one number base to another, we can convert any rational
-number from one base to another. The next example demonstrates one such
-conversion.
+Agora que entendemos como os números inteiros e as frações podem ser convertidos de uma base numérica para outra, podemos converter qualquer número racional de uma base para outra. O próximo exemplo demonstra uma dessas conversões.
 
-.Rational number converted to binary
+.Número racional convertido para binário
 ====
-Let's convert 14.3 to binary assuming that we'll only use six bits to
-represent the fractional part. First we convert 14 to binary using the
-technique described earlier. This gives us 14 = 1110~2~.
-Taking the method outlined in <<Non-terminating_fraction>> one step further, our six bit
-representation of 0.3 is 0.010011~2~. Combining the two representations
-gives 14.3 = 1110.010011~2~.
+Vamos converter 14,3 para binário, assumindo que usaremos apenas seis bits para representar a parte fracionária. Primeiro, convertemos 14 para binário usando a técnica descrita anteriormente. Isso nos dá 14 = 1110~2~. Levando o método descrito em <<Non-terminating_fraction,Fracção_infinita>> um passo adiante, nossa representação de 0,3 em seis bits é 0,010011~2~. Combinando as duas  representações, obtemos 14,3 = 1110,010011~2~.
 ====
 
-===== Floating-point representation
+===== Representação em ponto flutuante
 
-_Floating-point representation_ is a system used to represent rational numbers
-in computer memory. In this notation a number is represented as
-_a_ × _b_^_e_^, where _a_ gives the
-_significant digits_ (mantissa) of the number and _e_ is the
-exponent. The system is very similar to scientific notation, but
-computers usually use base _b_ = 2 instead of
-10.
+A _representação em ponto flutuante_ é um sistema utilizado para representar números racionais na memória do computador. Nesta notação, um número é representado como _a_ × _b_^_e_^, em que _a_ indica os _dígitos significativos_ (mantissa) do número e _e_ é o expoente. O sistema é muito semelhante à notação científica, mas os computadores geralmente utilizam a base _b_ = 2 em vez de 10.
 
-For example, we could write the binary number 1010.1~2~ in floating-point
-representation as 10.101~2~ × 2^2^ or as
-101.01~2~ × 2^1^. In any case, this number is equivalent to
-10.5 in decimal.
+Por exemplo, poderíamos escrever o número binário 1010.1~2~ em representação de ponto flutuante como 10.101~2~ × 2^2^ ou como 101.01~2~ × 2^1^. Em qualquer dos casos, esse número é equivalente a 10,5 na notação decimal.
 
-In standardized floating-point representation, _a_ is written so
-that only the most significant non-zero digit is to the left of the
-decimal point. Most computers use the IEEE 754 floating-point representation
-to represent rational numbers. In this notation, the memory to store the
-number is divided into three segments: one bit used to mark the sign of
-the number, _m_ bits to represent the mantissa (also known
-as the _significand_), and _e_ bits to represent the
-exponent.
+Na representação padronizada de ponto flutuante, _a_ é escrito de forma que apenas o dígito não zero mais significativo fique à esquerda da vírgula decimal. A maioria dos computadores usa a representação de ponto flutuante da IEEE 754 para representar números racionais. Nessa notação, a memória para armazenar o número é dividida em três segmentos: um bit usado para marcar o sinal do número, _m_ bits para representar a mantissa (também conhecida como _significando_) e _e_ bits para representar o expoente.
 
-In IEEE floating-point representation, numbers are commonly represented using
-32 bits (known as _single precision_) or using 64 bits (known as _double
-precision_). In single precision, _m_ = 23 and
-_e_ = 8. In double precision, _m_ = 52 and
-_e_ = 11. To represent positive and negative exponents, the
-exponent has a _bias_ added to it so that the result is never negative.
-This bias is 127 for single precision and 1,023 for double precision.
-The packing of the sign bit, the exponent, and the mantissa is shown in
-<<numberRepresentationFigure>> (a) and (b).
+Na representação de ponto flutuante IEEE, os números são comumente representados usando 32 bits (conhecida como _precisão simples_) ou usando 64 bits (conhecida como _precisão dupla_). Na precisão simples, _m_ = 23 e _e_ = 8. Na precisão dupla, _m_ = 52 e _e_ = 11. Para representar expoentes positivos e negativos, um _bias_ é adicionado ao expoente de modo que o resultado nunca seja negativo. Esse bias é 127 para precisão simples e 1.023 para precisão dupla. O agrupamento do bit de sinal, do expoente e da mantissa é mostrado em <<numberRepresentationFigure>> (a) e (b).
 
-.Single precision IEEE format
+.Formato IEEE de precisão simples
 ====
-The following is a step-by-step demonstration of how to construct the
-single precision binary representation in IEEE format of the number
-10.5.
+A seguir, apresentamos uma demonstração passo a passo de como construir a representação binária de precisão simples, no formato IEEE, do número 10,5.
 
 [start]
-.  Convert 10.5 to its binary equivalent using methods described
-earlier, yielding 10.5~10~ = 1010.1~2~. Unlike the case
-of integers, the sign of the number is taken care of separately for
-floating-point. Thus, we would use 1010.1~2~ for
--10.5 as well.
-.  Write this binary number in standardized floating-point representation,
-yielding 1.0101~2~ × 2^3^.
-.  Remove the leading bit (always a 1 for non-zero numbers), leaving `0101`.
-.  Pad the fraction with zeroes on the right to fill the 23-bit
-mantissa, yielding `0101 0000 0000 0000 0000 000`. Note that the decimal
-point is ignored in this step.
-.  Add 127 to the exponent. This gives us an exponent of
-3 + 127 = 130.
-.  Convert the exponent to its 8-bit unsigned binary equivalent. Doing
-so gives us 130~10~ = 10000010~2~.
-.  Set the sign bit to 0 if the number is positive and to 1 otherwise.
-Since 10.5 is positive, we set the sign bit to 0.
+. Converta 10,5 para seu equivalente binário usando os métodos descritos anteriormente, obtendo-se 10,5ₙ₁₀ = 1010,1ₙ₂. Ao contrário do que ocorre com os números inteiros, o sinal do número é tratado separadamente na representação de ponto flutuante. Assim, usaríamos 1010,1~2~ também para -10,5.
+. Escreva esse número binário na representação padronizada de ponto flutuante, resultando em 1,0101~2~ × 2^3^.
+. Remova o bit inicial (sempre um 1 para números diferentes de zero), restando `0101`.
+. Preencha a fração com zeros à direita para preencher a mantissa de 23 bits, resultando em `0101 0000 0000 0000 0000 000`. Observe que o ponto decimal é ignorado nesta etapa.
+. Adicione 127 ao expoente. Isso nos dá um expoente de 3 + 127 = 130.
+. Converta o expoente para seu equivalente binário sem sinal de 8 bits. Isso nos dá 130~10~ = 10000010~2~.
+. Defina o bit de sinal como 0 se o número for positivo e como 1 caso contrário. Como 10,5 é positivo, definimos o bit de sinal como 0.
 
-We now have the three components of 10.5 in binary. The memory
-representation of 10.5 is shown in <<numberRepresentationFigure>> (c).
-Note in the figure how the sign bit, the exponent, and the mantissa are
-packed into 32 bits.
+Agora temos os três componentes de 10,5 em binário. A representação em memória de 10,5 é mostrada em <<numberRepresentationFigure>> (c). Observe na figura como o bit de sinal, o expoente e a mantissa são compactados em 32 bits.
 ====
 
 ****
@@ -993,113 +843,69 @@ packed into 32 bits.
 ****
 
 [[numberRepresentationFigure]]
-.Layouts for floating-point representation (a) in single precision, (b) in double precision, and (c) of 10.5~10~ in single precision.
+.Formatos para representação em ponto flutuante (a) em precisão simples, (b) em precisão dupla e (c) do número 10,5 em precisão simples.
 image::numberRepresentationFigure.svg[scaledwidth=100%,pdfwidth=100%,width=100%]
 
-===== Largest and smallest numbers
+===== Os números maiores e menores
 
-Fixing the number of bits used for representing a real number limits the
-numbers that can be represented in computer memory using the floating-point
-notation. The largest rational number that can be represented in
-single precision has an exponent of 127 (254 after bias) with a mantissa
-consisting of all 1s: +
-`0 1111 1110 1111 1111 1111 1111 1111 111` +
-This number is approximately 3.402 × 10^38^. To
-represent the smallest (closest to zero) non-zero number, we need to
-examine one more complication in the IEEE format. An exponent of 0
-implies that the number is unnormalized. In this case, we no longer
-assume that there is a 1 bit to the left of the mantissa. Thus, the
-smallest non-zero single precision number has its exponent set to 0 and
-its mantissa set to all zeros with a 1 in its
-23^rd^ bit: +
-`0 0000 0000 0000 0000 0000 0000 0000 001` +
-Unnormalized single precision values are considered to have an exponent
-of -126. Thus, the value of this number is
-2^-23^ × 2^-126^ =
-2^-149^ ≈ 1.4 × 10^-45^. Now that we know the rules for
-storing both integers and floating-point numbers, we can list the
-largest and smallest values possible in 32- and 64-bit representations
-in Java in the following table. Note that *largest* means the
-largest positive number for both integers and floating-point values, but
-*smallest* means the most negative number for integers and the smallest
-positive non-zero value for floating-point values. +
+A fixação do número de bits utilizados para representar um número real limita os números que podem ser representados na memória do computador usando a notação de ponto flutuante. O maior número racional que pode ser representado em precisão simples tem um expoente de 127 (254 após o desvio) com uma mantissa composta inteiramente por 1s: +
+`0 1111 1110 1111 1111 1111 1111 1111 111` + 
+Este número é aproximadamente 3,402 × 10^38^. Para representar o menor número diferente de zero (o mais próximo de zero), precisamos examinar mais uma complicação no formato IEEE. Um expoente igual a 0 implica que o número não está normalizado. Nesse caso, não assumimos mais que haja um bit 1 à esquerda da mantissa. Assim, o menor número de precisão simples diferente de zero tem seu expoente definido como 0 e sua mantissa definida como zeros, com um 1 no seu 23º bit: +
+`0 0000 0000 0000 0000 0000 0000 0000 001` + 
+Valores de precisão simples não normalizados são considerados como tendo um expoente de -126. Assim, o valor desse número é 2^-23^ × 2^-126^ = 2^-149^ ≈ 1,4 × 10^-45^. Agora que conhecemos as regras para armazenar tanto números inteiros quanto de ponto flutuante, podemos listar os maiores e menores valores possíveis em representações de 32 e 64 bits em Java na tabela a seguir. Observe que *maior* significa o maior número positivo tanto para inteiros quanto para valores de ponto flutuante, mas *menor* significa o número mais negativo para inteiros e o menor valor positivo diferente de zero para valores de ponto flutuante.+
 
 [.center%autowidth%unbreakable,cols="<,<,<",]
 |=======================================================================
-|Format |Largest number |Smallest number
+|Formato |Maior Número |Menor Número
 
-|32-bit integer |2,147,483,647
-|-2,147,483,648
+|Inteiro de 32 bits |2.147.483.647|-2.147.483.648
 
-|64-bit integer |9,223,372,036,854,775,807
-|-9,223,372,036,854,775,808
+|Inteiro de 64 bits |9.223.372.036.854.775.807|-9.223.372.036.854.775.808
 
-|32-bit floating-point |3.4028235 × 10^38^
-|1.4 × 10^-45^
+|Ponto flutuante de 32 bits |3,4028235 × 10^38^|1,4 × 10^-45^
 
-|64-bit floating-point |1.7976931348623157 × 10^308^
-|4.9^-324^
+|Ponto flutuante de 64 bits|1,7976931348623157 × 10^308^|4,9^-324^
 |=======================================================================
 
-Using the same number of bits, floating-point representation can store
-much larger numbers than integer representation. However, floating-point
-numbers are not always exact, resulting in approximate results when
-performing arithmetic. Always use integer formats when fractional parts
-aren't needed.
+Usando o mesmo número de bits, a representação em ponto flutuante permite armazenar números muito maiores do que a representação em inteiros. No entanto, os números em ponto flutuante nem sempre são exatos, o que resulta em resultados aproximados ao realizar operações aritméticas. Utilize sempre formatos inteiros quando a parte fracionária não for necessária.
 
-===== Special numbers
+===== Números especiais
 
-Several binary representations in the floating-point representation correspond
-to special numbers. These numbers are reserved and do not have the values that
-would be expected from normal multiplication of the mantissa by the power of 2
-given by the exponent.
+Várias representações binárias na notação de ponto flutuante correspondem a números especiais. Esses números são reservados e não apresentam os valores que seriam esperados a partir da multiplicação normal da mantissa pela potência de 2 indicada pelo expoente.
 
-0.0 and -0.0:::
-  When the exponent and the mantissa are both 0, the number is
-  interpreted as a 0.0 or -0.0 depending on the sign bit. For example,
-  in a Java program, dividing 0.0 by -1.0 results in -0.0. Similarly,
-  -0.0 divided by -1.0 is 0.0. Positive and negative zeroes only exist
-  for floating-point values. -0 is the same as 0 for integers. Dividing
-  the integer 0 by -1 in Java results in 0 and not in -0.
-Positive and negative infinity:::
-  An overflow or an underflow might occur while performing arithmetic on
-  floating-point values. In the case of an overflow, the resulting
-  number is a special value that Java recognizes as infinity. In the
-  case of an underflow, it is a special negative infinity value. For
-  example, dividing 1.0 by 0.0 in Java results in infinity and dividing
-  -1.0 by 0.0 results in negative infinity. These values have well
-  defined behavior. For example, adding 1.0 to infinity yields infinity. +
-  Note that floating-point values and integers do not behave in the same
-  way. Dividing the integer 1 by the integer 0 creates an error that can
-  crash a Java program.
-Not-a-number (`NaN`):::
-  Some mathematical operations may result in an undefined number. For
-  example, the square root of a negative number is an imaginary number. Java has a
-  value set aside for results that are not rational numbers. When we
-  discuss how to find the square root of a value in Java, this
-  not-a-number value will be the answer for the square root of a
-  negative number.
+0,0 e -0,0:::
+  Quando o expoente e a mantissa são ambos 0, o número é interpretado 
+  como 0.0 ou -0.0, dependendo do bit de sinal. Por exemplo, em um programa
+  Java, dividir 0,0 por -1,0 resulta em -0,0. Da mesma forma, -0,0 dividido
+  por -1,0 é 0,0. Zeros positivos e negativos só existem  para valores de 
+  ponto flutuante. -0 é o mesmo que 0 para inteiros. Dividir o inteiro 0 
+  por -1 em Java resulta em 0 e não em -0.
+Infinito positivo e negativo:::
+  Pode ocorrer um estouro (overflow) ou um subfluxo (underflow) ao realizar 
+  operações aritméticas com valores de ponto flutuante. No caso de um estouro,
+  o número resultante é um valor especial que o Java reconhece como infinito. 
+  No caso de um subfluxo, é um valor especial de infinito negativo. Por exemplo,
+  dividir 1,0 por 0,0 em Java resulta em infinito e dividir -1,0 por 0,0 resulta
+  em infinito negativo. Esses valores têm um comportamento bem definido. Por 
+  exemplo, somar 1,0 a infinito resulta em infinito. +
+  Observe que valores de ponto flutuante e inteiros não se comportam da mesma 
+  maneira. Dividir o inteiro 1 pelo inteiro 0 gera um erro que pode travar um 
+  programa Java.
+Não é um número (`NaN`):::
+  Algumas operações matemáticas podem resultar em um número indefinido. Por 
+  exemplo, a raiz quadrada de um número negativo é um número imaginário. Java 
+  possui um valor reservado para resultados que não são números racionais. 
+  Quando discutirmos como encontrar a raiz quadrada de um valor em Java, esse 
+  valor “não é um número” será a resposta para a raiz quadrada de um número 
+  negativo.
 
-===== Errors in floating-point arithmetic
+===== Erros na aritmética de ponto flutuante
 
-As we have seen, many rational numbers can only be approximately
-represented in computer memory. Thus, arithmetic done on the approximate
-values yields approximate answers. For example, 1.3 cannot be
-represented exactly using a 64-bit value. In this case, the product
-`1.3 * 3.0` will be `3.9000000000000004` instead of `3.9`. This error will propagate as
-additional operations are performed on previous results. The next
-example illustrates this propagation of errors when a sequence of
-floating-point operations are performed.
+Como vimos, muitos números racionais só podem ser representados de forma aproximada na memória do computador. Assim, a aritmética realizada com esses valores aproximados produz resultados aproximados. Por exemplo, 1,3 não pode ser representado exatamente usando um valor de 64 bits. Nesse caso, o produto `1,3 * 3,0` será `3,9000000000000004` em vez de `3,9`. Esse erro se propagará à medida que operações adicionais forem realizadas sobre os resultados anteriores. O próximo exemplo ilustra essa propagação de erros quando uma sequência de operações de ponto flutuante é realizada.
 
-.Error propagation
+Propagação de erros
 ====
-Suppose that the price of several products is added to determine
-the total price of a purchase at a cash register that uses floating-point arithmetic with a 32-bit variable (the equivalent of a `float` in Java).
-For simplicity, let's assume that all items have a
-price of $1.99. We don't know how many items will be purchased ahead of
-time and simply add the price of each item until all items have been
-scanned at the register. The table below shows the value of the total
-cost for different quantities of items.
+Suponha que o preço de vários produtos seja somado para determinar o preço total de uma compra em uma caixa registradora que utiliza aritmética de ponto flutuante com uma variável de 32 bits (o equivalente a um `float` em Java). Para simplificar, vamos supor que todos os itens tenham o preço de US$ 1,99. Não sabemos antecipadamente quantos itens serão comprados e simplesmente somamos o preço de cada item até que todos tenham sido escaneados no caixa. A tabela abaixo mostra o valor do custo total para diferentes quantidades de itens.
 
 [.center%autowidth%unbreakable,cols=">,>,>,>,>",]
 |=======================================================================
