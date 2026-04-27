@@ -447,7 +447,7 @@ Um número decimal pode ser convertido para seu equivalente hexadecimal usando q
 
 Usamos o sistema hexadecimal porque é fácil converter dele para o binário e vice-versa. A tabela a seguir lista os equivalentes binários dos 16 dígitos hexadecimais.
 
-[.center%autowidth%unbreakable%header,cols="^.>,^.>,^,^.>,^.>",]
+[.center%autowidth%unbreakable%header,cols="^,^,^,^"]
 |==============================================================
 |Dígito +
 Hexadecimal
@@ -458,14 +458,14 @@ Hexadecimal
 |Equivalente +
 Binário
 
-|0 |0000  | |8 |1000
-|1 |0001  | |9 |1001
-|2 |0010  | |A |1010
-|3 |0011  | |B |1011
-|4 |0100  | |C |1100
-|5 |0101  | |D |1101
-|6 |0110  | |E |1110
-|7 |0111  | |F |1111
+|0 |0000 |8 |1000
+|1 |0001 |9 |1001
+|2 |0010 |A |1010
+|3 |0011 |B |1011
+|4 |0100 |C |1100
+|5 |0101 |D |1101
+|6 |0110 |E |1110
+|7 |0111 |F |1111
 |==============================================================
 
 Com a ajuda da tabela acima, vamos converter 3FA~16~ para binário. Por simples substituição, 3FA~16~ = 0011 1111 1010~2~. Observe que agrupamos os dígitos binários em blocos de 4 bits cada. É claro que os zeros mais à esquerda no equivalente binário são irrelevantes, pois não contribuem para o valor do número.
