@@ -909,346 +909,165 @@ Suponha que o preço de vários produtos seja somado para determinar o preço to
 
 [.center%autowidth%unbreakable,cols=">,>,>,>,>",]
 |=======================================================================
-|Items |Correct Cost |Calculated Cost |Absolute Error |Relative Error
+|Itens |Custo Correto |Custo Calculado |Erro Absoluto |Erro Relativo
 
-|100 |199.0 |1.9900015E02 |1.5258789E-04 |7.6677333E-07
+|100 |199,0 |1,9900015E02 |1,5258789E-04 |7,6677333E-07
 
-|500 |995.0 |9.9499670E02 |3.2958984E-03 |3.3124606E-06
+|500 |995,0 |9,9499670E02 |3,2958984E-03 |3,3124606E-06
 
-|1000 |1990.0 |1.9899918E03 |8.1787109E-03 |4.1099051E-06
+|1000 |1990,0 |1,9899918E03 |8,1787109E-03 |4,1099051E-06
 
-|10000 |19900.0 |1.9901842E04 |1.8417969E00 |9.2552604E-05
+|10000 |19900,0 |1,9901842E04 |1,8417969E00 |9,2552604E-05
 |=======================================================================
 
-The first column in the table above is the number of items. The second
-column is the correct cost of all items purchased. The third column is
-the cost calculated by adding each item using single precision
-floating-point addition. The fourth and fifth columns give the absolute and
-relative errors, respectively, of the calculated value. Note how the
-error increases as the number of additions goes up. In the last row, the
-absolute error is almost two dollars.
+A primeira coluna da tabela acima indica o número de itens. A segunda coluna apresenta o custo correto de todos os itens adquiridos. A terceira coluna mostra o custo calculado pela soma de cada item utilizando adição de ponto flutuante de precisão simples. A quarta e a quinta colunas apresentam, respectivamente, os erros absoluto e relativo do valor calculado. Observe como o erro aumenta à medida que o número de somas cresce. Na última linha, o erro absoluto é de quase dois dólares.
 ====
 
-While the above example may seem unrealistic, it does expose the
-inherent dangers of floating-point calculations. Although the error is
-less when using double precision representations, it still exists.
+Embora o exemplo acima possa parecer irrealista, ele expõe os riscos inerentes aos cálculos em ponto flutuante. Embora o erro seja menor quando se utilizam representações de precisão dupla, ele ainda existe.
 
 === Solução: Comprando um computador
 
-We pose a motivating problem in the *Problem* section near the beginning
-of most chapters. Whenever there is a *Problem* section, there is a
-*Solution* section near the end in which we give a solution to the earlier
-problem.
+Apresentamos um problema motivador na seção *Problema*, no início da maioria dos capítulos. Sempre que há uma seção *Problema*, há uma seção *Solução* no final, na qual apresentamos a solução para o problema anterior.
 
-After all the discussion of the hardware, software, and data
-representation inside of a computer, you might feel more confused about
-which computer to buy than before. As a programmer, it's important to
-understand how data is represented, but this information plays virtually
-no role in deciding which computer to buy. Unlike most problems in this
-book, there's no concrete answer we can give here. Because the
-development of technology progresses so rapidly, any advice about
-computer hardware or software has a short shelf-life.
+Depois de toda a discussão sobre hardware, software e representação de dados dentro de um computador, você pode se sentir mais confuso do que antes sobre qual computador comprar. Como programador, é importante entender como os dados são representados, mas essa informação praticamente não tem importância na hora de decidir qual computador comprar. Ao contrário da maioria dos problemas deste livro, não há uma resposta concreta que possamos dar aqui. Como o desenvolvimento da tecnologia avança tão rapidamente, qualquer conselho sobre hardware ou software de computador tem vida útil curta.
 
-Software is a huge consideration, beginning with the OS. Because the
-choice of OS usually affects choice of hardware, we'll start there. The
-three major choices for a desktop or laptop OS are Microsoft Windows,
-Apple macOS, and Linux.
+O software é uma consideração importante, começando pelo sistema operacional. Como a escolha do sistema operacional geralmente afeta a escolha do hardware, vamos começar por aí. As três principais opções de sistema operacional para computadores de mesa ou portáteis são o Microsoft Windows, o Apple macOS e o Linux.
 
-Windows is heavily marketed for business use.
-Windows used to suffer from many stability and security issues,
-but Microsoft has worked hard to address these. Apple macOS and the
-computers it's installed on are marketed to an artistic and
-counter-culture population. Linux is popular among tech savvy users.
-Putting marketing biases aside, the three operating systems have become
-more similar over time, and most people could be
-productive using any of the three. The following table lists some pros
-and cons for each OS.
+O Windows é fortemente promovido para uso empresarial. O Windows costumava sofrer com muitos problemas de estabilidade e segurança, mas a Microsoft tem trabalhado arduamente para resolvê-los. O Apple macOS e os computadores nos quais ele está instalado são direcionados a um público artístico e da contracultura. O Linux é popular entre usuários experientes em tecnologia. Deixando de lado os viéses de marketing, os três sistemas operacionais tornaram-se mais semelhantes ao longo do tempo, e a maioria das pessoas poderia ser produtiva usando qualquer um dos três. A tabela a seguir lista alguns prós e contras de cada sistema operacional.
 
 [.center%unbreakable,cols="<20h,<40,<40",]
 |=======================================================================
-|OS |Pros |Cons
+|SO |Prós |Contras
 
 |Microsoft Windows
 a|
 [.text-left]
-* Compatible with the largest number of programs
-* Can be purchased separately from hardware
+* Compatível com a maioria dos programas
+* Pode ser adquirido separadamente do hardware
 
 a|
 [.text-left]
-* Expensive
-* Security concerns
+* Caro
+* Questões de Segurança
 
 |Apple macOS
 a|
 [.text-left]
-* Polished user interface
-* Bundled with many useful programs
-* Tested for use on the hardware it comes with
+* Interface de usuário sofisticada
+* Vem com muitos programas úteis
+* Testado para uso no hardware com o qual é fornecido
 
 a|
 [.text-left]
-* Most expensive
-* Many business applications and games are released late or not at all for macOS
-* Difficult to run on non-Apple hardware
+* O mais caro
+* Muitos aplicativos empresariais e jogos são lançados com atraso ou nem chegam a ser lançados para o macOS
+* Difícil de rodar em hardware que não seja da Apple
 
 |Linux
 a|
 [.text-left]
-* Free
-* Runs on almost any hardware
-* Highly customizable
-* Served by a community that develops many free applications for it
+* Gratuito
+* Funciona em praticamente qualquer hardware
+* Altamente personalizável
+* Apoiado por uma comunidade que desenvolve muitos aplicativos gratuitos para ele
 
 a|
 [.text-left]
-* Can be difficult to install or configure
-* Few commercial applications are available for it
-* Limited customer support
+* Pode ser difícil de instalar ou configurar
+* Poucos aplicativos comerciais estão disponíveis para ele
+* Suporte ao cliente limitado
 
 |=======================================================================
 
-Once you've decided on an OS, you can pick hardware and other software
-that's compatible with it. For macOS, almost all your hardware choices
-will be computers sold by Apple. For Windows and Linux, you can either
-have a computer built for you or build your own. Although computer
-hardware changes quickly, let's examine some general guidelines.
+Depois de escolher um sistema operacional, você pode selecionar o hardware e outros softwares compatíveis com ele. No caso do macOS, quase todas as opções de hardware serão computadores vendidos pela Apple. Para o Windows e o Linux, você pode optar por comprar um computador já montado ou montar o seu próprio. Embora o hardware dos computadores evolua rapidamente, vamos examinar algumas orientações gerais.
 
 CPU::
-Remember that the speed of a CPU is measured in GHz (billions of clock
-cycles per second). Higher GHz is generally better, but it's hard to
-compare performance across different designs of CPU. There's also a
-diminishing returns effect: The very fastest, very newest CPUs are
-often considerably more expensive even if they only provide slightly
-better performance. It's usually more cost effective to select a CPU
-in the middle of the performance spectrum.
+Lembre-se de que a velocidade de uma CPU é medida em GHz (bilhões de ciclos de clock por segundo). Um GHz mais alto geralmente é melhor, mas é difícil comparar o desempenho entre diferentes modelos de CPU. Há também um efeito de rendimentos decrescentes: as CPUs mais rápidas e mais recentes costumam ser consideravelmente mais caras, mesmo que ofereçam apenas um desempenho ligeiramente melhor. Geralmente, é mais econômico escolher uma CPU que se situe no meio do espectro de desempenho.
 +
-Cache size also has a huge effect on performance. The larger the
-cache, the less often the CPU has to read data from slower
-memory. Since most new CPUs available today are 64-bit, the question
-of word size is no longer significant.
+O tamanho do cache também tem um efeito enorme no desempenho. Quanto maior o cache, menos vezes a CPU precisa ler dados da memória mais lenta. Como a maioria das novas CPUs disponíveis hoje é de 64 bits, a questão do tamanho da palavra não é mais significativa.
 
 Memory::
-Memory includes RAM, hard drives, optical drives, and any other
-storage. RAM is usually easy to upgrade for desktop machines and less
-easy (though often possible) for laptops. It takes a little bit of research to
-get exactly the right kind of RAM for your CPU and motherboard, and the amount
-of RAM is dependent on what you want to do with your system. The
-minimum amount of RAM to run Microsoft Windows 11 is 4 GB.
-The recommended amount of RAM to
-run Apple macOS Sequoia is at least 8 GB. A good guideline is to have
-at least twice the minimum required RAM.
+Memória::
+A memória inclui RAM, discos rígidos, unidades ópticas e qualquer outro tipo de armazenamento. A RAM geralmente é fácil de atualizar em computadores de mesa e menos fácil (embora muitas vezes seja possível) em laptops. É preciso pesquisar um pouco para encontrar exatamente o tipo certo de RAM para sua CPU e placa-mãe, e a quantidade de RAM depende do que você pretende fazer com seu sistema. A quantidade mínima de RAM para rodar o Microsoft Windows 11 é de 4 GB. A quantidade recomendada de RAM para rodar o Apple macOS Sequoia é de pelo menos 8 GB. Uma boa orientação é ter pelo menos o dobro da RAM mínima exigida.
 +
-Hard drive space is dependent on how you expect to use your
-computer. 1 TB and 2 TB drives are not very expensive, and either
-represents a huge amount of storage. Only if you plan to have enormous
-libraries of video or uncompressed audio data will you likely need
-more. Corporate-level databases and web servers and some other
-business systems can also require vast amounts of space. Hard drive
-speed is greatly affected by the hard drive's cache size. As always, a
-bigger cache means better performance. Using a solid state drive (SSD)
-instead of a traditional hard drive has much better performance and has become
-standard on most new desktops and laptops.
+O espaço no disco rígido depende de como você pretende usar o computador. Unidades de 1 TB e 2 TB não são muito caras e representam uma enorme capacidade de armazenamento. Você provavelmente precisará de mais espaço apenas se planeja ter bibliotecas enormes de vídeos ou dados de áudio não compactados. Bancos de dados corporativos, servidores web e alguns outros sistemas empresariais também podem exigir grandes quantidades de espaço. A velocidade do disco rígido é muito afetada pelo tamanho do cache do disco. Como sempre, um cache maior significa melhor desempenho. Usar uma unidade de estado sólido (SSD) em vez de um disco rígido tradicional oferece desempenho muito melhor e se tornou padrão na maioria dos novos desktops e laptops.
 +
-Installing optical drives and other storage devices depends on
-individual needs. With the rise of streaming services and cloud backup,
-optical drives have almost disappeared.
-I/O Devices::
-The subject of I/O devices is personal. It's difficult to say
-what anyone should buy without considering his or her specific needs.
-A monitor is the essential visual output device while a keyboard and
-mouse are the essential input devices. Speakers are important as
-well. Most laptops have all these elements integrated in one form or
-another. Laptops often have inexpensive web cameras installed as well.
+A instalação de unidades ópticas e outros dispositivos de armazenamento depende das necessidades individuais. Com o surgimento dos serviços de streaming e do backup em nuvem, as unidades ópticas praticamente desapareceram.
+Dispositivos de E/S::
+A escolha de dispositivos de E/S é uma questão pessoal. É difícil dizer o que alguém deve comprar sem levar em conta suas necessidades específicas. Um monitor é o dispositivo de saída visual essencial, enquanto o teclado e o mouse são os dispositivos de entrada essenciais. Os alto-falantes também são importantes. A maioria dos laptops possui todos esses elementos integrados de uma forma ou de outra. Os laptops geralmente vêm com webcams baratas instaladas também.
 +
-Someone interested in video games might want to invest in a powerful
-graphics card. Newer cards with more video RAM are generally better
-than older cards with less, but which card is best at a given price
-point is the subject of continual discussion at sites like
-https://www.tomshardware.com[Tom's Hardware^].
+Quem se interessa por videogames pode querer investir em uma placa de vídeo potente. Placas mais novas, com mais memória de vídeo, geralmente são melhores do que as mais antigas, com menos memória, mas qual placa é a melhor em uma determinada faixa de preço é tema de discussão constante em sites como https://www.tomshardware.com[Tom's Hardware^].
 +
-Printers are still useful output devices. Graphics tablets can make it
-easier to create digital art on a computer. The number of potentially
-worthwhile I/O devices is limitless.
+As impressoras continuam sendo dispositivos de saída úteis. As mesas digitalizadoras podem facilitar a criação de arte digital no computador. O número de dispositivos de E/S potencialmente úteis é ilimitado.
 
-This section is a jumping off point for purchasing a computer. As
-you learn more about computer hardware and software, it will become
-easier to know what combination of the two will serve your needs. Of
-course, there's always more to know, and technology changes quickly.
+Esta seção é um ponto de partida para a compra de um computador. À medida que você aprender mais sobre hardware e software, ficará mais fácil saber qual combinação dos dois atenderá às suas necessidades. É claro que sempre há mais a aprender, e a tecnologia muda rapidamente.
 
-==== Concurrency: Multicore processors
+==== Concorrência: Processadores multicore
 
-Over the last two decades, the word "`core`" has been splattered all over CPU
-packaging. Intel in particular has marketed the idea heavily with its
-older Core and Core 2 models and its modern Core i3, Core i5, Core i7,
-and Core i9 chips. What are all these cores?
+Nas últimas duas décadas, a palavra “`core`” tem aparecido em todas as embalagens de CPUs. A Intel, em particular, promoveu intensamente essa ideia com seus modelos mais antigos Core e Core 2 e com seus chips modernos Core i3, Core i5, Core i7 e Core i9. O que são todos esses núcleos?
 
-Looking back into the past, most consumer processors had a single
-_core_, or brain. They could only execute one instruction at a time.
-Even this definition is hazy, because pipelining kept more
-than one instruction in the process of being executed, but overall
-execution proceeded sequentially.
+Olhando para o passado, a maioria dos processadores de consumo tinha um único _core_, ou cérebro. Eles só podiam executar uma instrução por vez. Mesmo essa definição é imprecisa, pois o pipelining mantinha mais de uma instrução em processo de execução, mas a execução geral ocorria sequencialmente.
 
-The advent of multicore processors changed this design
-significantly. Each processor now has several independent cores, each of
-which can execute different instructions at the same time. Before the
-arrival of multicore processors, a few desktop computers and many
-supercomputers had multiple separate processors that could achieve a
-similar effect. However, since multicore processors have more than one
-effective processor on the same silicon die, the communication time
-between processors is much faster and the overall cost of a
-multi-processor system is cheaper.
+O advento dos processadores multicore mudou significativamente esse design. Cada processador agora possui vários núcleos independentes, cada um dos quais pode executar instruções diferentes ao mesmo tempo. Antes da chegada dos processadores multicore, alguns computadores desktop e muitos supercomputadores possuíam vários processadores separados que podiam alcançar um efeito semelhante. No entanto, como os processadores multicore possuem mais de um processador efetivo no mesmo chip de silício, o tempo de comunicação entre os processadores é muito mais rápido e o custo geral de um sistema multiprocessador é mais barato.
 
-===== The Good
+===== O bom
 
-Multicore systems have impressive performance. The first multicore
-processors had two cores, but current designs have four, six, eight,
-or higher. A processor with eight cores can
-execute eight different programs at the same time. Or, when faced with a
-computationally intense problem like matrix math, code breaking, or
-scientific simulation, a processor with eight cores could solve the
-problem eight times as fast. A desktop processor with 100 cores that can
-solve a problem 100 times faster is not out of reach.
+Os sistemas multicore apresentam um desempenho impressionante. Os primeiros processadores multicore tinham dois núcleos, mas os modelos atuais possuem quatro, seis, oito ou mais. Um processador com oito núcleos pode executar oito programas diferentes ao mesmo tempo. Ou, quando confrontado com um problema computacionalmente intenso, como matemática matricial, quebra de códigos ou simulação científica, um processador com oito núcleos poderia resolver o problema oito vezes mais rápido. Um processador de desktop com 100 núcleos capaz de resolver um problema 100 vezes mais rápido não está fora de alcance.
 
-In fact, modern graphics cards are already blazing this trail. Consider
-the 1080p standard for high definition video, which has a resolution of
-1,920 × 1,080 _pixels_. Each pixel (short for _picture element_) is a dot on the screen.
-A screen whose resolution is 1080p has
-2,073,600 dots. To maintain the illusion of smooth movement, these dots
-should be updated around 30 times per second. Computing the color for
-more than 2 million dots based on 3D geometry, lighting, and physics
-effects 30 times a second is no easy feat, and many video game enthusiasts
-demand a frame rate of 60 times a second or higher. Some of the cards used to
-render computer games have hundreds or thousands of cores. These cores
-are not general purpose or completely independent. Instead, they're
-specialized to do certain kinds of matrix transformations and
-floating-point computations.
+Na verdade, as placas gráficas modernas já estão abrindo esse caminho. Considere o padrão 1080p para vídeo de alta definição, que tem uma resolução de 1.920 × 1.080 pixels. Cada pixel (abreviação de “picture element”) é um ponto na tela. Uma tela com resolução de 1080p tem 2.073.600 pontos. Para manter a ilusão de movimento suave, esses pontos devem ser atualizados cerca de 30 vezes por segundo. Calcular a cor de mais de 2 milhões de pontos com base em geometria 3D, iluminação e efeitos físicos 30 vezes por segundo não é tarefa fácil, e muitos entusiastas de videogames exigem uma taxa de quadros de 60 vezes por segundo ou mais. 
+Algumas das placas usadas para renderizar jogos de computador têm centenas ou milhares de núcleos. Esses núcleos não são de uso geral nem totalmente independentes. Em vez disso, são especializados para realizar certos tipos de transformações matriciais e cálculos de ponto flutuante.
 
-Nevertheless, the power of these graphics cards has fueled recent improvements
-in AI. Even though the cores are not general purpose, skilled hardware and
-software engineers have found ways to harness their incredible parallel
-computation to solve difficult problems. Writing code that takes advantage of
-these architectures is challenging, but servers filled with the fastest graphics
-cards are used for everything from mining cryptocurrencies to training large
-language models. The company Nvidia alone sells tens of billions of dollars
-worth of graphics cards every year.
+No entanto, o poder dessas placas de vídeo impulsionou melhorias recentes na IA. Mesmo que os núcleos não sejam de uso geral, engenheiros de hardware e software qualificados encontraram maneiras de aproveitar seu incrível poder de computação paralela para resolver problemas difíceis. Escrever código que tire proveito dessas arquiteturas é desafiador, mas servidores equipados com as placas de vídeo mais rápidas são usados para tudo, desde a mineração de criptomoedas até o treinamento de grandes modelos de linguagem. Só a empresa Nvidia vende placas de vídeo no valor de dezenas de bilhões de dólares todos os anos.
 
 ****
 <<multicoreChipExercise>>
 ****
 
-===== The Bad
+===== O ruim
 
-Although chip-makers have spent a lot of money marketing multicore
-technology, they haven't spent much money explaining that one of the
-driving forces behind the "`multicore revolution`" was a simple failure
-to make processors faster in other ways. In 1965, Gordon Moore, one of
-the founders of Intel, remarked that the density of silicon
-microprocessors had been doubling every year (though he later revised
-this to every two years), meaning that twice as many transistors
-(computational building blocks) could fit in the same physical space.
-This trend, often called Moore's Law, held up reasonably well through the
-twentieth century. For years, clever designs relying on shorter communication
-times, pipelining, and other schemes succeeded in doubling the effective
-performance of processors every two years.
+Embora os fabricantes de chips tenham investido muito dinheiro na divulgação da tecnologia multicore, eles não gastaram muito explicando que uma das principais razões por trás da “revolução multicore” foi simplesmente a incapacidade de tornar os processadores mais rápidos por outros meios. Em 1965, Gordon Moore, um dos fundadores da Intel, observou que a densidade dos microprocessadores de silício vinha dobrando a cada ano (embora ele tenha posteriormente revisado essa estimativa para a cada dois anos), o que significava que o dobro de transistores (blocos de construção computacionais) cabia no mesmo espaço físico. Essa tendência, frequentemente chamada de Lei de Moore, se manteve razoavelmente bem ao longo do século XX. 
+Durante anos, projetos inteligentes baseados em tempos de comunicação mais curtos, pipelining e outros esquemas conseguiram dobrar o desempenho efetivo dos processadores a cada dois anos.
 
-At some point, the tricks became less effective and exponential gains in
-processor clock rate could no longer be sustained. As clock frequency
-increases, the signal becomes more chaotic, and it becomes more
-difficult to tell the difference between the voltages that represent 0s
-and 1s. Another problem is heat. The energy that a processor uses is
-related to the *square* of the clock rate. This relationship means that
-increasing the clock rate of a processor by a factor of four will increase
-its energy consumption (and heat generation) by a factor of 16.
+Em algum momento, os truques se tornaram menos eficazes e os ganhos exponenciais na frequência de clock do processador não puderam mais ser sustentados. À medida que a frequência de clock aumenta, o sinal se torna mais caótico, e fica mais difícil distinguir entre as tensões que representam 0s e 1s. Outro problema é o calor. A energia que um processador consome está relacionada ao *quadrado* da frequência de clock. Essa relação significa que aumentar a frequência de clock de um processador em quatro vezes aumentará seu consumo de energia (e geração de calor) em 16 vezes.
 
-The legacy of Moore's Law lives on. We're still able to fit more and
-more transistors into tinier and tinier spaces. After decades of
-increasing clock rate, chip-makers began using the additional silicon
-density to make processors with more than one core instead. Since 2005
-or so, increases in clock rate have stagnated.
+O legado da Lei de Moore continua vivo. Ainda somos capazes de encaixar cada vez mais transistores em espaços cada vez menores. Após décadas de aumento da frequência de clock, os fabricantes de chips passaram a usar a densidade adicional de silício para fabricar processadores com mais de um núcleo. Desde 2005, aproximadamente, os aumentos na frequência de clock estagnaram.
 
-===== The Ugly
+===== O feio
 
-Does a processor with eight cores solve problems eight times as fast as
-its single core equivalent? Unfortunately, the answer is "`Almost
-never.`" Most problems are not easy to break into eight independent
-pieces.
+Um processador com oito núcleos resolve problemas oito vezes mais rápido do que seu equivalente de núcleo único? Infelizmente, a resposta é “Quase nunca”. A maioria dos problemas não é fácil de dividir em oito partes independentes.
 
-For example, if you want to build eight houses and you have eight
-construction teams, then you probably can get pretty close to completing
-all eight houses in the time it would have taken for one team to build a
-single house. But what if you have eight teams and only one house to
-build? You might be able to finish the house a little early, but some
-steps necessarily come after others: The concrete foundation must be
-poured and solid before framing can begin. Framing must be finished
-before the roof can be put on. And so on.
+Por exemplo, se você quiser construir oito casas e tiver oito equipes de construção, provavelmente conseguirá chegar bem perto de concluir todas as oito casas no tempo que levaria para uma equipe construir uma única casa. 
+Mas e se você tiver oito equipes e apenas uma casa para construir? Você talvez consiga terminar a casa um pouco mais cedo, mas algumas etapas necessariamente vêm depois de outras: a fundação de concreto precisa ser moldada e estar sólida antes que a estrutura possa começar. A estrutura precisa estar pronta antes que o telhado possa ser colocado. E assim por diante.
 
-Like building a house, most problems you can solve on a computer are
-difficult to break into concurrent tasks. A few problems are like
-painting a house and can be completed much faster with lots of
-concurrent workers. Other tasks simply cannot be done faster with more
-than one team on the job. Worse, some jobs can actually interfere with
-each other. If a team is trying to frame the walls while another team is
-trying to put the roof onto unfinished walls, neither will succeed, the
-house might be ruined, and people could get hurt.
+Assim como construir uma casa, a maioria dos problemas que você pode resolver em um computador é difícil de dividir em tarefas simultâneas. Alguns problemas são como pintar uma casa e podem ser concluídos muito mais rápido com muitos trabalhadores simultâneos. Outras tarefas simplesmente não podem ser feitas mais rápido com mais de uma equipe no trabalho. Pior ainda, alguns trabalhos podem realmente interferir uns nos outros. Se uma equipe estiver tentando armar as paredes enquanto outra equipe estiver tentando colocar o telhado sobre paredes inacabadas, nenhuma delas terá sucesso, a casa pode ficar arruinada e pessoas podem se machucar.
 
-On a desktop computer, individual cores generally have their own level 1
-cache but share level 2 cache and RAM. If the programmer isn't careful,
-he or she can give instructions to the cores that will make them fight
-with each other, overwriting memory that other cores are using and
-crashing the program or giving an incorrect answer. Imagine
-if different parts of your brain were completely independent and fought
-with one another. The words coming out of your mouth might be gibberish.
+Em um computador desktop, os núcleos individuais geralmente têm seu próprio cache de nível 1, mas compartilham o cache de nível 2 e a RAM. Se o programador não tomar cuidado, ele ou ela pode dar instruções aos núcleos que farão com que eles entrem em conflito, sobrescrevendo a memória que outros núcleos estão usando e travando o programa ou fornecendo uma resposta incorreta. Imagine se diferentes partes do seu cérebro fossem completamente independentes e entrassem em conflito. As palavras que saíssem da sua boca poderiam ser um jargão sem sentido.
 
-To recap, the first problem with concurrent programming is finding ways
-to break down problems so that they can be solved faster with multiple
-cores. The second problem is making sure that the different cores
-cooperate so that the answer is correct and makes sense. These are not
-easy problems, and researchers are still working on finding better
-ways to do both.
+Para recapitular, o primeiro problema da programação concorrente é encontrar maneiras de dividir os problemas para que possam ser resolvidos mais rapidamente com múltiplos núcleos. O segundo problema é garantir que os diferentes núcleos cooperem para que a resposta seja correta e faça sentido. Esses não são problemas fáceis, e os pesquisadores ainda estão trabalhando para encontrar maneiras melhores de resolver ambos.
 
-Some educators believe that beginners will be confused by concurrency
-and should wait until later courses to confront these problems. We
-disagree: Forewarned is forearmed. Concurrency is an integral part of
-modern computation, and the earlier you get introduced to it, the more
-familiar it'll be.
+Alguns educadores acreditam que os iniciantes ficarão confusos com a concorrência e devem esperar até cursos posteriores para enfrentar esses problemas. Discordamos: prevenir é melhor do que remediar. A concorrência é parte integrante da computação moderna, e quanto mais cedo você for apresentado a ela, mais familiarizada ficará com o assunto.
 
 === Resumo
 
-This introductory chapter focused on the fundamentals of a computer. We
-began with a description of computer hardware, including the CPU,
-memory, and I/O devices. We also described the software of a computer,
-highlighting key programs such as the operating system and compilers as
-well as other useful programs like business applications, video games,
-and web browsers.
+Este capítulo introdutório centrou-se nos fundamentos do computador. Começamos com uma descrição do hardware do computador, incluindo a CPU, a memória e os dispositivos de E/S. Também descrevemos o software do computador, destacando programas essenciais, como o sistema operacional e os compiladores, bem como outros programas úteis, como aplicativos de negócios, videogames e navegadores da web.
 
-Then, we introduced the topic of how numbers are represented inside the
-computer. Various number systems and conversion from one system to
-another were explained. We discussed how floating-point representation is used
-to represent rational numbers. A sound knowledge of data representation
-helps a programmer decide what kind of data to use (integer or
-floating-point and how much precision) as well as what kind of errors to expect
-(overflow, underflow, and floating-point precision errors).
+Em seguida, abordamos o tema de como os números são representados dentro do computador. Foram explicados vários sistemas numéricos e a conversão de um sistema para outro. Discutimos como a representação em ponto flutuante é usada para representar números racionais. Um conhecimento sólido sobre representação de dados ajuda o programador a decidir que tipo de dados usar (inteiros ou ponto flutuante e qual o nível de precisão), bem como que tipos de erros esperar (overflow, underflow e erros de precisão em ponto flutuante).
 
-The next chapter extends the idea of data representation into the
-specific types of data that Java uses and introduces representation
-systems for individual characters and text.
+O próximo capítulo amplia a ideia de representação de dados para os tipos específicos de dados que o Java utiliza e apresenta sistemas de representação para caracteres individuais e texto.
 
 === Exercícios
 
-*Conceptual Problems*
+*Problemas Conceituais*
 
-. Name a few programming languages other than Java.
+. Cite algumas linguagens de programação além do Java.
 
-. What's the difference between machine code and bytecode?
+. Qual é a diferença entre código de máquina e bytecode?
 
-. What are some advantages of JIT compilation over traditional,
-ahead-of-time compilation?
+. Quais são algumas das vantagens da compilação JIT em relação à compilação tradicional antecipada?
 
-. [[binaryParityExercise]] Without converting to decimal, how can one find out whether a given
-binary number is odd or even?
+. [[binaryParityExercise]] Sem converter para o sistema decimal, como é possível determinar se um determinado número binário é ímpar ou par?
 
-. [[positiveBinaryToDecimalExercise]] Convert the following positive binary numbers into decimal.
+. [[positiveBinaryToDecimalExercise]] Converta os seguintes números binários positivos para o sistema decimal.
 [loweralpha]
 .. 100~2~
 .. 111~2~
@@ -1256,61 +1075,53 @@ binary number is odd or even?
 .. 111101~2~
 .. 10101~2~
 
-. [[positiveDecimalToBinaryExercise]] Convert the following positive decimal numbers into binary.
+. [[positiveDecimalToBinaryExercise]] Converta os seguintes números decimais positivos para o sistema binário.
 [loweralpha]
 ..  1
 ..  15
 ..  100
-..  1,025
-..  567,899
+..  1.025
+..  567.899
 
-. [[onesToTwosComplementProcessExercise]] What's the process for converting the representation of a binary
-integer given in one's complement into two's complement?
+. [[onesToTwosComplementProcessExercise]] Qual é o processo para converter a representação de um número inteiro binário no complemento a um para o complemento a dois?
 
-. [[onesToTwosComplementExercise]] Perform the conversion from one's complement to two's complement on the
-representation `1011 0111`, which uses 8 bits for storage.
+. [[onesToTwosComplementExercise]] Faça a conversão do complemento a um para o complemento a dois na representação `1011 0111`, que utiliza 8 bits para armazenamento.
 
-. [[convertDecimalToOctalAndHexExercise]] Convert the following decimal numbers to their hexadecimal and octal
-equivalents.
+. [[convertDecimalToOctalAndHexExercise]] Converta os seguintes números decimais em seus equivalentes hexadecimais e octais.
 [loweralpha]
 ..  29
 ..  100
 ..  255
 ..  382
-..  4,096
+..  4.096
 
-. [[octalEquivalentsOfBinaryExercise]] Create a table that lists the binary equivalents of octal digits, similar to the one in <<Other conversions>>. Hint: Each octal digit can be represented as a sequence of three binary digits.
+. [[octalEquivalentsOfBinaryExercise]] Crie uma tabela que liste os equivalentes binários dos dígitos octais, semelhante à que se encontra em <<Outras conversões>>. Dica: cada dígito octal pode ser representado como uma sequência de três dígitos binários.
 
-. [[convertOctalToBinaryExercise]] Use the table from <<octalEquivalentsOfBinaryExercise>> to convert the following octal numbers to binary.
+. [[convertOctalToBinaryExercise]] Use a tabela presente em <<octalEquivalentsOfBinaryExercise>> para converter os seguintes dígitos octais para dígitos binários.
 [loweralpha]
 ..  337~8~
 ..  24~8~
 ..  777~8~
 
-. The ternary number system has a base of 3 and uses symbols 0, 1, and 2
-to construct numbers. Convert the following decimal numbers to their ternary equivalents.
+.  O sistema numérico ternário tem base 3 e utiliza os símbolos 0, 1 e 2 para formar números. Converta os seguintes números decimais para seus equivalentes ternários.
 [loweralpha]
 ..  23
 ..  333
 ..  729
 
-. [[convertNegativeDecimalToBinaryExercise]] Convert the following decimal numbers to 8-bit, two's complement binary
-representations.
+. [[convertNegativeDecimalToBinaryExercise]] Converta os seguintes números decimais em representações binárias de 8 bits no formato complemento a dois.
 [loweralpha]
 ..  -15
 ..  -101
 ..  -120
 
-. [[convertNegativeBinaryToDecimalExercise]] Given the following 8-bit binary representations in two's complement,
-find their decimal equivalents.
+. [[convertNegativeBinaryToDecimalExercise]] Dadas as seguintes representações binárias de 8 bits no complemento a dois, encontre seus equivalentes decimais.
 [loweralpha]
 ..  `1100 0000`
 ..  `1111 1111`
 ..  `1000 0001`
 
-. [[binaryArithmeticExercise]] Perform the following arithmetic operation on the following 8-bit, two's
-complement binary representations of integers. Check your answers by
-performing arithmetic on equivalent decimal numbers.
+. [[binaryArithmeticExercise]] Realize a seguinte operação aritmética nas representações binárias em complemento a dois dos números inteiros de 8 bits a seguir. Verifique suas respostas realizando as operações aritméticas nos números decimais equivalentes.
 [loweralpha]
 ..  `0000 0011` + `0111 1110` =
 ..  `1000 1110` + `0000 1111` =
@@ -1318,41 +1129,26 @@ performing arithmetic on equivalent decimal numbers.
 ..  `0000 1111` - `0001 1110` =
 ..  `1000 0001` - `1111 1100` =
 
-. [[hexArithmeticExercise]] Extrapolate the rules for decimal and binary addition to rules for the
-hexadecimal system. Then, use these rules to perform the following
-additions in hexadecimal. Check your answers by converting the values
-and their sums to decimal.
+. [[hexArithmeticExercise]] Aplique as regras da adição decimal e binária ao sistema hexadecimal. Em seguida, use essas regras para realizar as seguintes operações de adição no sistema hexadecimal. Verifique suas respostas convertendo os valores e suas somas para o sistema decimal.
 [loweralpha]
 ..  A2F~16~ + BB~16~ =
 ..  32C~16~ + D11F~16~ =
 
-. [[baseConversionErrorExercise]] Expand <<Non-terminating_fraction>> assuming that you have ten bits to represent the
-fraction. Convert the representation back to base 10. How far off is
+. [[baseConversionErrorExercise]] Expanda <<Non-terminating_fraction>>, supondo que você tenha dez bits para representar a fração. Converta a representação de volta para a base 10. Qual é a diferença entre esse valor e 0,3?
 this value from 0.3?
 
-. [[terminatingDecimalExercise]] Will the process in <<Non-terminating_fraction>> ever terminate, assuming that we can use as
-many bits as needed to represent 0.3 in binary? Why or why not?
+. [[terminatingDecimalExercise]] O processo em <<Non-terminating_fraction>> chegará a terminar, supondo que possamos usar quantos bits forem necessários para representar 0,3 em binário? Por que sim ou por que não?
 
-. [[floatingPointBinaryExercise]] Derive the binary representation of the following decimal numbers
-assuming 32-bit (single) precision representation using the IEEE 754
+. [[floatingPointBinaryExercise]] Calcule a representação binária dos seguintes números decimais, considerando uma representação de precisão de 32 bits (simples) utilizando o formato de ponto flutuante da IEEE 754.
 floating-point format.
 [loweralpha]
-..  0.0125
-..  7.7
-..  -10.3
+..  0,0125
+..  7,7
+..  -10,3
 
-. The IEEE 754 standard also defines a 16-bit (half) precision format. In
-this format there is one sign bit, five bits for the exponent, and ten
-bits for the mantissa. This format is the same as single and double
-precision in that it assumes that a bit with a value of 1 precedes the
-ten bits in the mantissa. It also uses a bias of 15 for the exponent.
-What's the largest decimal number that can be stored in this format?
+.  A norma IEEE 754 também define um formato de precisão de 16 bits (meia precisão). Neste formato, há um bit de sinal, cinco bits para o expoente e dez bits para a mantissa. Este formato é idêntico ao de precisão simples e dupla, na medida em que pressupõe que um bit com valor 1 precede os dez bits da mantissa. Ele também utiliza um desvio de 15 para o expoente. Qual é o maior número decimal que pode ser armazenado neste formato?
 
-. Let _a_, _b_, and _c_ denote three real numbers.
-With real numbers, each of the equations below is true. Now suppose that
-all arithmetic operations are performed using floating-point
-representations of these numbers. Indicate which of the following
-equations are still always true and which are sometimes false.
+. Sejam _a_, _b_ e _c_ três números reais. Com números reais, cada uma das equações abaixo é verdadeira. Suponha agora que todas as operações aritméticas sejam realizadas usando representações em ponto flutuante desses números. Indique quais das equações a seguir continuam sendo sempre verdadeiras e quais são, às vezes, falsas.
 [loweralpha]
 ..  (_a_ + _b_) + _c_ = _a_ + (_b_ + _c_)
 ..  _a_ + _b_ = _b_ + _a_
@@ -1361,7 +1157,4 @@ equations are still always true and which are sometimes false.
 ..  (_a_ · _b_) · _c_ = _a_ · (_b_ · _c_)
 ..  _a_ · (_b_ + _c_) = (_a_ · _b_) + (_a_ · _c_)
 
-. [[multicoreChipExercise]] What's a multicore microprocessor? Why do you think a multicore chip
-might be better than a single core chip? Search the Internet to find
-the specifications for a few common multicore chips. Which chip does your computer
-use?
+. [[multicoreChipExercise]] O que é um microprocessador multicore? Por que você acha que um chip multicore pode ser melhor do que um chip de núcleo único? Pesquise na Internet para encontrar as especificações de alguns chips multicore comuns. Qual chip o seu computador utiliza?
